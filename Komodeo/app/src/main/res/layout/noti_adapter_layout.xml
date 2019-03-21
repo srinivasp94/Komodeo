@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/png" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/png" />
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_noti_titleandtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/frame"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txt_noti_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cindy rose sent you a friend request"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_noti_title"
+                android:text="12 mins ago" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_approve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_noti_titleandtime"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/frame"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:id="@+id/iv_decline"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/googleplus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_decline"
+                android:text="Approve" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_noti_titleandtime"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/rl_approve"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:id="@+id/iv_approve"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/googleplus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_approve"
+                android:text="Decline" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_approve"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:text="See Event >>"
+                android:textColor="#6d60ac" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

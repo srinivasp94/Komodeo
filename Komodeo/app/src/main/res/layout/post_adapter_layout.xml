@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_post_layout"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/png" />
+
+        <TextView
+            android:id="@+id/txt_postername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_post_layout"
+            android:text="Trish status"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_postername"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_post_layout"
+            android:text="37 secs ago" />
+
+        <TextView
+            android:id="@+id/txt_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_post_layout"
+            android:text="Lorem Ipsum is simply dummy text of printing and typesetting industry"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/iv_likes"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/txt_post"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/png" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_post"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/iv_likes"
+            android:text="5"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_post"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:text="5 comments"
+            android:textColor="@color/black" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

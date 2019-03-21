@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_main_posted_person"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp" />
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/tv_name_posted_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="Post"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_14sdp" />
+    </LinearLayout>
+
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/tv_posted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/black" />
+
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="Comments :"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rview_post_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/tv_load_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Load More"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/gray"></View>
+    </LinearLayout>
+
+
+    <com.iprismtech.komodeo.customtextview.CustomEditText
+        android:id="@+id/et_post_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/sendtext_bg"
+        android:hint="Comment here"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/tv_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/add_class_search_border"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:text="Submit"
+        android:textColor="@color/black" />
+</LinearLayout>

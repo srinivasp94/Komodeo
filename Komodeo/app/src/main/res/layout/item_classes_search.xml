@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_item_class_search"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_item_classes_search"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/_40sdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/tv_class_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/tv_sub_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub Class" />
+    </LinearLayout>
+
+</LinearLayout>

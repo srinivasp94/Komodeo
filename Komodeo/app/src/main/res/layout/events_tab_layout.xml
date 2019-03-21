@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/app_bar_layout_color">
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/png" />
+
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Study Group"
+            android:textColor="@color/white"
+
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/right"
+
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAR"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_month"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="19"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_tutoringwith"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="MATH 241 Tutoring with James C."
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tutoringwith"
+                    android:layout_centerHorizontal="true"
+                    android:text="Today 11 AM - 12 PM"
+                    android:textColor="#4324e2"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#e8e8e8" />
+
+
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Nandini invited you"
+                android:textColor="#4324e2"
+                android:textSize="18dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/txt_estimation"
+                    android:gravity="center"
+                    android:text="Est."
+
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_estimation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:text=" $3.33"
+                    android:textColor="#e0a534"
+                    android:textSize="18dp" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/txt_estimation"
+                    android:gravity="center"
+                    android:text="($ 2-20)"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="4 Spots Left"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/ll_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangletextdrawable"
+                        android:padding="40dp"
+                        android:text="Book"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Going"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@id/ll_book"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgshare"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/share" />
+
+                    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Share"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgprofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/profile" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imgprofile"
+                    android:gravity="center"
+                    android:text="5 people including group are going"
+
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/imgprofile"
+                    android:src="@drawable/profileone" />
+
+                <ImageView
+                    android:id="@+id/icon1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/icon"
+                    android:src="@drawable/profileone" />
+
+                <ImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/icon"
+                    android:src="@drawable/profileone" />
+
+                <ImageView
+                    android:id="@+id/icon3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/icon1"
+                    android:src="@drawable/profileone" />
+
+                <ImageView
+                    android:id="@+id/icon4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/icon3"
+                    android:src="@drawable/profileone" />
+
+                <ImageView
+                    android:id="@+id/icon5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imgprofile"
+                    android:layout_toRightOf="@id/icon4"
+                    android:src="@drawable/profileone" />
+
+                <!-- <ImageView
+                     android:id="@+id/icon6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_below="@id/imgprofile"
+                     android:layout_toRightOf="@id/icon5"
+                     android:src="@drawable/profileone" />-->
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_placeholder"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/placeholder" />
+
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_undergraduatelibrary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@id/iv_placeholder"
+                    android:text="Undergraduate Library"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_undergraduatelibrary"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@id/iv_placeholder"
+                    android:text="1402 W Gregory Dr, Urbana, IL 61801" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/txt_address"
+                    android:layout_marginTop="5dp" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/map"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/iv_placeholder"
+                    android:text="Details"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_details"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_placeholder"
+                    android:text="Exam 2, Practice problems and quiz" />
+
+
+                <ImageView
+
+                    android:id="@+id/iv_profile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/txt_desc"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/profileone" />
+
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_desc"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/iv_profile"
+                    android:text="Lee G."
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name"
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@id/iv_profile"
+                    android:text="Bring your quizzes and we'll compare1" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:orientation="horizontal"
+        android:weightSum="2.3">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:background="#d3d3d3"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_cam"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="45dp"
+                android:src="@drawable/share" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/iv_cam"
+                android:src="@drawable/share" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:background="#d3d3d3"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/iv_search"
+                android:background="@drawable/sendtext_bg"
+                android:hint="Aa"
+                android:padding="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:background="#d3d3d3"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:src="@drawable/share" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

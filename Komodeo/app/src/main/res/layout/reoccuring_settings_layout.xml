@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c8d2ed"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/sign_in_btn_bg"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="SAVE"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/iv_closereoccuring"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginRight="10dp"
+            android:src="@drawable/close_with_blue_background" />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="I want to repeat this event"
+        android:textColor="@color/black" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/clock_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/daily_bg"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Daily"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:src="@drawable/red_dots" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Weekly"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/cal_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/daily_bg"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Monthly"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="On these dates"
+        android:textColor="@color/black" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/txt_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/daily_bg"
+            android:padding="10dp"
+            android:text="S" />
+
+
+        <TextView
+            android:id="@+id/txt_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_sunday"
+            android:padding="10dp"
+
+            android:text="M" />
+
+
+        <TextView
+            android:id="@+id/txt_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_monday"
+            android:padding="10dp"
+
+            android:text="T" />
+
+        <TextView
+            android:id="@+id/txt_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_tuesday"
+            android:background="@drawable/daily_bg"
+            android:padding="10dp"
+
+            android:text="W" />
+
+        <TextView
+            android:id="@+id/txt_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_wednesday"
+
+            android:padding="10dp"
+
+            android:text="T" />
+
+        <TextView
+            android:id="@+id/txt_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_thursday"
+            android:padding="10dp"
+
+
+            android:text="F" />
+
+        <TextView
+            android:id="@+id/txt_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txt_friday"
+
+            android:padding="10dp"
+
+
+            android:text="S" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="80dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_startdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Start Date"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_startdate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner_rounded_bg">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+
+                android:background="@drawable/spinner_rounded_bg"
+                android:backgroundTint="@color/white"
+                android:hint="Accy"
+                android:padding="10dp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_datepicker1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="80dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_enddate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="End Date"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_enddate"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner_rounded_bg">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+
+                android:background="@drawable/spinner_rounded_bg"
+                android:backgroundTint="@color/white"
+                android:hint="Accy"
+                android:padding="10dp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

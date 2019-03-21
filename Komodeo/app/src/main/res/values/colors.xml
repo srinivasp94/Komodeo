@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="signinbtn_border">#ecc46f</color>
+
+    <color name="orange1">#ff6b09</color>
+    <color name="orange2">#ff6106</color>
+    <color name="orange3">#fc5301</color>
+
+    <color name="tab_unselected_color">#022c3c</color>
+
+
+    <color name="events_selected_tab">#345662</color>
+
+    <color name="events_unselected_tab">#012b3b</color>
+
+
+    <color name="tab_selected_color">#345662</color>
+    <color name="blue_selected">#a3b5ff</color>
+    <color name="loginborder">#384a54</color>
+    <color name="edt_bg">#a8b0b3</color>
+    <color name="rapidred">#f90202</color>
+    <color name="transparentBlack">#48000000</color>
+    <color name="rapidredtext">#fa7174</color>
+    <color name="indicator_unselected">#4D000000</color>
+    <color name="layout_background_color">#fafafa</color>
+    <color name="taborcard_background">#ffffff</color>
+    <color name="lightBlue">#03A9F4</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="proffers_orange">#FFB833</color>
+    <color name="proffers_dark_orange">#F7B12E</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+
+    <color name="orange_tab_select">#fe6c31</color>
+
+
+    <color name="orange_tab_unselected">#fe4800</color>
+    <color name="bottom_nav_selected">#a3b5ff</color>
+
+
+    <!--#22783b-->
+    <color name="txt_green">#26ea62</color>
+    <color name="view_color">#dfdfdf</color>
+    <color name="horizontal_list_bg">#cdcfdc</color>
+    <color name="add_class_form_bg">#c8d2ed</color>
+
+    <color name="app_bar_layout_color">#00765a</color>
+    <color name="profile_bg">#f8f8f8</color>
+    <color name="vacation_day_color">#f00707</color>
+    <color name="unselected_item_color">#dfdfdf</color>
+    <color name="upcoming_days_color">#0974f0</color>
+    <color name="currentlocation_bg">#343539</color>
+    <color name="txt_orange">#ff9705</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="gradient1">#e40921</color>
+    <color name="project_text_green">#24c363</color>
+    <color name="hc_buttoncolor">#FF777047</color>
+    <color name="signup_searchbtn_bg">#50646f</color>
+    <color name="gradient2">#b89fdc</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="hc_textcolorred">#fe4f4f</color>
+    <color name="lime">#00FF00</color>
+    <color name="teal">#008080</color>
+    <color name="green">#008000</color>
+    <color name="signup_dark_bg">#022c3c</color>
+
+    <color name="blue">#0000FF</color>
+
+    <color name="navy">#000080</color>
+
+    <color name="rr_bg">#FFFFFF</color>
+
+    <color name="black">#000000</color>
+
+    <color name="btn_skip">#713C80</color>
+
+    <color name="btn_finish">#F9C401</color>
+
+    <color name="selected_indicator">#7799ED</color>
+
+    <color name="register">#1F367F</color>
+
+    <color name="rr_header">#ebebeb</color>
+
+    <color name="btn">#B92634</color>
+
+    <color name="baktohome">#F9C401</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="light_gray">#aaaaaa</color>
+
+    <color name="color_eee">#eeeeee</color>
+
+    <color name="color_ddd">#dddddd</color>
+
+    <color name="hc_bgcolor">#f2f2f2</color>
+
+    <color name="color_ccc">#cccccc</color>
+
+    <color name="color_bbb">#bbbbbb</color>
+
+    <color name="color_aaa">#aaaaaa</color>
+
+    <color name="color_99">#999999</color>
+
+    <color name="color_88">#888888</color>
+
+    <color name="color_77">#777777</color>
+
+    <color name="button_background">#f90d12</color>
+
+    <color name="color_66">#666666</color>
+
+    <color name="color_55">#f2f2f2</color>
+
+    <color name="hc_textgreen">#028457</color>
+
+    <color name="hc_lightbrown">#c7bd9b</color>
+
+    <color name="color_44">#444444</color>
+
+    <color name="color_33">#333333</color>
+
+    <color name="color_22">#222222</color>
+
+    <string name="sad">#354f5b</string>
+
+    <color name="dashboard_bg">#022c3c</color>
+
+    <color name="color_11">#111111</color>
+
+    <color name="orange">#FF4500</color>
+
+    <color name="btn_color">#B92634</color>
+
+    <color name="back_btn">#F9C401</color>
+
+    <color name="button_color">#ff786a</color>
+
+    <color name="hc_appbackground">#ffffff</color>
+
+    <color name="time_selection">#1AD469</color>
+
+</resources>

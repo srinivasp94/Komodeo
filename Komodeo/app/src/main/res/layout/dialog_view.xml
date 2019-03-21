@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="multiply"
+        android:progressBackgroundTint="@color/black"
+        android:progressBackgroundTintMode="multiply"
+        android:progressTint="@color/colorPrimary"
+        android:scrollbars="none" />
+
+    <com.iprismtech.komodeo.customtextview.CustomEditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Loading..." />
+</LinearLayout>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#0e3e4a">
+
+
+        <ImageView
+            android:id="@+id/iv_invite_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back_triangleshaped_white" />
+
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="Invite"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/invitelayout_edtbg">
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="25dp"
+
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/search_icon" />
+
+
+            <com.iprismtech.komodeo.customtextview.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_search"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="Type Name" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_profile1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/png" />
+
+            <TextView
+                android:id="@+id/txt_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile1"
+                android:text="Abhinav Che"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_subject1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name1"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile1"
+                android:text="Political Science"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_mutualfriends1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_subject1"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile1"
+                android:text="5 mutual friends"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="2dp"
+                    android:src="@drawable/addfriends" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/add_friend" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/png" />
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text="Abhinav Che"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text="Political Science"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_mutualfriends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_subject"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text="5 mutual friends"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="2dp"
+                    android:src="@drawable/addfriends" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/add_friend" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <!--    <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_addasfriends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </android.support.v7.widget.RecyclerView>-->
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#0e3e4a"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Invite Contacts"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ccc"
+            android:orientation="vertical">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_profile3"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/png" />
+
+                <TextView
+                    android:id="@+id/txt_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile3"
+                    android:text="Abhinav Che"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_subject3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile3"
+                    android:text="Political Science"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_mutualfriends3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_subject3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile3"
+                    android:text="5 mutual friends"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/invitecontacts" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_profile2"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/png" />
+
+                <TextView
+                    android:id="@+id/txt_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile2"
+                    android:text="Abhinav Che"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_subject2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile2"
+                    android:text="Political Science"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_mutualfriends2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_subject2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_profile2"
+                    android:text="5 mutual friends"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/invitecontacts" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--       <android.support.v7.widget.RecyclerView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:id="@+id/rv_contacts"
+                   ></android.support.v7.widget.RecyclerView>-->
+
+    </LinearLayout>
+
+</LinearLayout>
