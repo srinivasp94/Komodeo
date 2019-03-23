@@ -45,7 +45,7 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         EventsList model = list.get(i);
         if (model.firstName != null || model.lastName != null)
-            viewHolder.txt_personName.setText(model.firstName + "" + model.lastName);
+            viewHolder.txt_personName.setText(model.firstName);
         if (model.eventName != null)
             viewHolder.txt_name.setText(model.eventName + "\n" + model.eventDate);
         if (model.maxGroupSize != null)

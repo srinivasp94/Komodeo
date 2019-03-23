@@ -16,6 +16,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.MapDialog;
@@ -56,6 +58,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
     int minute = mcurrentTime.get(Calendar.MINUTE);
     private String result_paymnet, event_type, class_id, class_name;
+    private StringBuilder stringBuilder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -412,7 +415,16 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                         friendsIds = inviteFriendsList.get(i).id;
                         stringBuilder.append(friendsIds);
                     }
+            inviteFriendsList = data.getParcelableArrayListExtra("Key_inviteFrien");
+            if (inviteFriendsList != null && inviteFriendsList.size() > 0) {
+                txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
+                stringBuilder = new StringBuilder();
+                String friendsIds = "";
+                for (int i = 0; i < inviteFriendsList.size(); i++) {
+                    friendsIds = inviteFriendsList.get(i).id + ",";
+                    stringBuilder.append(friendsIds);
                 }
+                Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
             }
         }
         if (resultCode == Activity.RESULT_CANCELED) {

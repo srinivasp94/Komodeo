@@ -212,6 +212,7 @@
                     android:src="@drawable/graduate_black" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_classes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Classes"
@@ -236,6 +237,7 @@
                     android:src="@drawable/users_gray" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_tutoring"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tutoring"
@@ -258,6 +260,7 @@
                     android:src="@drawable/cal_gray" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_events"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Events"
@@ -280,6 +283,7 @@
                     android:src="@drawable/chat_gray" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                    android:id="@+id/txt_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat"
