@@ -1,12 +1,10 @@
 package com.iprismtech.komodeo.activity;
 
-import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,7 +14,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -29,7 +26,6 @@ import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
 import com.iprismtech.komodeo.utils.DatePickerDaloge;
-import com.iprismtech.komodeo.utils.GPSTracker;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 
 import org.json.JSONObject;
@@ -415,19 +411,10 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                         friendsIds = inviteFriendsList.get(i).id;
                         stringBuilder.append(friendsIds);
                     }
-            inviteFriendsList = data.getParcelableArrayListExtra("Key_inviteFrien");
-            if (inviteFriendsList != null && inviteFriendsList.size() > 0) {
-                txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
-                stringBuilder = new StringBuilder();
-                String friendsIds = "";
-                for (int i = 0; i < inviteFriendsList.size(); i++) {
-                    friendsIds = inviteFriendsList.get(i).id + ",";
-                    stringBuilder.append(friendsIds);
+
+                    Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
             }
-        }
-        if (resultCode == Activity.RESULT_CANCELED) {
 
         }
     }
