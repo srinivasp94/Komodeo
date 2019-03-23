@@ -1,11 +1,16 @@
 package com.iprismtech.komodeo.responses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class FriendList {
+import java.io.Serializable;
+
+public class FriendList implements Parcelable {
     @SerializedName("id")
     @Expose
     public String id;
@@ -61,10 +66,97 @@ public class FriendList {
     @Expose
     public Object modifiedOn;
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("emailId", emailId).append("password", password).append("universityId", universityId).append("registeredThrough", registeredThrough).append("comments", comments).append("likes", likes).append("friendRequests", friendRequests).append("events", events).append("eventCancel", eventCancel).append("token", token).append("iosToken", iosToken).append("status", status).append("deleteStatus", deleteStatus).append("createdOn", createdOn).append("modifiedOn", modifiedOn).toString();
+    public boolean invite = false;
+
+    protected FriendList(Parcel in) {
+        id = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        emailId = in.readString();
+        password = in.readString();
+        universityId = in.readString();
+        registeredThrough = in.readString();
+        comments = in.readString();
+        likes = in.readString();
+        friendRequests = in.readString();
+        events = in.readString();
+        eventCancel = in.readString();
+        status = in.readString();
+        deleteStatus = in.readString();
+        createdOn = in.readString();
+        invite = in.readByte() != 0;
     }
 
+    public static final Creator<FriendList> CREATOR = new Creator<FriendList>() {
+        @Override
+        public FriendList createFromParcel(Parcel in) {
+            return new FriendList(in);
+        }
+
+        @Override
+        public FriendList[] newArray(int size) {
+            return new FriendList[size];
+        }
+    };
+
+    public boolean isInvite() {
+        return invite;
+    }
+
+    public void setInvite(boolean invite) {
+        this.invite = invite;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("emailId", emailId)
+                .append("password", password)
+                .append("universityId", universityId)
+                .append("registeredThrough", registeredThrough)
+                .append("comments", comments)
+                .append("likes", likes)
+                .append("friendRequests", friendRequests)
+                .append("events", events)
+                .append("eventCancel", eventCancel)
+                .append("token", token)
+                .append("iosToken", iosToken)
+                .append("status", status)
+                .append("deleteStatus", deleteStatus)
+                .append("createdOn", createdOn)
+                .append("modifiedOn", modifiedOn)
+                .append("invite", invite)
+                .toString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+//dest.writeString();
+        dest.writeString(id);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(emailId);
+        dest.writeString(password);
+        dest.writeString(universityId);
+        dest.writeString(registeredThrough);
+        dest.writeString(comments);
+        dest.writeString(likes);
+        dest.writeString(friendRequests);
+        dest.writeString(events);
+        dest.writeString(eventCancel);
+        dest.writeString(status);
+        dest.writeString(deleteStatus);
+        dest.writeString(createdOn);
+        dest.writeByte((byte) (invite ? 1 : 0));
+    }
 
 }

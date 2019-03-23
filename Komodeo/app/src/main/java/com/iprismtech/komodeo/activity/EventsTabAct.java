@@ -23,11 +23,13 @@ import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.SubjectsRecyclerAdapter;
 import com.iprismtech.komodeo.TutoringTabFilterAct;
 import com.iprismtech.komodeo.base.BaseAbstractFragment;
+import com.iprismtech.komodeo.fragments.StudyEventFragment;
 
 public class EventsTabAct extends BaseAbstractFragment {
 
 
     private TabLayout tabLayout;
+    private StudyEventFragment eventFragment;
 
     @Override
     protected View getFragmentView() {
@@ -56,6 +58,7 @@ public class EventsTabAct extends BaseAbstractFragment {
     protected void initialiseViews() {
         super.initialiseViews();
 
+        eventFragment = new StudyEventFragment();
 
         tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.setOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
@@ -75,14 +78,14 @@ public class EventsTabAct extends BaseAbstractFragment {
             }
         });
         tabLayout.addTab(tabLayout.newTab().setText("My Events "), true);
-        tabLayout.addTab(tabLayout.newTab().setText("Calender"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Calender"));
         tabLayout.addTab(tabLayout.newTab().setText(" + "));
     }
 
     private void setCurrentTabFragment(int position) {
         switch (position) {
             case 0:
-//                replaceFragmets(currentFragment);
+                replaceFragmets(eventFragment);
                 break;
             case 1:
 //                replaceFragmets(addClassesFragment);

@@ -180,11 +180,28 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 //                rl_profile_details.setVisibility(View.VISIBLE);
 
 
+
                 ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
                 intent.putExtra("Key_CourseID", course_ID);
                 intent.putExtra("Key_CurseName", course_name);
                 startActivity(intent);
+
+
+//                if (position2 == false) {
+//
+//                    ll_currenttab_events.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
+//                    ll_discussiontab.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
+//                    ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_select, null));
+//
+//                } else {
+//                    ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
+//                    Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
+//                    intent.putExtra("Key_CourseID", course_ID);
+//                    intent.putExtra("Key_CurseName", course_name);
+//                    startActivity(intent);
+//
+//                }
 
                 break;
             case R.id.tv_load_more:
@@ -226,6 +243,12 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     new RetrofitRequester(this).callPostServices(obj, 3, "submit_discussion_posts", true);
 
                 }
+                break;
+            case R.id.tv_add_study_events:
+                Intent createIntent = new Intent(CommunityDiscussionsActivity.this,CreateTutorRequestAct.class);
+                createIntent.putExtra("Key_Event","studyEvent");
+                createIntent.putExtra("Key_ClassId","1");
+                startActivity(createIntent);
                 break;
         }
 
