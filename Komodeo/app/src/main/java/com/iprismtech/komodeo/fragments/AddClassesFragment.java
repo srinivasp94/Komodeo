@@ -102,7 +102,7 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
             @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
-                  //ApplicationController.getInstance().handleEvent(AppConstants.EventIds.LAUNCH_ADD_CLASS_FORM_SCREEN);
+                //ApplicationController.getInstance().handleEvent(AppConstants.EventIds.LAUNCH_ADD_CLASS_FORM_SCREEN);
                 startActivity(new Intent(getActivity(), AddclassFormAct.class));
 
             }
@@ -179,6 +179,7 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
         req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
         req.courseName = searchClassesPojo.getResponse().get(position).getTitle();
         req.subjectName = searchClassesPojo.getResponse().get(position).getSubject_name();
+        req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
         try {
             obj = Class.forName(AddClassReq.class.getName()).cast(req);
         } catch (Exception e) {

@@ -2,33 +2,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipToPadding="false"
-    android:padding="10dp">
+    android:layout_margin="@dimen/_2sdp"
+    android:padding="@dimen/_3sdp">
 
-    <!--    <View
-            android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:scaleType="centerInside"
-            android:layot_width="34dp"
-            android:layout_height="34dp" />-->
+    <!--<com.iprismtech.komodeo.customtextview.MyCustomFontTextView-->
+    <!--android:id="@+id/txt_message"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_marginLeft="@dimen/_6sdp"-->
+    <!--android:layout_marginTop="@dimen/_4sdp"-->
+    <!--android:layout_marginRight="@dimen/_40sdp"-->
+    <!--android:elevation="@dimen/_3sdp"-->
+    <!--android:paddingLeft="@dimen/_15sdp"-->
+    <!--android:paddingTop="@dimen/_2sdp"-->
+    <!--android:paddingRight="@dimen/_15sdp"-->
+    <!--android:paddingBottom="@dimen/_5sdp"-->
+    <!--android:text="hi"-->
+    <!--android:textColor="@color/red"-->
+    <!--android:textSize="@dimen/_14sdp" />-->
 
-    <ImageView
-        android:id="@+id/iv_profile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/png" />
-
-    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-        android:id="@+id/message_body"
-        android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_other_end"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/iv_profile"
-        android:background="@drawable/theirmessage_bg"
-        android:padding="5dp"
-        android:text="How are you doing? This is a long message that should probably wrap."
-        android:textSize="18dp" />
+        android:clipToPadding="false"
+        android:padding="10dp">
+
+        <!--    <View
+                android:id="@+id/avatar"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:scaleType="centerInside"
+                android:layot_width="34dp"
+                android:layout_height="34dp" />-->
+
+        <ImageView
+            android:id="@+id/iv_chatprofile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:src="@drawable/png" />
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_chatprofile"
+            android:background="@drawable/theirmessage_bg"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:text="How are you doing? This is a long message that should probably wrap."
+            android:textSize="@dimen/_10sdp" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

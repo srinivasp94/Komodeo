@@ -49,7 +49,6 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
     private List<CommunityMembersPojo.CommunityBean> responseBeans;
     private List<SearchCommunityPojo.ResponseBean> search_responseBeans;
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -71,6 +70,7 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                 break;
         }
     }
+
     @Override
     protected View getView() {
         View view = getLayoutInflater().inflate(R.layout.community_layout, null);
@@ -104,6 +104,16 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                             responseBeans.addAll(communityMembersPojo.getCommunity());
                             communityMembersAdapter = new CommunityMembersAdapter(CommunityActivity.this, responseBeans);
                             rview_comminty_members.setAdapter(communityMembersAdapter);
+                            communityMembersAdapter.setOnItemClickListener(new CommunityMembersAdapter.OnitemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    switch (view.getId()) {
+                                        case R.id.iv_chat:
+
+                                            break;
+                                    }
+                                }
+                            });
                             break;
                         case 2:
                             searchCommunityPojo = gson.fromJson(jsonString, SearchCommunityPojo.class);

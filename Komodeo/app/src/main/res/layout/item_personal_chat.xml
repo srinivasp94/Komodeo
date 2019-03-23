@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rl_other_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:padding="10dp">
+
+            <!--    <View
+                    android:id="@+id/avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="centerInside"
+                    android:layot_width="34dp"
+                    android:layout_height="34dp" />-->
+
+            <ImageView
+                android:id="@+id/iv_chatprofile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/png" />
+
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:id="@+id/message_body_their"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_chatprofile"
+                android:background="@drawable/theirmessage_bg"
+                android:padding="5dp"
+                android:text="How are you doing? This is a long message that should probably wrap."
+                android:textSize="@dimen/_12sdp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:id="@+id/message_body_my"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:background="@drawable/mymessage_bg"
+                android:elevation="2dp"
+                android:gravity="right"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="How r ya?"
+                android:textColor="#fff"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
