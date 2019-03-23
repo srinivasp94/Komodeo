@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Komodeo</string>
+
+    <string name="facebook_app_id">299949460443781</string>
+    <string name="fb_login_protocol_scheme">fb323252511620098</string>
+
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
 </resources>

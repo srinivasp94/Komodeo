@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.MapDialog;
@@ -41,6 +42,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
     private Object obj;
     private ArrayList<FriendList> inviteFriendsList = new ArrayList<>();
     private String screenid;
+    private StringBuilder stringBuilder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -224,12 +226,13 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
             inviteFriendsList = data.getParcelableArrayListExtra("Key_inviteFrien");
             if (inviteFriendsList != null && inviteFriendsList.size() > 0) {
                 txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
-                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder = new StringBuilder();
                 String friendsIds = "";
-                for (int i=0;i<inviteFriendsList.size();i++) {
-                    friendsIds = inviteFriendsList.get(i).id;
+                for (int i = 0; i < inviteFriendsList.size(); i++) {
+                    friendsIds = inviteFriendsList.get(i).id + ",";
                     stringBuilder.append(friendsIds);
                 }
+                Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
             }
         }
     }

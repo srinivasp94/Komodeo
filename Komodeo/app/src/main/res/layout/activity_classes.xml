@@ -13,6 +13,10 @@
         android:padding="@dimen/_5sdp"
         app:tabBackground="@color/events_selected_tab"
         app:tabSelectedTextColor="@color/white"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:visibility="gone"
+        app:tabMaxWidth="0dp"
         app:tabTextColor="@color/signinbtn_border"
         android:id="@+id/tabLayout">
 

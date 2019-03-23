@@ -1,6 +1,7 @@
 package com.iprismtech.komodeo.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -191,24 +192,42 @@ public class StudyEventFragment extends BaseAbstractFragment implements Retrofit
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_time:
+                ll_time.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
                 break;
             case R.id.ll_rating:
-                Collections.sort(mTutorList, new Comparator<EventsList>() {
-                    @Override
-                    public int compare(EventsList o1, EventsList o2) {
-                        return o1.ratings.compareTo(o2.ratings);
-                    }
-                });
-                tutorAdapter.notifyDataSetChanged();
+                ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                try {
+                    Collections.sort(mTutorList, new Comparator<EventsList>() {
+                        @Override
+                        public int compare(EventsList o1, EventsList o2) {
+                            return o1.ratings.compareTo(o2.ratings);
+                        }
+                    });
+                    tutorAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 break;
             case R.id.ll_price:
-                Collections.sort(mTutorList, new Comparator<EventsList>() {
-                    @Override
-                    public int compare(EventsList o1, EventsList o2) {
-                        return o1.totalPrice.compareTo(o2.totalPrice);
-                    }
-                });
-                tutorAdapter.notifyDataSetChanged();
+                ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_price.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
+                try {
+                    Collections.sort(mTutorList, new Comparator<EventsList>() {
+                        @Override
+                        public int compare(EventsList o1, EventsList o2) {
+                            return o1.totalPrice.compareTo(o2.totalPrice);
+                        }
+                    });
+                    tutorAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }

@@ -15,8 +15,12 @@ import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.adapters.EventCommentAdapter;
 import com.iprismtech.komodeo.adapters.EventuserHorizonAdapter;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
+import com.iprismtech.komodeo.request.BookEventReq;
+import com.iprismtech.komodeo.request.EventCommentSubmitReq;
+import com.iprismtech.komodeo.request.EventCommentsReq;
 import com.iprismtech.komodeo.request.EventSingelReq;
 import com.iprismtech.komodeo.responses.EventComment;
+import com.iprismtech.komodeo.responses.EventCommentRes;
 import com.iprismtech.komodeo.responses.EventMember;
 import com.iprismtech.komodeo.responses.TutorSingelRes;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 public class TutorEventAct extends BaseAbstractActivity implements RetrofitResponseListener, View.OnClickListener {
 
     private ImageView iv_te_back;
-    private TextView txt_Date, txt_tutoringwith, txtinTime, txtInvitedBy,
+    private TextView txt_Date, txt_tutoringwith, txtinTime, txtInvitedBy, txttoolbaBook,
             txt_estimation, txtPeopleLeft, txtPeopleGoing, txt_address, txt_desc;
     private EditText edtMessage;
     LinearLayout ll_book, ll_share, ll_SendMsg;
@@ -44,7 +48,15 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
     private ArrayList<EventComment> commentsArrayList = new ArrayList<>();
     private String eventId;
     private Object obj;
+    private String eventCreateATutorId;
 
+   /* book_event
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU4NjA2OTk1OTQ5NDE2MDJhNzc3OTNjNzAxMzA5MDRkIn0.XtoBKDn3vbov0k3-eP8MK45lrSwIGVZUFKt3Assak0I",
+            "user_id":"2",
+            "event_id":"2",
+            "event_creator_user_id":"1"
+    }*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +82,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         ll_book.setOnClickListener(this);
         ll_share.setOnClickListener(this);
         ll_SendMsg.setOnClickListener(this);
+        txttoolbaBook.setOnClickListener(this);
     }
 
     @Override
@@ -88,6 +101,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         txtPeopleGoing = findViewById(R.id.txtPeopleGoing);
         txt_address = findViewById(R.id.txt_address);
         txt_desc = findViewById(R.id.txt_desc);
+        txttoolbaBook = findViewById(R.id.txttoolbaBook);
 
         edtMessage = findViewById(R.id.edtMessage);
 
@@ -130,6 +144,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                     switch (requestId) {
                         case 1:
                             TutorSingelRes res = Common.getSpecificDataObject(objectResponse, TutorSingelRes.class);
+                            eventCreateATutorId = res.response.userId;
                             memberArrayList = (ArrayList<EventMember>) res.response.eventMembers;
                             if (memberArrayList != null && memberArrayList.size() > 0) {
                                 mUserHorizonAdapter = new EventuserHorizonAdapter(TutorEventAct.this, memberArrayList);
@@ -153,6 +168,24 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                             txt_desc.setText(res.response.note);
 
                             break;
+                        case 2:
+                            Common.showToast(TutorEventAct.this, jsonObject.optString("message"));
+                            edtMessage.setText("");
+                            updateCommentsWS();
+                            break;
+                        case 3:
+                            EventCommentRes commentRes = Common.getSpecificDataObject(objectResponse, EventCommentRes.class);
+                            commentsArrayList = new ArrayList<>();
+                            commentsArrayList = (ArrayList<EventComment>) commentRes.response;
+                            if (commentsArrayList != null && commentsArrayList.size() > 0) {
+                                commentAdapter = new EventCommentAdapter(TutorEventAct.this, commentsArrayList);
+                                rv_commnet_tutor.setAdapter(commentAdapter);
+                            }
+                            break;
+                        case 4:
+                            Common.showToast(TutorEventAct.this, jsonObject.optString("message"));
+                            finish();
+                            break;
                     }
                 } else {
                     Common.showToast(TutorEventAct.this, jsonObject.optString("message"));
@@ -164,12 +197,32 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         }
     }
 
+    private void updateCommentsWS() {
+        EventCommentsReq req = new EventCommentsReq();
+        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        req.eventId = eventId;
+        req.count = "0";
+
+        try {
+            obj = Class.forName(EventCommentsReq.class.getName()).cast(req);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new RetrofitRequester(this).callPostServices(obj, 3, "event_comments", true);
+
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_share:
                 break;
             case R.id.ll_book:
+                bookEventWS();
+                break;
+            case R.id.txttoolbaBook:
+                bookEventWS();
                 break;
             case R.id.iv_te_back:
                 onBackPressed();
@@ -178,9 +231,35 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                 if (edtMessage.getText().toString().length() == 0) {
                     Common.showToast(TutorEventAct.this, "Please Enter Comments");
                 } else {
-//                    new RetrofitRequester(this).callPostServices(obj,3,"",true);
+                    EventCommentSubmitReq req = new EventCommentSubmitReq();
+                    req.userId = SharedPrefsUtils.getInstance(TutorEventAct.this).getId();
+                    req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+                    req.eventId = eventId;
+                    req.comment = edtMessage.getText().toString();
+                    try {
+                        obj = Class.forName(EventCommentSubmitReq.class.getName()).cast(req);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    new RetrofitRequester(this).callPostServices(obj, 2, "submit_event_comment", true);
                 }
                 break;
         }
+    }
+
+    private void bookEventWS() {
+        BookEventReq req = new BookEventReq();
+        req.userId = SharedPrefsUtils.getInstance(TutorEventAct.this).getId();
+        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        req.eventId = eventId;
+        req.eventCreatorUserId = eventCreateATutorId;
+
+        try {
+            obj = Class.forName(BookEventReq.class.getName()).cast(req);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new RetrofitRequester(this).callPostServices(obj, 4, "book_event", true);
+
     }
 }

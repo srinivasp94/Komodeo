@@ -1,6 +1,7 @@
 package com.iprismtech.komodeo.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -191,8 +192,16 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_time:
+                ll_time.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
                 break;
             case R.id.ll_rating:
+                ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#a3b5ff"));
+
+
                 try {
                     Collections.sort(mTutorList, new Comparator<EventsList>() {
                         @Override
@@ -206,6 +215,9 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                 }
                 break;
             case R.id.ll_price:
+                ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_price.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
                 try {
                     Collections.sort(mTutorList, new Comparator<EventsList>() {
                         @Override

@@ -1,6 +1,7 @@
 package com.iprismtech.komodeo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
     private LinearLayout ll_classes, ll_tutoring, ll_events, ll_chat;
+    private TextView txt_classes, txt_tutoring, txt_events, txt_chat;
     private TextView txt_profile, txt_friends, txt_settings, txt_faqs, txt_terms, txt_contactus;
     private ImageView menu_icon;
     private DrawerLayout drawer_layout;
@@ -137,12 +139,16 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
         ll_classes = findViewById(R.id.ll_classes);
+        txt_classes = findViewById(R.id.txt_classes);
 
         ll_tutoring = findViewById(R.id.ll_tutoring);
+        txt_tutoring = findViewById(R.id.txt_tutoring);
 
         ll_events = findViewById(R.id.ll_events);
+        txt_events = findViewById(R.id.txt_events);
 
         ll_chat = findViewById(R.id.ll_chat);
+        txt_chat = findViewById(R.id.txt_chat);
 
         txt_friends = findViewById(R.id.txt_friends);
         txt_settings = findViewById(R.id.txt_settings);
@@ -176,15 +182,52 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_classes:
+                txt_classes.setTextColor(Color.parseColor("#000000"));
+                txt_tutoring.setTextColor(Color.parseColor("#7b7979"));
+                txt_events.setTextColor(Color.parseColor("#7b7979"));
+                txt_chat.setTextColor(Color.parseColor("#7b7979"));
+
+                ll_classes.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                        ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_chat.setBackgroundColor(Color.parseColor("#ffffff"));
+
                 replaceFragmets(classesActivity);
                 break;
             case R.id.ll_tutoring:
+                txt_classes.setTextColor(Color.parseColor("#7b7979"));
+                txt_tutoring.setTextColor(Color.parseColor("#000000"));
+                txt_events.setTextColor(Color.parseColor("#7b7979"));
+                txt_chat.setTextColor(Color.parseColor("#7b7979"));
+
+                ll_classes.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_tutoring.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_chat.setBackgroundColor(Color.parseColor("#ffffff"));
                 replaceFragmets(tutoringAct);
                 break;
             case R.id.ll_events:
+                txt_classes.setTextColor(Color.parseColor("#7b7979"));
+                txt_tutoring.setTextColor(Color.parseColor("#7b7979"));
+                txt_events.setTextColor(Color.parseColor("#000000"));
+                txt_chat.setTextColor(Color.parseColor("#7b7979"));
+
+                ll_classes.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_events.setBackgroundColor(Color.parseColor("#a3b5ff"));
+                ll_chat.setBackgroundColor(Color.parseColor("#ffffff"));
                 replaceFragmets(eventsTabAct);
                 break;
             case R.id.ll_chat:
+                txt_classes.setTextColor(Color.parseColor("#7b7979"));
+                txt_tutoring.setTextColor(Color.parseColor("#7b7979"));
+                txt_events.setTextColor(Color.parseColor("#7b7979"));
+                txt_chat.setTextColor(Color.parseColor("#000000"));
+
+                ll_classes.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_chat.setBackgroundColor(Color.parseColor("#a3b5ff"));
                 replaceFragmets(chatAct);
                 break;
             case R.id.txt_friends:
