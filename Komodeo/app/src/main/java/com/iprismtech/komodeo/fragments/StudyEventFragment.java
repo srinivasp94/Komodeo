@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class TutorCreateSessionFragment extends BaseAbstractFragment implements RetrofitResponseListener, View.OnClickListener {
+public class StudyEventFragment extends BaseAbstractFragment implements RetrofitResponseListener, View.OnClickListener {
 
     private TutorAdapter tutorAdapter;
     private ClassHorizontalAdapter mHorizontalAdapter;
@@ -175,7 +175,7 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
         eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
         eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
         eventsReq.classId = classLists.get(i).classId;
-        eventsReq.eventType = "tutor";
+        eventsReq.eventType = "study";
         eventsReq.section = "time";
         eventsReq.count = "0";
         eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
@@ -193,30 +193,22 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
             case R.id.ll_time:
                 break;
             case R.id.ll_rating:
-                try {
-                    Collections.sort(mTutorList, new Comparator<EventsList>() {
-                        @Override
-                        public int compare(EventsList o1, EventsList o2) {
-                            return o1.ratings.compareTo(o2.ratings);
-                        }
-                    });
-                    tutorAdapter.notifyDataSetChanged();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Collections.sort(mTutorList, new Comparator<EventsList>() {
+                    @Override
+                    public int compare(EventsList o1, EventsList o2) {
+                        return o1.ratings.compareTo(o2.ratings);
+                    }
+                });
+                tutorAdapter.notifyDataSetChanged();
                 break;
             case R.id.ll_price:
-                try {
-                    Collections.sort(mTutorList, new Comparator<EventsList>() {
-                        @Override
-                        public int compare(EventsList o1, EventsList o2) {
-                            return o1.totalPrice.compareTo(o2.totalPrice);
-                        }
-                    });
-                    tutorAdapter.notifyDataSetChanged();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Collections.sort(mTutorList, new Comparator<EventsList>() {
+                    @Override
+                    public int compare(EventsList o1, EventsList o2) {
+                        return o1.totalPrice.compareTo(o2.totalPrice);
+                    }
+                });
+                tutorAdapter.notifyDataSetChanged();
                 break;
         }
     }

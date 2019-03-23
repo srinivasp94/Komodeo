@@ -213,6 +213,12 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 }
                 new RetrofitRequester(this).callPostServices(obj, 1, "discussions", true);
                 break;
+            case R.id.tv_add_study_events:
+                Intent createIntent = new Intent(CommunityDiscussionsActivity.this,CreateTutorRequestAct.class);
+                createIntent.putExtra("Key_Event","studyEvent");
+                createIntent.putExtra("Key_ClassId","1");
+                startActivity(createIntent);
+                break;
         }
 
     }

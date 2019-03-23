@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_3sdp"
+    app:cardElevation="@dimen/_2sdp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/rl_bgr"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgPic"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/png" />
+
+        <TextView
+            android:id="@+id/txt_name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imgPic"
+            android:text="Abhinav Che"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_subject3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name3"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imgPic"
+            android:text="Political Science"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_mutualfriends3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_subject3"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imgPic"
+            android:text="5 mutual friends"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtInvite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@drawable/edt_rounded_textdrawable_orange"
+            android:paddingLeft="@dimen/_8sdp"
+            android:paddingRight="@dimen/_8sdp"
+            android:text="Invite"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+
+    </RelativeLayout>
+</android.support.design.card.MaterialCardView>
