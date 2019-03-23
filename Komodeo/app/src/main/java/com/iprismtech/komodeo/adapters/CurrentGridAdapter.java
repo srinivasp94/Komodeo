@@ -67,11 +67,11 @@ public class CurrentGridAdapter extends BaseAdapter {
         ImageView iv_sub_img;
         ll_item_user_class = convertView.findViewById(R.id.ll_item_user_class);
         title = convertView.findViewById(R.id.tv_sub_code);
-        count = convertView.findViewById(R.id.tv_new_events_count);
-        iv_sub_img = convertView.findViewById(R.id.iv_sub_img);
+//        count = convertView.findViewById(R.id.tv_new_events_count);
+//        iv_sub_img = convertView.findViewById(R.id.iv_sub_img);
 
         title.setText(userClassesPojo.getResponse().get(position).getTitle());
-        Picasso.with(context).load(Constants.BASE_IMAGE_URL + userClassesPojo.getResponse().get(position).getIcon()).error(R.drawable.addclass).into(iv_sub_img);
+      //  Picasso.with(context).load(Constants.BASE_IMAGE_URL + userClassesPojo.getResponse().get(position).getIcon()).error(R.drawable.addclass).into(iv_sub_img);
         ll_item_user_class.setBackgroundColor(Color.parseColor("#" + userClassesPojo.getResponse().get(position).getColor_code()));
 
         return convertView;

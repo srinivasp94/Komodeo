@@ -10,24 +10,13 @@
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
         android:layout_gravity="center_vertical"
+        android:gravity="center"
         android:layout_margin="@dimen/_5sdp"
         android:background="@drawable/math_bg"
         android:orientation="vertical"
         android:padding="@dimen/_3sdp">
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-            android:id="@+id/tv_new_events_count"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:gravity="right"
-            android:padding="@dimen/_3sdp"
-            android:text="2"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13sdp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:id="@+id/tv_sub_code"
@@ -40,13 +29,14 @@
             android:textSize="@dimen/_22sdp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/iv_sub_img"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/calendar_white" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_sub_img"-->
+            <!--android:layout_width="@dimen/_50sdp"-->
+            <!--android:layout_height="@dimen/_50sdp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:padding="@dimen/_5sdp"-->
+            <!--android:visibility="gone"-->
+            <!--android:src="@drawable/calendar_white" />-->
 
     </LinearLayout>
 

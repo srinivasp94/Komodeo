@@ -180,7 +180,6 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 //                rl_profile_details.setVisibility(View.VISIBLE);
 
 
-
                 ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
                 intent.putExtra("Key_CourseID", course_ID);
@@ -245,10 +244,21 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 }
                 break;
             case R.id.tv_add_study_events:
-                Intent createIntent = new Intent(CommunityDiscussionsActivity.this,CreateTutorRequestAct.class);
-                createIntent.putExtra("Key_Event","studyEvent");
-                createIntent.putExtra("Key_ClassId","1");
+                Intent createIntent = new Intent(CommunityDiscussionsActivity.this, CreateTutorRequestAct.class);
+                createIntent.putExtra("Key_Event", "study");
+                createIntent.putExtra("Key_ClassId", course_ID);
+                createIntent.putExtra("Key_CourseName", course_name);
                 startActivity(createIntent);
+                break;
+
+            case R.id.iv_add_tutor_events:
+                Intent createTutorIntent = new Intent(CommunityDiscussionsActivity.this, CreateTutorRequestAct.class);
+                createTutorIntent.putExtra("Key_Event", "tutor");
+                createTutorIntent.putExtra("Key_ClassId", course_ID);
+                createTutorIntent.putExtra("Key_CourseName", course_name);
+
+                startActivity(createTutorIntent);
+
                 break;
         }
 

@@ -53,7 +53,7 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:src="@drawable/ic_search_white" />
 
-                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                <com.iprismtech.komodeo.customtextview.CustomEditText
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
                     android:background="@null"
