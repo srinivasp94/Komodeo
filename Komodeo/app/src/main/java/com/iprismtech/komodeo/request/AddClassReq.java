@@ -10,6 +10,9 @@ public class AddClassReq {
     @SerializedName("token")
     @Expose
     public String token;
+    @SerializedName("university_id")
+    @Expose
+    public String universityId;
     @SerializedName("subject_name")
     @Expose
     public String subjectName;
@@ -22,6 +25,6 @@ public class AddClassReq {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("token", token).append("subjectName", subjectName).append("courseName", courseName).append("userId", userId).toString();
+        return new ToStringBuilder(this).append("token", token).append("universityId", universityId).append("subjectName", subjectName).append("courseName", courseName).append("userId", userId).toString();
     }
 }

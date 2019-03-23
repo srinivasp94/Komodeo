@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.activity.ChatAct;
+import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.activity.ProfileActivity;
 import com.iprismtech.komodeo.fragments.ClassesFragment;
 import com.iprismtech.komodeo.activity.ContactusAct;
@@ -228,7 +229,9 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_chat.setBackgroundColor(Color.parseColor("#a3b5ff"));
-                replaceFragmets(chatAct);
+//                replaceFragmets(chatAct);
+                //  replaceFragmets(chatAct);
+                startActivity(new Intent(MainActivity.this, PersonalChatActivity.class));
                 break;
             case R.id.txt_friends:
                 Intent frnds = new Intent(MainActivity.this, FriendsAct.class);

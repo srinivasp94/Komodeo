@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/my_txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:background="@drawable/mymessage_bg"
+        android:elevation="2dp"
+        android:gravity="right"
+        android:paddingVertical="@dimen/_2sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="How r ya?"
+        android:textColor="#fff"
+        android:textSize="@dimen/_10sdp" />
+</RelativeLayout>

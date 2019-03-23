@@ -53,7 +53,7 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
         viewHolder.txt_post.setText(responseBeans.get(i).getDescription());
         viewHolder.tv_post_time.setText(responseBeans.get(i).getTime());
         viewHolder.txt_postername.setText(responseBeans.get(i).getFirst_name() + " " + responseBeans.get(i).getLast_name());
-        Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(i).getImage()).error(R.drawable.addclass).into(viewHolder.iv_post_layout);
+        Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(i).getImage()).error(R.drawable.ic_no_image).into(viewHolder.iv_post_layout);
 
         viewHolder.tv_count_likes.setText(responseBeans.get(i).getLikes());
         viewHolder.tv_comments_count.setText(responseBeans.get(i).getComments());

@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -24,7 +25,9 @@ import com.iprismtech.komodeo.adapters.DiscussionsAdapter;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.pojo.DiscussionsPojo;
 import com.iprismtech.komodeo.request.DiscussionsReq;
+import com.iprismtech.komodeo.request.SubmitCommentReq;
 import com.iprismtech.komodeo.request.SubmitLikeReq;
+import com.iprismtech.komodeo.request.SubmotPostReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
@@ -59,6 +62,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
     private String post_Status;
     private int selected_position;
     private View imageV, imageV1;
+    private LinearLayout ll_submit_post;
+    private EditText et_write_post;
     private boolean like_clicked_staus = false;
     private Map<Integer, DiscussionsPojo.ResponseBean> userMap = new HashMap<Integer, DiscussionsPojo.ResponseBean>();
 
@@ -93,6 +98,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         ll_automatch = findViewById(R.id.ll_automatch);
         ll_currenttab_events = findViewById(R.id.ll_currenttab_events);
         tv_selected_course = findViewById(R.id.tv_selected_course);
+        ll_submit_post = findViewById(R.id.ll_submit_post);
+        et_write_post = findViewById(R.id.et_write_post);
         tv_selected_course.setText(course_name);
 
 
@@ -123,6 +130,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         iv_add_tutor_events.setOnClickListener(this);
         iv_community.setOnClickListener(this);
         tv_load_more.setOnClickListener(this);
+        ll_submit_post.setOnClickListener(this);
     }
 
     @Override
@@ -212,6 +220,29 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     e.printStackTrace();
                 }
                 new RetrofitRequester(this).callPostServices(obj, 1, "discussions", true);
+                break;
+            case R.id.ll_submit_post:
+                if (et_write_post.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "Write Something", Toast.LENGTH_SHORT).show();
+                } else {
+                    SubmotPostReq submotPostReq = new SubmotPostReq();
+                    submotPostReq.classId = course_ID;
+                    submotPostReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                    submotPostReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+                    submotPostReq.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
+                    submotPostReq.image = "base 64";
+                    submotPostReq.description = et_write_post.getText().toString();
+
+                    //flatListRequest.building_id="4";
+
+                    try {
+                        obj = Class.forName(SubmotPostReq.class.getName()).cast(submotPostReq);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    new RetrofitRequester(this).callPostServices(obj, 3, "submit_discussion_posts", true);
+
+                }
                 break;
             case R.id.tv_add_study_events:
                 Intent createIntent = new Intent(CommunityDiscussionsActivity.this,CreateTutorRequestAct.class);
@@ -321,6 +352,10 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                                 //  count_likes.setText(int_count + "");
                             }
                             break;
+                        case 3:
+                            Toast.makeText(this, "Posted Successfully", Toast.LENGTH_SHORT).show();
+                            recreate();
+                            break;
                     }
                 } else {
                     Common.showToast(CommunityDiscussionsActivity.this, object.optString("message"));
@@ -358,10 +393,10 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
             if (resultCode == Activity.RESULT_OK) {
                 post_Status = data.getStringExtra("post_Status");
                 if (post_Status.equalsIgnoreCase("ok")) {
-                    TextView count_commnets = adaptet_item_view.getRootView().findViewById(R.id.tv_comments_count);
-                    int str_count_comments = Integer.parseInt(count_commnets.getText().toString());
-                    str_count_comments = str_count_comments + 1;
-                    count_commnets.setText(str_count_comments + "");
+//                    TextView count_commnets = adaptet_item_view.getRootView().findViewById(R.id.tv_comments_count);
+//                    int str_count_comments = Integer.parseInt(count_commnets.getText().toString());
+//                    str_count_comments = str_count_comments + 1;
+//                    count_commnets.setText(str_count_comments + "");
                 }
                 //Toast.makeText(getActivity(), building_id + "and" + name, Toast.LENGTH_SHORT).show();
             }
