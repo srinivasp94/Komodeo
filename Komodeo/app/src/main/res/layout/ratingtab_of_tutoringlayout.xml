@@ -28,12 +28,11 @@
             android:background="#a3b5ff"
             android:orientation="horizontal">
 
-            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/custom_textview"
                 android:gravity="center"
                 android:text="Time"
-                android:textSize="20dp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -48,12 +47,11 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/custom_textview"
                 android:gravity="center"
                 android:text="Rating"
-                android:textSize="20dp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -69,12 +67,11 @@
 
             android:orientation="horizontal">
 
-            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/custom_textview"
                 android:gravity="center"
                 android:text="Price"
-                android:textSize="20dp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
         </LinearLayout>

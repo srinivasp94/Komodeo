@@ -3,8 +3,8 @@
     package="com.iprismtech.komodeo">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".MyApplication"
@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -28,13 +27,8 @@
             <!--android:name="com.google.android.geo.API_KEY"-->
             <!--android:value="AIzaSyBctZfklbLmSCMcrhmTJCI8RpUUvyNRUJo" />-->
 
-
         <activity android:name=".activity.LoginAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
@@ -96,7 +90,16 @@
         <activity android:name=".activity.FriendRequestsActivity" />
         <activity android:name=".activity.NotificationsActivity" />
 
-        <!--<activity android:name=".fragments.ClassesFragment"></activity>-->
+        <!-- <activity android:name=".fragments.ClassesFragment"></activity> -->
+        <activity android:name=".activity.UploadCredentialsActivity" />
+        <activity android:name=".activity.FAQActivity" />
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

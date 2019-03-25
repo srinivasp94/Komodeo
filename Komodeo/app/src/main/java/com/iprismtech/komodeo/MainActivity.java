@@ -18,9 +18,12 @@ import android.widget.TextView;
 
 import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.activity.ChatAct;
+import com.iprismtech.komodeo.activity.FAQActivity;
 import com.iprismtech.komodeo.activity.NotificationsActivity;
 import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.activity.ProfileActivity;
+import com.iprismtech.komodeo.activity.SplashActivity;
+import com.iprismtech.komodeo.activity.UploadCredentialsActivity;
 import com.iprismtech.komodeo.fragments.ChatListFragment;
 import com.iprismtech.komodeo.fragments.ClassesFragment;
 import com.iprismtech.komodeo.activity.ContactusAct;
@@ -30,6 +33,8 @@ import com.iprismtech.komodeo.activity.NotificationAct;
 import com.iprismtech.komodeo.activity.CommunityDiscussionsActivity;
 import com.iprismtech.komodeo.activity.TutoringAct;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
+import com.iprismtech.komodeo.utils.AlertUtils;
+import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 
 public class MainActivity extends BaseAbstractActivity implements View.OnClickListener {
 
@@ -90,7 +95,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
                     case R.id.action_chat:
 
-                        Intent intent3 = new Intent(MainActivity.this, ChatListFragment.class);
+                        Intent intent3 = new Intent(MainActivity.this, ChatListAct.class);
                         startActivity(intent3);
                         break;
 
@@ -129,6 +134,8 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         menu_icon.setOnClickListener(this);
         iv_add.setOnClickListener(this);
         searchview.setOnClickListener(this);
+        txt_faqs.setOnClickListener(this);
+        iv_logout.setOnClickListener(this);
         iv_notification.setOnClickListener(this);
     }
 
@@ -290,6 +297,27 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Komodeo");
                 intent.putExtra(Intent.EXTRA_TEXT, "Select one");
                 startActivity(Intent.createChooser(intent, "choose one"));
+                break;
+            case R.id.txt_faqs:
+                startActivity(new Intent(this, FAQActivity.class));
+                break;
+            case R.id.iv_logout:
+                AlertUtils.showSimpleAlert(this, "Are sure you want to Logout .?",
+                        "Logout", "Logout", "cancel", new AlertUtils.onClicklistners() {
+                            @Override
+                            public void onpositiveclick() {
+                                SharedPrefsUtils.getInstance(MainActivity.this);
+                                SharedPrefsUtils.logoutUser();
+                                startActivity(new Intent(MainActivity.this, SplashActivity.class));
+                                finish();
+                            }
+
+                            @Override
+                            public void onNegativeClick() {
+
+                            }
+                        });
+
                 break;
         }
     }

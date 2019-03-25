@@ -53,6 +53,7 @@ public class ClassesFragment extends BaseAbstractFragment {
         addClassesFragment = new AddClassesFragment();
 
         tabLayout = view.findViewById(R.id.tabLayout);
+        tabLayout.setVisibility(View.VISIBLE);
         tabLayout.setOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
