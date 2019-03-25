@@ -51,9 +51,10 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
     @Override
     public void onBindViewHolder(@NonNull DiscussionsAdapter.ViewHolder viewHolder, int i) {
         viewHolder.txt_post.setText(responseBeans.get(i).getDescription());
-        viewHolder.tv_post_time.setText(responseBeans.get(i).getTime());
+        viewHolder.tv_post_time.setText(responseBeans.get(i).getPosted_on());
         viewHolder.txt_postername.setText(responseBeans.get(i).getFirst_name() + " " + responseBeans.get(i).getLast_name());
-        Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(i).getImage()).error(R.drawable.ic_no_image).into(viewHolder.iv_post_layout);
+        Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(i).getProfile_pic()).error(R.drawable.ic_no_image).into(viewHolder.iv_post_layout);
+        Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(i).getImage()).error(R.drawable.ic_no_image).into(viewHolder.iv_posted_img);
 
         viewHolder.tv_count_likes.setText(responseBeans.get(i).getLikes());
         viewHolder.tv_comments_count.setText(responseBeans.get(i).getComments());
@@ -74,7 +75,7 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView iv_post_layout, iv_likes, iv_post_like, iv_podt_comment;
+        ImageView iv_post_layout, iv_likes, iv_post_like, iv_podt_comment, iv_posted_img;
         TextView txt_postername, tv_post_time, txt_post, tv_count_likes, tv_comments_count, tv_likestatus;
         LinearLayout ll_submit_like, ll_comment, ll_comments_posted;
 
@@ -90,6 +91,7 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
             tv_likestatus = itemView.findViewById(R.id.tv_likestatus);
             iv_post_like = itemView.findViewById(R.id.iv_post_like);
             iv_podt_comment = itemView.findViewById(R.id.iv_podt_comment);
+            iv_posted_img = itemView.findViewById(R.id.iv_posted_img);
 
             ll_submit_like = itemView.findViewById(R.id.ll_submit_like);
             ll_comment = itemView.findViewById(R.id.ll_comment);
@@ -99,7 +101,7 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
             iv_podt_comment.setOnClickListener(this);
             iv_likes.setOnClickListener(this);
 
-           // ll_submit_like.setOnClickListener(this);
+            // ll_submit_like.setOnClickListener(this);
             ll_comments_posted.setOnClickListener(this);
             ll_comment.setOnClickListener(this);
 

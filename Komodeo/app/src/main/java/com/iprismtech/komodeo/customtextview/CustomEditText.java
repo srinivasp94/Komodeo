@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import android.widget.TextView;
 
 @SuppressLint("AppCompatCustomView")
 public class CustomEditText extends EditText {
@@ -26,7 +25,7 @@ public class CustomEditText extends EditText {
     }
 
     public void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Fonts/tunga.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/tunga.ttf");
         setTypeface(tf);
     }
 

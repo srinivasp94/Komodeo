@@ -25,7 +25,7 @@ public class MyCustomFontTextView extends TextView {
     }
 
     public void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Fonts/tunga_regular.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/tunga_regular.ttf");
         setTypeface(tf);
     }
 

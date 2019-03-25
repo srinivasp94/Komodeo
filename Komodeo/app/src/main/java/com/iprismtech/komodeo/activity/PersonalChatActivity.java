@@ -73,6 +73,7 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", true);
 
                 break;

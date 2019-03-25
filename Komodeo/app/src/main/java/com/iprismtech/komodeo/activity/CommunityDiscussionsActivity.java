@@ -1,15 +1,29 @@
 package com.iprismtech.komodeo.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +50,8 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,9 +59,11 @@ import java.util.Map;
 
 public class CommunityDiscussionsActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
 
+    private static final int GALLERY_BANNER = 103;
+    private static final int CAMERA_INTENT = 102;
     private RecyclerView rview_dicussions;
     private LinearLayout ll_automatch, ll_currenttab_events;
-    private ImageView iv_discussion_back, tv_add_study_events, iv_add_tutor_events, iv_community, iv_notification;
+    private ImageView iv_discussion_back, tv_add_study_events, iv_add_tutor_events, iv_community, iv_notification, iv_post_img;
     private LinearLayout ll_communitymembers;
     private Boolean position0 = false, position1 = false, position2 = false;
     private LinearLayout ll_automatchpics, ll_eventtab_community, ll_discussiontab, ll_currenttab;
@@ -67,6 +85,12 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
     private boolean like_clicked_staus = false;
     private Map<Integer, DiscussionsPojo.ResponseBean> userMap = new HashMap<Integer, DiscussionsPojo.ResponseBean>();
     private TextView tv_studyevents, tv_tutorevents, tv_communitymembers;
+    private ContentValues contentValue;
+    private Uri imageUri;
+    private String imageEncoded;
+    private List<String> imagesEncodedList;
+    private Bitmap profile;
+    private String base64profile;
 
 
     @Override
@@ -90,6 +114,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         iv_community = findViewById(R.id.iv_community);
         iv_notification = findViewById(R.id.iv_notification);
         tv_load_more = findViewById(R.id.tv_load_more);
+        iv_post_img = findViewById(R.id.iv_post_img);
 
         tv_studyevents = findViewById(R.id.tv_studyevents);
         tv_tutorevents = findViewById(R.id.tv_tutorevents);
@@ -140,6 +165,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         ll_submit_post.setOnClickListener(this);
         ll_currenttab.setOnClickListener(this);
         iv_notification.setOnClickListener(this);
+        iv_post_img.setOnClickListener(this);
     }
 
     @Override
@@ -170,6 +196,12 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
             case R.id.ll_currenttab:
                 onBackPressed();
                 finish();
+                break;
+            case R.id.iv_post_img:
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+                //     permissionsRequest();
+                showPictureDialog("");
                 break;
             case R.id.iv_notification:
                 startActivity(new Intent(CommunityDiscussionsActivity.this, NotificationsActivity.class));
@@ -253,7 +285,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     submotPostReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
                     submotPostReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
                     submotPostReq.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
-                    submotPostReq.image = "base 64";
+                    submotPostReq.image = base64profile;
                     submotPostReq.description = et_write_post.getText().toString();
 
                     //flatListRequest.building_id="4";
@@ -292,6 +324,74 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
     public void setPresenter() {
 
     }
+
+    private void showPictureDialog(final String base64) {
+        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(context);
+        pictureDialog.setTitle("Select Action");
+        String[] pictureDialogItems = {
+                "Select photo from gallery",
+                "Capture photo from camera"};
+        pictureDialog.setItems(pictureDialogItems,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                choosePhotoFromGallary(base64);
+                                break;
+                            case 1:
+                                takePhotoFromCamera(base64);
+                                break;
+                        }
+                    }
+                });
+        pictureDialog.show();
+    }
+
+    public void choosePhotoFromGallary(String base64) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.d("hhhh", "Permissions not granted");
+                // ask for permission
+                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), GALLERY_BANNER);
+
+
+    }
+
+    private void takePhotoFromCamera(String base64) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.d("hhhh", "Permissions not granted");
+                // ask for permission
+                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+        try {
+            //   FileName = System.currentTimeMillis() + ".jpg";
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            contentValue = new ContentValues();
+            contentValue.put(MediaStore.Images.Media.TITLE, "New Picture");
+            contentValue.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+            imageUri = getContentResolver().insert(
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValue);
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            startActivityForResult(intent, CAMERA_INTENT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void onResponseSuccess(Object objectResponse, Object objectRequest, final int requestId) {
@@ -449,9 +549,87 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 }
                 //Toast.makeText(getActivity(), building_id + "and" + name, Toast.LENGTH_SHORT).show();
             }
-            if (resultCode == Activity.RESULT_CANCELED) {
+        } else if (requestCode == GALLERY_BANNER) {
+            if (requestCode == GALLERY_BANNER && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
 
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                imagesEncodedList = new ArrayList<String>();
+                if (data.getData() != null) {
+
+                    Uri mImageUri = data.getData();
+
+                    profile = decodeUri(mImageUri, 400);
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    profile.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+                    // Get the cursor
+                    Cursor cursor = getContentResolver().query(mImageUri,
+                            filePathColumn, null, null, null);
+                    // Move to first row
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    imageEncoded = cursor.getString(columnIndex);
+                    cursor.close();
+
+
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    profile.compress(Bitmap.CompressFormat.JPEG, 90, stream);
+                    byte[] byte_arr = stream.toByteArray();
+                    base64profile = Base64.encodeToString(byte_arr, Base64.DEFAULT);
+
+
+                    if (resultCode == Activity.RESULT_CANCELED) {
+
+                    }
+                }
             }
+        } else if (requestCode == CAMERA_INTENT) {
+            try {
+                profile = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            profile.compress(Bitmap.CompressFormat.JPEG, 90, stream);
+            byte[] byte_arr = stream.toByteArray();
+            base64profile = Base64.encodeToString(byte_arr, Base64.DEFAULT);
+
         }
+
+
     }
+
+    protected Bitmap decodeUri(Uri selectedImage, int REQUIRED_SIZE) {
+        try {
+            // Decode image size
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
+            // The new size we want to scale to
+            // final int REQUIRED_SIZE =  size;
+            // Find the correct scale value. It should be the power of 2.
+            int width_tmp = o.outWidth, height_tmp = o.outHeight;
+            int scale = 1;
+            while (true) {
+                if (width_tmp / 2 < REQUIRED_SIZE
+                        || height_tmp / 2 < REQUIRED_SIZE) {
+                    break;
+                }
+                width_tmp /= 2;
+                height_tmp /= 2;
+                scale *= 2;
+            }
+            // Decode with inSampleSize
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
