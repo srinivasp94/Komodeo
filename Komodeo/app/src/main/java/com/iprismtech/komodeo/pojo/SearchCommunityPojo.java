@@ -4,15 +4,16 @@ import java.util.List;
 
 public class SearchCommunityPojo {
 
+
     /**
      * status : true
-     * message : Data Fetched Successfully!
-     * response : [{"id":"3","first_name":"Smith","last_name":"Jhony","email_id":"smith@gmail.com","mobile":"9999888888","password":"e10adc3949ba59abbe56e057f20f883e","profile_pic":"storage/3.jpg","major":"Finance","university_id":"1","registered_through":"normal","bio":null,"payment_preference":null,"comments":"yes","likes":"yes","friend_requests":"yes","events":"yes","event_cancel":"yes","token":null,"ios_token":null,"status":"1","delete_status":"1","created_on":"2019-03-15 00:00:00","modified_on":null},{"id":"2","first_name":"Jhon","last_name":"Doe","email_id":"jhon_doe@gmail.com","mobile":null,"password":"e10adc3949ba59abbe56e057f20f883e","profile_pic":"storage/2.jpg","major":null,"university_id":"1","registered_through":"normal","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","payment_preference":null,"comments":"yes","likes":"yes","friend_requests":"yes","events":"yes","event_cancel":"yes","token":null,"ios_token":null,"status":"1","delete_status":"1","created_on":"2019-03-13 02:04:03","modified_on":"2019-03-13 20:36:45"}]
+     * message : Data fetched successfully!
+     * community : [{"id":"3","first_name":"Khadeer","last_name":"Mohammed","email_id":"smith@gmail.com","mobile":"9999999999","password":"e10adc3949ba59abbe56e057f20f883e","profile_pic":"storage/profile_pics/5c98791d4ad2f.","major":"Finance","university_id":"1","default_lat":"65465","default_lng":"78.65464","default_address":"madhapur hyderabad","registered_through":"normal","bio":"helloooooo","payment_preference":"Paypal","comments":"yes","likes":"no","friend_requests":"no","events":"no","event_cancel":"no","token":null,"ios_token":null,"status":"1","delete_status":"1","created_on":"2019-03-15 00:00:00","modified_on":"2019-03-25 12:15:49","friend":"yes","friend_request_sent":"no","friend_request_ignored":"no"}]
      */
 
     private boolean status;
     private String message;
-    private List<ResponseBean> response;
+    private List<CommunityBean> community;
 
     public boolean isStatus() {
         return status;
@@ -30,39 +31,45 @@ public class SearchCommunityPojo {
         this.message = message;
     }
 
-    public List<ResponseBean> getResponse() {
-        return response;
+    public List<CommunityBean> getCommunity() {
+        return community;
     }
 
-    public void setResponse(List<ResponseBean> response) {
-        this.response = response;
+    public void setCommunity(List<CommunityBean> community) {
+        this.community = community;
     }
 
-    public static class ResponseBean {
+    public static class CommunityBean {
         /**
          * id : 3
-         * first_name : Smith
-         * last_name : Jhony
+         * first_name : Khadeer
+         * last_name : Mohammed
          * email_id : smith@gmail.com
-         * mobile : 9999888888
+         * mobile : 9999999999
          * password : e10adc3949ba59abbe56e057f20f883e
-         * profile_pic : storage/3.jpg
+         * profile_pic : storage/profile_pics/5c98791d4ad2f.
          * major : Finance
          * university_id : 1
+         * default_lat : 65465
+         * default_lng : 78.65464
+         * default_address : madhapur hyderabad
          * registered_through : normal
-         * bio : null
-         * payment_preference : null
+         * bio : helloooooo
+         * payment_preference : Paypal
          * comments : yes
-         * likes : yes
-         * friend_requests : yes
-         * events : yes
-         * event_cancel : yes
+         * likes : no
+         * friend_requests : no
+         * events : no
+         * event_cancel : no
          * token : null
          * ios_token : null
          * status : 1
          * delete_status : 1
          * created_on : 2019-03-15 00:00:00
-         * modified_on : null
+         * modified_on : 2019-03-25 12:15:49
+         * friend : yes
+         * friend_request_sent : no
+         * friend_request_ignored : no
          */
 
         private String id;
@@ -74,9 +81,12 @@ public class SearchCommunityPojo {
         private String profile_pic;
         private String major;
         private String university_id;
+        private String default_lat;
+        private String default_lng;
+        private String default_address;
         private String registered_through;
-        private Object bio;
-        private Object payment_preference;
+        private String bio;
+        private String payment_preference;
         private String comments;
         private String likes;
         private String friend_requests;
@@ -87,7 +97,10 @@ public class SearchCommunityPojo {
         private String status;
         private String delete_status;
         private String created_on;
-        private Object modified_on;
+        private String modified_on;
+        private String friend;
+        private String friend_request_sent;
+        private String friend_request_ignored;
 
         public String getId() {
             return id;
@@ -161,6 +174,30 @@ public class SearchCommunityPojo {
             this.university_id = university_id;
         }
 
+        public String getDefault_lat() {
+            return default_lat;
+        }
+
+        public void setDefault_lat(String default_lat) {
+            this.default_lat = default_lat;
+        }
+
+        public String getDefault_lng() {
+            return default_lng;
+        }
+
+        public void setDefault_lng(String default_lng) {
+            this.default_lng = default_lng;
+        }
+
+        public String getDefault_address() {
+            return default_address;
+        }
+
+        public void setDefault_address(String default_address) {
+            this.default_address = default_address;
+        }
+
         public String getRegistered_through() {
             return registered_through;
         }
@@ -169,19 +206,19 @@ public class SearchCommunityPojo {
             this.registered_through = registered_through;
         }
 
-        public Object getBio() {
+        public String getBio() {
             return bio;
         }
 
-        public void setBio(Object bio) {
+        public void setBio(String bio) {
             this.bio = bio;
         }
 
-        public Object getPayment_preference() {
+        public String getPayment_preference() {
             return payment_preference;
         }
 
-        public void setPayment_preference(Object payment_preference) {
+        public void setPayment_preference(String payment_preference) {
             this.payment_preference = payment_preference;
         }
 
@@ -265,12 +302,36 @@ public class SearchCommunityPojo {
             this.created_on = created_on;
         }
 
-        public Object getModified_on() {
+        public String getModified_on() {
             return modified_on;
         }
 
-        public void setModified_on(Object modified_on) {
+        public void setModified_on(String modified_on) {
             this.modified_on = modified_on;
+        }
+
+        public String getFriend() {
+            return friend;
+        }
+
+        public void setFriend(String friend) {
+            this.friend = friend;
+        }
+
+        public String getFriend_request_sent() {
+            return friend_request_sent;
+        }
+
+        public void setFriend_request_sent(String friend_request_sent) {
+            this.friend_request_sent = friend_request_sent;
+        }
+
+        public String getFriend_request_ignored() {
+            return friend_request_ignored;
+        }
+
+        public void setFriend_request_ignored(String friend_request_ignored) {
+            this.friend_request_ignored = friend_request_ignored;
         }
     }
 }

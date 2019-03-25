@@ -2,35 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_marginTop="@dimen/_10sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="@dimen/_20sdp"
         android:id="@+id/iv_posted_person"
         android:layout_height="@dimen/_20sdp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:orientation="vertical">
-
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_post_name"
-            android:text="Name"
-            />
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:orientation="vertical">
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_post_name"
+            style="@style/custom_item_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_posted_comment"
+            style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Posted Comment" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/add_class_form_bg"></View>
+    <View style="@style/custom_view"
+        android:layout_marginLeft="@dimen/_25sdp"
+        />
 </LinearLayout>

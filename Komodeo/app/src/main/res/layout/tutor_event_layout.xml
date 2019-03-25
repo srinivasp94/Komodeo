@@ -21,7 +21,8 @@
             android:src="@drawable/tutoreventback" />
 
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -31,8 +32,9 @@
             android:textStyle="bold" />
 
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/txttoolbaBook"
+            style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -61,8 +63,9 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/_5sdp">
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/txt_Date"
+                    style="@style/custom_item_textview"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_5sdp"
@@ -73,7 +76,8 @@
                     android:textSize="@dimen/_15sdp" />
 
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_month"
@@ -85,8 +89,9 @@
                     android:textStyle="bold"
                     android:visibility="gone" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/txt_tutoringwith"
+                    style="@style/custom_item_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -96,8 +101,9 @@
                     android:textColor="@color/black" />
 
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/txtinTime"
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_tutoringwith"
@@ -115,8 +121,9 @@
                 android:background="#e8e8e8" />
 
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/txtInvitedBy"
+                style="@style/custom_item_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -129,7 +136,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_5sdp"
@@ -139,8 +147,9 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/txt_estimation"
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -150,7 +159,8 @@
                     android:textColor="#e0a534"
                     android:textSize="15sp" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_5sdp"
@@ -162,8 +172,9 @@
 
             </RelativeLayout>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/txtPeopleLeft"
+                style="@style/custom_item_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -184,8 +195,8 @@
                     android:layout_margin="@dimen/_10sdp"
                     android:orientation="vertical">
 
-                    <TextView
-
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
@@ -196,14 +207,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Going"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_gray"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -221,15 +232,15 @@
                         android:layout_margin="@dimen/_5sdp"
                         android:src="@drawable/share_green" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="Share"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_gray"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -247,8 +258,9 @@
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:src="@drawable/two_users" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/txtPeopleGoing"
+                    style="@style/custom_item_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -286,8 +298,9 @@
                         android:src="@drawable/loc_green" />
 
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_undergraduatelibrary"
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
@@ -297,8 +310,9 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_address"
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_undergraduatelibrary"
@@ -306,8 +320,9 @@
                         android:layout_toRightOf="@id/iv_placeholder"
                         android:text="1402 W Gregory Dr, Urbana, IL 61801" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_map_coming_soon"
+                        style="@style/custom_item_textview"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
                         android:layout_below="@id/txt_address"
@@ -317,8 +332,9 @@
                         android:text="Map is coming soon"
                         android:textColor="@color/black" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_details"
+                        style="@style/custom_item_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_map_coming_soon"
@@ -329,8 +345,9 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_desc"
+                        style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_details"

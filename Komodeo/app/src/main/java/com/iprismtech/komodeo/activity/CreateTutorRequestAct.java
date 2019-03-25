@@ -35,12 +35,12 @@ import java.util.Calendar;
 
 public class CreateTutorRequestAct extends BaseAbstractActivity implements RetrofitResponseListener, View.OnClickListener {
 
-    TextView txt_datentime, txt_reoccuring_settings, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
+    TextView txt_datentime,edtStartDate,txt_reoccuring_settings, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
     LinearLayout ll_addfriends;
     ImageView iv_back;
-    private EditText edtTitle, edtStartDate, edtStartTime, edtEndDate,
+    private EditText edtTitle, edtStartTime, edtEndDate,
             edtSessionAmount, edtmaxSize, edtAddNote, edtEndTime;
-    private RadioGroup rg_paymentType;
+    private RadioGroup rg_paymentType, rg_privacy_type;
     private RadioButton rb_persession, rb_perHead;
     private RelativeLayout RelativeSelectLocation, RelativeFriendsAdd;
     private Object obj;
@@ -53,8 +53,9 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
     Calendar mcurrentTime = Calendar.getInstance();
     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
     int minute = mcurrentTime.get(Calendar.MINUTE);
-    private String result_paymnet, event_type, class_id, class_name;
+    private String result_paymnet, event_type, class_id, class_name, result_privacy_type;
     private StringBuilder stringBuilder;
+    private String friendsIds;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,7 +110,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
 
         Intent intent = getIntent();
         event_type = intent.getStringExtra("Key_Event");
-        class_id = intent.getStringExtra("Key_Event");
+        class_id = intent.getStringExtra("Key_ClassId");
         class_name = intent.getStringExtra("Key_CourseName");
 
 
@@ -132,6 +133,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
         tv_address = findViewById(R.id.tv_address);
         tv_payment = findViewById(R.id.tv_payment);
         rg_paymentType = findViewById(R.id.rg_paymentType);
+        rg_privacy_type = findViewById(R.id.rg_privacy_type);
         tv_title = findViewById(R.id.tv_title);
 
         tv_title.setText(class_name + " with " + SharedPrefsUtils.getString(SharedPrefsUtils.KEY_NAME) + " " + SharedPrefsUtils.getString(SharedPrefsUtils.KEY_LAST_NAME));
@@ -172,18 +174,45 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                         tv_payment.setText("Amount Per Head");
                     }
 
-                    Intent intent = getIntent();
-                    if (intent != null) {
-                        screenid = intent.getStringExtra("Key_Screen");
-                        inviteFriendsList = intent.getParcelableArrayListExtra("Key_inviteFrien");
-                        if (inviteFriendsList != null && inviteFriendsList.size() > 0)
-                            txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
-                    }
+//                    Intent intent = getIntent();
+//                    if (intent != null) {
+//                        screenid = intent.getStringExtra("Key_Screen");
+//                        inviteFriendsList = intent.getParcelableArrayListExtra("Key_inviteFrien");
+//                        if (inviteFriendsList != null && inviteFriendsList.size() > 0)
+//                            txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
+//                    }
                 }
 
             }
         });
 
+
+        callPrivacyRadioGroup();
+
+    }
+
+    private void callPrivacyRadioGroup() {
+
+        rg_privacy_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checkedRadioButton = (RadioButton) group.findViewById(checkedId);
+                boolean isChecked = checkedRadioButton.isChecked();
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    // tv.setText("Checked:" + checkedRadioButton.getText());
+                    result_privacy_type = checkedRadioButton.getText().toString();
+                    if (result_privacy_type.equalsIgnoreCase("Public")) {
+
+                        result_privacy_type = "public";
+                    } else {
+                        //tv_payment.setText("Amount Per Head");
+                        result_privacy_type = "invitees";
+                    }
+                }
+
+            }
+        });
 
     }
 
@@ -350,14 +379,13 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                     req.locationAddress = tv_address.getText().toString();
                     req.locationLat = selected_lat;
                     req.locationLng = selected_lng;
-                    req.peopleInvited = "1";
-                    req.privacy = "public";
+                    req.peopleInvited = stringBuilder.toString();
+                    req.privacy = result_privacy_type;
 
                     if (result_paymnet.equalsIgnoreCase("Per Session")) {
                         req.perSession = edtSessionAmount.getText().toString();
                     } else {
                         req.per_head = edtSessionAmount.getText().toString();
-                        ;
                     }
 
 //                    req.perSession = "50";
@@ -405,10 +433,10 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                 inviteFriendsList = data.getParcelableArrayListExtra("Key_inviteFrien");
                 if (inviteFriendsList != null && inviteFriendsList.size() > 0) {
                     txtInvitedFriends.setText(inviteFriendsList.size() + " People Invited");
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String friendsIds = "";
+                    stringBuilder = new StringBuilder();
+                    friendsIds = "";
                     for (int i = 0; i < inviteFriendsList.size(); i++) {
-                        friendsIds = inviteFriendsList.get(i).id;
+                        friendsIds = inviteFriendsList.get(i).id + ",";
                         stringBuilder.append(friendsIds);
                     }
 

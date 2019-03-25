@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/png"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/rv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+
+        android:layout_toRightOf="@id/iv_profile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_chat_list"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:id="@+id/txt_chat_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:layout_marginLeft="10dp"
+                android:text="Cindy Rose"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:id="@+id/tv_last_chat_time"
+                android:layout_width="0dp"
+                android:layout_weight="0.45"
+                android:gravity="end"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:text="11:00 pm"
+                android:textColor="#7065a0"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:id="@+id/tv_last_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_chat_list"
+            android:layout_marginLeft="10dp"
+            android:text="Cindy:Hey! I noticed you're in.."
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rv_chat"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/gray"></View>
+</RelativeLayout>

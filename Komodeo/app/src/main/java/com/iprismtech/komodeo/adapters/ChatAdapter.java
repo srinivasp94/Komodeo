@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.pojo.PersonalChatPojo;
+import com.iprismtech.komodeo.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +52,11 @@ public class ChatAdapter extends BaseAdapter {
         if (responseBeans.get(position).getUser_type().equalsIgnoreCase("receiver")) {
             convertView = inflater.inflate(R.layout.their_message, null);
             holder.messageBody = (TextView) convertView.findViewById(R.id.txt_message);
+            holder.iv_chatprofile =  convertView.findViewById(R.id.iv_chatprofile);
             convertView.setTag(holder);
             holder.messageBody.setText(responseBeans.get(position).getMessage());
+            Picasso.with(context).load(Constants.BASE_IMAGE_URL + responseBeans.get(position).
+                    getProfile_pic()).error(R.drawable.ic_no_image).into(holder.iv_chatprofile);
         } else {
             convertView = inflater.inflate(R.layout.mymessage, null);
             holder.messageBody = (TextView) convertView.findViewById(R.id.my_txt_message);
@@ -77,6 +83,7 @@ public class ChatAdapter extends BaseAdapter {
 
     public class MessageViewHolder {
         public TextView messageBody;
+        public ImageView iv_chatprofile;
 
     }
 }

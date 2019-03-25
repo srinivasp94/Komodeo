@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,7 +17,7 @@ public class DatePickerDaloge {
     private Context context;
     public static final String DATE_FORMAT = " yyyy-M-d";
 
-    public static void showDatePickerDialog(Context context, String dateText, final EditText datetext) {
+    public static void showDatePickerDialog(Context context, String dateText, final TextView datetext) {
 
         Date date = null;
         final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
@@ -54,7 +55,7 @@ public class DatePickerDaloge {
         datePicker.show();
     }
 
-    public static void handleOnDateSet(EditText editText, SimpleDateFormat dateFormatter, int year, int month, int day) {
+    public static void handleOnDateSet(TextView editText, SimpleDateFormat dateFormatter, int year, int month, int day) {
         Date date = new GregorianCalendar(year, month, day).getTime();
         String formatedDate = dateFormatter.format(date);
         editText.setText(formatedDate);
