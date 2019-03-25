@@ -6,5 +6,7 @@ public class Variables {
     public static String cust_lng;
     public static String cust_address;
     public static String current_address;
+    public static String profilr;
+
 
 }
