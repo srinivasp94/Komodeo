@@ -97,36 +97,34 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@id/civ_profile"
                                 android:backgroundTint="@color/transparent"
-
                                 android:text="MATH 241 tutoring with James C"
                                 android:textColor="@color/black"
                                 android:textSize="18dp"
+                                android:id="@+id/tv_title"
                                 android:textStyle="bold" />
 
 
                         </RelativeLayout>
 
 
-                        <EditText
+                        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:background="@drawable/add_note_bg"
                             android:gravity="start"
-                            android:hint="Add Description Topics covered, if you’re studying for an exam or homework, what to bring, etc.."
-                            android:padding="10dp" />
+                            android:text="Note..."
+                            android:visibility="gone" />
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Title">
 
-                            <EditText
+                            <com.iprismtech.komodeo.customtextview.CustomEditText
                                 android:id="@+id/edtTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/_5sdp"
-                                android:hint="Title"
                                 android:padding="@dimen/_3sdp" />
                         </android.support.design.widget.TextInputLayout>
 
@@ -147,7 +145,7 @@
                                 android:textStyle="bold" />
 
 
-                            <EditText
+                            <com.iprismtech.komodeo.customtextview.CustomEditText
                                 android:id="@+id/edtStartDate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -181,7 +179,7 @@
                                 android:textStyle="bold" />
 
 
-                            <EditText
+                            <com.iprismtech.komodeo.customtextview.CustomEditText
                                 android:id="@+id/edtStartTime"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -190,9 +188,9 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/btn_border"
                                 android:editable="false"
-                                android:text="@string/app_name"
                                 android:focusable="false"
-                                android:padding="5sp" />
+                                android:padding="5sp"
+                                android:text="00:00:00" />
 
 
                             <TextView
@@ -207,10 +205,9 @@
                                 android:textStyle="bold" />
 
 
-                            <EditText
-                                android:id="@+id/edtEndDate"
+                            <com.iprismtech.komodeo.customtextview.CustomEditText
+                                android:id="@+id/edtEndTime"
                                 android:layout_width="0dp"
-                                android:text="@string/app_name"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10sp"
                                 android:layout_toRightOf="@id/txt_datentime"
@@ -218,7 +215,8 @@
                                 android:background="@drawable/btn_border"
                                 android:editable="false"
                                 android:focusable="false"
-                                android:padding="5sp" />
+                                android:padding="5sp"
+                                android:text="00:00:00" />
 
                         </LinearLayout>
 
@@ -248,6 +246,7 @@
                                 android:text="Per Session" />
 
                             <RadioButton
+                                android:id="@+id/rb_perHead"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -257,6 +256,7 @@
 
 
                         <TextView
+                            android:id="@+id/tv_payment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -275,8 +275,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_toRightOf="@id/txt_datentime"
                             android:background="@drawable/btn_border"
+                            android:inputType="number"
                             android:padding="@dimen/_4sdp" />
-
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -300,7 +300,7 @@
                             android:padding="5sp" />
 
 
-                        <EditText
+                        <com.iprismtech.komodeo.customtextview.CustomEditText
                             android:id="@+id/edtAddNote"
                             android:layout_width="match_parent"
                             android:layout_height="80sp"
@@ -310,8 +310,8 @@
                             android:layout_toRightOf="@id/iv_edit"
                             android:background="@drawable/btn_border"
                             android:gravity="start"
-                            android:padding="7sp"
-                            android:text="Add Note" />
+                            android:hint="Add Note"
+                            android:padding="7sp" />
 
 
                         <RelativeLayout
@@ -349,10 +349,11 @@
 
 
                                 <TextView
+                                    android:id="@+id/tv_address"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="5dp"
-                                    android:text="Greinger Library" />
+                                    android:text="Select Location" />
 
 
                                 <ImageView

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.R;
@@ -19,6 +20,7 @@ import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.pojo.CommunityMembersPojo;
 import com.iprismtech.komodeo.pojo.SearchCommunityPojo;
 import com.iprismtech.komodeo.request.CommunityMembersReq;
+import com.iprismtech.komodeo.request.FriendRequstReq;
 import com.iprismtech.komodeo.request.SearchUsesReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
@@ -111,6 +113,12 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                                         case R.id.iv_chat:
 
                                             break;
+                                        case R.id.iv_add_frd:
+                                            callSendFriendReqWs(position);
+
+
+
+                                            break;
                                     }
                                 }
                             });
@@ -129,6 +137,10 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                                 rview_serach_comminty_members.setAdapter(adapter);
                             }
                             break;
+                        case 3:
+                            Toast.makeText(this, "Friend Request Sent Successfully", Toast.LENGTH_SHORT).show();
+
+                            break;
                     }
                 } else {
                     Common.showToast(CommunityActivity.this, object.optString("message"));
@@ -137,6 +149,22 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                 e.printStackTrace();
             }
         }
+    }
+
+    private void callSendFriendReqWs(int position) {
+        FriendRequstReq friendRequstReq = new FriendRequstReq();
+        friendRequstReq.friendId = communityMembersPojo.getCommunity().get(position).getId();
+        friendRequstReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        friendRequstReq.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
+        //flatListRequest.building_id="4";
+
+        try {
+            obj = Class.forName(FriendRequstReq.class.getName()).cast(friendRequstReq);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new RetrofitRequester(this).callPostServices(obj, 3, "send_friend_request", true);
+
     }
 
     @Override

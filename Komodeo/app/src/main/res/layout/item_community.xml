@@ -82,7 +82,8 @@
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/addfriends" />
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_frd_sent" />
 
             <ImageView
                 android:id="@+id/iv_frd_confirmed"

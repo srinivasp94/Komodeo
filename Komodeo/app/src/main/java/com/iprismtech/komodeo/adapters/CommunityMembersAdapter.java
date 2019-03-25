@@ -94,7 +94,7 @@ public class CommunityMembersAdapter extends RecyclerView.Adapter<CommunityMembe
             txt_name_community = itemView.findViewById(R.id.txt_name);
             txt_subject_community = itemView.findViewById(R.id.txt_subject);
             iv_chat.setOnClickListener(this);
-
+            iv_add_frd.setOnClickListener(this);
         }
 
         @Override
