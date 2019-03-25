@@ -12,17 +12,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iprismtech.komodeo.R;
-import com.iprismtech.komodeo.pojo.ChatListPojo;
+import com.iprismtech.komodeo.pojo.ChatSearchPojo;
 import com.iprismtech.komodeo.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHolder> {
+public class SearchChatAdapter extends RecyclerView.Adapter<SearchChatAdapter.ViewHolder> {
     private Context context;
-    private List<ChatListPojo.ResponseBean> responseBeans;
+    private List<ChatSearchPojo.ResponseBean> responseBeans;
 
-    public ChatListAdapter(FragmentActivity activity, List<ChatListPojo.ResponseBean> responseBeans) {
+    public SearchChatAdapter(FragmentActivity activity, List<ChatSearchPojo.ResponseBean> responseBeans) {
         this.context = activity;
         this.responseBeans = responseBeans;
     }

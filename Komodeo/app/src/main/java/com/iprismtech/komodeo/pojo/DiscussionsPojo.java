@@ -7,11 +7,13 @@ public class DiscussionsPojo {
     /**
      * status : true
      * message : Data Fetched Successfully!
-     * response : [{"id":"17","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c681d0d650d2.jpeg","delete_status":"1","created_on":"2019-02-16 19:54:13","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42598","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"16","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124de0014.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:21","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"15","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124cd68be.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:20","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"14","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124bdf8cb.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:20","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"13","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124ad1d38.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:18","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"12","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c681249edc52.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:18","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"11","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124916f4f.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:17","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"10","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124806a08.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:16","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"9","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c681246eee7d.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:15","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"8","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c6812460c9b0.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:14","first_name":"Khadeer","last_name":"Mohammed","email_id":"khadeer.md@iprismtech.com","time":"42644","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"}]
+     * response : [{"id":"19","user_id":"1","class_id":"1","university_id":"1","description":"Good Application, Developed by good people ","image":"storage/discussion_images/5c9472dd24362.","delete_status":"1","created_on":"2019-03-22 11:00:05","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"4086","posted_on":"22 Mar 2019","comments":"3","likes":"1","commented":"yes","liked":"yes"},{"id":"18","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c9472988ebbf.","delete_status":"1","created_on":"2019-03-22 10:58:56","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"4088","posted_on":"22 Mar 2019","comments":"1","likes":"0","commented":"yes","liked":"no"},{"id":"17","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c681d0d650d2.jpeg","delete_status":"1","created_on":"2019-02-16 19:54:13","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52512","posted_on":"16 Feb 2019","comments":"1","likes":"0","commented":"yes","liked":"no"},{"id":"16","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124de0014.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:21","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"1","likes":"0","commented":"yes","liked":"no"},{"id":"15","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124cd68be.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:20","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"1","likes":"0","commented":"yes","liked":"no"},{"id":"14","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124bdf8cb.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:20","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"1","likes":"1","commented":"yes","liked":"yes"},{"id":"13","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124ad1d38.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:18","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"1","likes":"0","commented":"yes","liked":"no"},{"id":"12","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c681249edc52.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:18","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"0","likes":"0","commented":"no","liked":"no"},{"id":"11","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124916f4f.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:17","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"0","likes":"1","commented":"no","liked":"yes"},{"id":"10","user_id":"1","class_id":"1","university_id":"1","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","image":"storage/discussion_images/5c68124806a08.jpeg","delete_status":"1","created_on":"2019-02-16 19:08:16","first_name":"Khadeerte","last_name":"Mohammed12","email_id":"khadeer.md@iprismtech.com","profile_pic":"storage/profile_pics/5c9879f740be0.png","time":"52558","posted_on":"16 Feb 2019","comments":"0","likes":"1","commented":"no","liked":"yes"}]
+     * event_counts : {"community_count":2,"study_event_count":3,"tutor_event_count":7}
      */
 
     private boolean status;
     private String message;
+    private EventCountsBean event_counts;
     private List<ResponseBean> response;
 
     public boolean isStatus() {
@@ -30,6 +32,14 @@ public class DiscussionsPojo {
         this.message = message;
     }
 
+    public EventCountsBean getEvent_counts() {
+        return event_counts;
+    }
+
+    public void setEvent_counts(EventCountsBean event_counts) {
+        this.event_counts = event_counts;
+    }
+
     public List<ResponseBean> getResponse() {
         return response;
     }
@@ -38,25 +48,62 @@ public class DiscussionsPojo {
         this.response = response;
     }
 
+    public static class EventCountsBean {
+        /**
+         * community_count : 2
+         * study_event_count : 3
+         * tutor_event_count : 7
+         */
+
+        private int community_count;
+        private int study_event_count;
+        private int tutor_event_count;
+
+        public int getCommunity_count() {
+            return community_count;
+        }
+
+        public void setCommunity_count(int community_count) {
+            this.community_count = community_count;
+        }
+
+        public int getStudy_event_count() {
+            return study_event_count;
+        }
+
+        public void setStudy_event_count(int study_event_count) {
+            this.study_event_count = study_event_count;
+        }
+
+        public int getTutor_event_count() {
+            return tutor_event_count;
+        }
+
+        public void setTutor_event_count(int tutor_event_count) {
+            this.tutor_event_count = tutor_event_count;
+        }
+    }
+
     public static class ResponseBean {
         /**
-         * id : 17
+         * id : 19
          * user_id : 1
          * class_id : 1
          * university_id : 1
-         * description : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         * image : storage/discussion_images/5c681d0d650d2.jpeg
+         * description : Good Application, Developed by good people
+         * image : storage/discussion_images/5c9472dd24362.
          * delete_status : 1
-         * created_on : 2019-02-16 19:54:13
-         * first_name : Khadeer
-         * last_name : Mohammed
+         * created_on : 2019-03-22 11:00:05
+         * first_name : Khadeerte
+         * last_name : Mohammed12
          * email_id : khadeer.md@iprismtech.com
-         * time : 42598
-         * posted_on : 16 Feb 2019
-         * comments : 0
-         * likes : 0
-         * commented : no
-         * liked : no
+         * profile_pic : storage/profile_pics/5c9879f740be0.png
+         * time : 4086
+         * posted_on : 22 Mar 2019
+         * comments : 3
+         * likes : 1
+         * commented : yes
+         * liked : yes
          */
 
         private String id;
@@ -70,6 +117,7 @@ public class DiscussionsPojo {
         private String first_name;
         private String last_name;
         private String email_id;
+        private String profile_pic;
         private String time;
         private String posted_on;
         private String comments;
@@ -163,6 +211,14 @@ public class DiscussionsPojo {
 
         public void setEmail_id(String email_id) {
             this.email_id = email_id;
+        }
+
+        public String getProfile_pic() {
+            return profile_pic;
+        }
+
+        public void setProfile_pic(String profile_pic) {
+            this.profile_pic = profile_pic;
         }
 
         public String getTime() {

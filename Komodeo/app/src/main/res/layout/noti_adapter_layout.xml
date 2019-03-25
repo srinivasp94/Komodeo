@@ -2,115 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="5dp">
 
-        <FrameLayout
-            android:id="@+id/frame"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true">
+        <!--<FrameLayout-->
+        <!--android:id="@+id/frame"-->
+        <!--android:layout_width="@dimen/_40sdp"-->
+        <!--android:layout_height="@dimen/_40sdp"-->
+        <!--android:layout_centerVertical="true">-->
 
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/png" />
+        <!--<ImageView-->
+        <!--android:id="@+id/iv_noti_img"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:src="@drawable/png" />-->
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right|bottom"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/png" />
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
 
         <RelativeLayout
             android:id="@+id/rl_noti_titleandtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/frame"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/txt_noti_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cindy rose sent you a friend request"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_noti_title"
-                android:text="12 mins ago" />
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_approve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_noti_titleandtime"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/frame"
             android:padding="5dp">
 
+            <LinearLayout
+                android:id="@+id/ll_noti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/iv_decline"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/googleplus" />
+                <TextView
+                    android:id="@+id/txt_noti_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="Cindy rose sent you a friend request"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_noti_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:text="12 mins ago" />
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_noti_disc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_decline"
-                android:text="Approve" />
+                android:layout_below="@id/ll_noti"
+                android:text="Static text" />
+
 
         </RelativeLayout>
 
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_noti_titleandtime"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/rl_approve"
-            android:padding="5dp">
-
-
-            <ImageView
-                android:id="@+id/iv_approve"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/googleplus" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_approve"
-                android:text="Decline" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_approve"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                android:text="See Event >>"
-                android:textColor="#6d60ac" />
-
-        </RelativeLayout>
 
     </RelativeLayout>
 

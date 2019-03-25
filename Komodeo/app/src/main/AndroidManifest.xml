@@ -40,7 +40,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity android:name=".activity.ChatListAct" />
+        <activity android:name=".fragments.ChatListFragment" />
         <activity android:name=".activity.SignupAct" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.SettingsAct" />
@@ -93,6 +93,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.FriendRequestsActivity" />
+        <activity android:name=".activity.NotificationsActivity" />
 
         <!--<activity android:name=".fragments.ClassesFragment"></activity>-->
     </application>

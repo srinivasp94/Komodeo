@@ -18,12 +18,13 @@
 
             <ImageView
                 android:id="@+id/iv_chatback"
-                android:layout_width="30dp"
+                android:layout_width="@dimen/_30sdp"
 
-                android:layout_height="30dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_centerVertical="true"
+                android:padding="@dimen/_2sdp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/chatback" />
+                android:src="@drawable/ic_back_arrow_black" />
 
             <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                 android:id="@+id/tv_chat_personal_name"

@@ -2,18 +2,17 @@ package com.iprismtech.komodeo.pojo;
 
 import java.util.List;
 
-public class SearchCommunityPojo {
-
+public class FriendRequestsPojo {
 
     /**
      * status : true
-     * message : Data fetched successfully!
-     * community : [{"id":"3","first_name":"Khadeer","last_name":"Mohammed","email_id":"smith@gmail.com","mobile":"9999999999","password":"e10adc3949ba59abbe56e057f20f883e","profile_pic":"storage/profile_pics/5c98791d4ad2f.","major":"Finance","university_id":"1","default_lat":"65465","default_lng":"78.65464","default_address":"madhapur hyderabad","registered_through":"normal","bio":"helloooooo","payment_preference":"Paypal","comments":"yes","likes":"no","friend_requests":"no","events":"no","event_cancel":"no","token":null,"ios_token":null,"status":"1","delete_status":"1","created_on":"2019-03-15 00:00:00","modified_on":"2019-03-25 12:15:49","friend":"yes","friend_request_sent":"no","friend_request_ignored":"no"}]
+     * message : Data Fetched Successfully!
+     * response : [{"id":"15","first_name":"Jhon","last_name":"Doe","email_id":"jhon_doe@gmail.com","password":"e10adc3949ba59abbe56e057f20f883e","university_id":"1","registered_through":"normal","comments":"yes","likes":"yes","friend_requests":"yes","events":"yes","event_cancel":"yes","token":null,"ios_token":null,"status":"pending","delete_status":"1","created_on":"2019-03-13 19:46:29","modified_on":null,"user_id":"2","friend_id":"1"}]
      */
 
     private boolean status;
     private String message;
-    private List<CommunityBean> community;
+    private List<ResponseBean> response;
 
     public boolean isStatus() {
         return status;
@@ -31,62 +30,45 @@ public class SearchCommunityPojo {
         this.message = message;
     }
 
-    public List<CommunityBean> getCommunity() {
-        return community;
+    public List<ResponseBean> getResponse() {
+        return response;
     }
 
-    public void setCommunity(List<CommunityBean> community) {
-        this.community = community;
+    public void setResponse(List<ResponseBean> response) {
+        this.response = response;
     }
 
-    public static class CommunityBean {
+    public static class ResponseBean {
         /**
-         * id : 3
-         * first_name : Khadeer
-         * last_name : Mohammed
-         * email_id : smith@gmail.com
-         * mobile : 9999999999
+         * id : 15
+         * first_name : Jhon
+         * last_name : Doe
+         * email_id : jhon_doe@gmail.com
          * password : e10adc3949ba59abbe56e057f20f883e
-         * profile_pic : storage/profile_pics/5c98791d4ad2f.
-         * major : Finance
          * university_id : 1
-         * default_lat : 65465
-         * default_lng : 78.65464
-         * default_address : madhapur hyderabad
          * registered_through : normal
-         * bio : helloooooo
-         * payment_preference : Paypal
          * comments : yes
-         * likes : no
-         * friend_requests : no
-         * events : no
-         * event_cancel : no
+         * likes : yes
+         * friend_requests : yes
+         * events : yes
+         * event_cancel : yes
          * token : null
          * ios_token : null
-         * status : 1
+         * status : pending
          * delete_status : 1
-         * created_on : 2019-03-15 00:00:00
-         * modified_on : 2019-03-25 12:15:49
-         * friend : yes
-         * friend_request_sent : no
-         * friend_request_ignored : no
+         * created_on : 2019-03-13 19:46:29
+         * modified_on : null
+         * user_id : 2
+         * friend_id : 1
          */
 
         private String id;
         private String first_name;
         private String last_name;
         private String email_id;
-        private String mobile;
         private String password;
-        private String profile_pic;
-        private String major;
         private String university_id;
-        private String default_lat;
-        private String default_lng;
-        private String default_address;
         private String registered_through;
-        private String bio;
-        private String payment_preference;
         private String comments;
         private String likes;
         private String friend_requests;
@@ -97,10 +79,9 @@ public class SearchCommunityPojo {
         private String status;
         private String delete_status;
         private String created_on;
-        private String modified_on;
-        private String friend;
-        private String friend_request_sent;
-        private String friend_request_ignored;
+        private Object modified_on;
+        private String user_id;
+        private String friend_id;
 
         public String getId() {
             return id;
@@ -134,36 +115,12 @@ public class SearchCommunityPojo {
             this.email_id = email_id;
         }
 
-        public String getMobile() {
-            return mobile;
-        }
-
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
-        }
-
         public String getPassword() {
             return password;
         }
 
         public void setPassword(String password) {
             this.password = password;
-        }
-
-        public String getProfile_pic() {
-            return profile_pic;
-        }
-
-        public void setProfile_pic(String profile_pic) {
-            this.profile_pic = profile_pic;
-        }
-
-        public String getMajor() {
-            return major;
-        }
-
-        public void setMajor(String major) {
-            this.major = major;
         }
 
         public String getUniversity_id() {
@@ -174,52 +131,12 @@ public class SearchCommunityPojo {
             this.university_id = university_id;
         }
 
-        public String getDefault_lat() {
-            return default_lat;
-        }
-
-        public void setDefault_lat(String default_lat) {
-            this.default_lat = default_lat;
-        }
-
-        public String getDefault_lng() {
-            return default_lng;
-        }
-
-        public void setDefault_lng(String default_lng) {
-            this.default_lng = default_lng;
-        }
-
-        public String getDefault_address() {
-            return default_address;
-        }
-
-        public void setDefault_address(String default_address) {
-            this.default_address = default_address;
-        }
-
         public String getRegistered_through() {
             return registered_through;
         }
 
         public void setRegistered_through(String registered_through) {
             this.registered_through = registered_through;
-        }
-
-        public String getBio() {
-            return bio;
-        }
-
-        public void setBio(String bio) {
-            this.bio = bio;
-        }
-
-        public String getPayment_preference() {
-            return payment_preference;
-        }
-
-        public void setPayment_preference(String payment_preference) {
-            this.payment_preference = payment_preference;
         }
 
         public String getComments() {
@@ -302,36 +219,28 @@ public class SearchCommunityPojo {
             this.created_on = created_on;
         }
 
-        public String getModified_on() {
+        public Object getModified_on() {
             return modified_on;
         }
 
-        public void setModified_on(String modified_on) {
+        public void setModified_on(Object modified_on) {
             this.modified_on = modified_on;
         }
 
-        public String getFriend() {
-            return friend;
+        public String getUser_id() {
+            return user_id;
         }
 
-        public void setFriend(String friend) {
-            this.friend = friend;
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
         }
 
-        public String getFriend_request_sent() {
-            return friend_request_sent;
+        public String getFriend_id() {
+            return friend_id;
         }
 
-        public void setFriend_request_sent(String friend_request_sent) {
-            this.friend_request_sent = friend_request_sent;
-        }
-
-        public String getFriend_request_ignored() {
-            return friend_request_ignored;
-        }
-
-        public void setFriend_request_ignored(String friend_request_ignored) {
-            this.friend_request_ignored = friend_request_ignored;
+        public void setFriend_id(String friend_id) {
+            this.friend_id = friend_id;
         }
     }
 }

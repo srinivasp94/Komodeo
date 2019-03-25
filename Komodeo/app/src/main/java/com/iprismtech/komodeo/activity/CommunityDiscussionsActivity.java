@@ -45,10 +45,10 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 
     private RecyclerView rview_dicussions;
     private LinearLayout ll_automatch, ll_currenttab_events;
-    private ImageView iv_discussion_back, tv_add_study_events, iv_add_tutor_events, iv_community;
+    private ImageView iv_discussion_back, tv_add_study_events, iv_add_tutor_events, iv_community, iv_notification;
     private LinearLayout ll_communitymembers;
     private Boolean position0 = false, position1 = false, position2 = false;
-    private LinearLayout ll_automatchpics, ll_eventtab_community, ll_discussiontab;
+    private LinearLayout ll_automatchpics, ll_eventtab_community, ll_discussiontab, ll_currenttab;
     private RelativeLayout rl_profile_details, rl_post_layout;
     private String course_name, course_ID;
     private Object obj;
@@ -57,7 +57,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
     private DiscussionsPojo discussionsPojo;
     private TextView tv_selected_course, tv_load_more;
     private int discussions_count = 0;
-    private View adaptet_item_view;
+    private View adaptet_item_view, adaptet_item_commnt_view;
     private List<DiscussionsPojo.ResponseBean> responseBeans;
     private String post_Status;
     private int selected_position;
@@ -66,6 +66,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
     private EditText et_write_post;
     private boolean like_clicked_staus = false;
     private Map<Integer, DiscussionsPojo.ResponseBean> userMap = new HashMap<Integer, DiscussionsPojo.ResponseBean>();
+    private TextView tv_studyevents, tv_tutorevents, tv_communitymembers;
 
 
     @Override
@@ -87,7 +88,12 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         tv_add_study_events = findViewById(R.id.tv_add_study_events);
         iv_add_tutor_events = findViewById(R.id.iv_add_tutor_events);
         iv_community = findViewById(R.id.iv_community);
+        iv_notification = findViewById(R.id.iv_notification);
         tv_load_more = findViewById(R.id.tv_load_more);
+
+        tv_studyevents = findViewById(R.id.tv_studyevents);
+        tv_tutorevents = findViewById(R.id.tv_tutorevents);
+        tv_communitymembers = findViewById(R.id.tv_communitymembers);
 
         rview_dicussions = findViewById(R.id.rview_dicussions);
         ll_automatchpics = findViewById(R.id.ll_automatchpics);
@@ -95,7 +101,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         ll_eventtab_community = findViewById(R.id.ll_eventtab_community);
         ll_discussiontab = findViewById(R.id.ll_discussiontab);
         ll_communitymembers = findViewById(R.id.ll_communitymembers);
-        ll_automatch = findViewById(R.id.ll_automatch);
+
+        ll_currenttab = findViewById(R.id.ll_currenttab);
         ll_currenttab_events = findViewById(R.id.ll_currenttab_events);
         tv_selected_course = findViewById(R.id.tv_selected_course);
         ll_submit_post = findViewById(R.id.ll_submit_post);
@@ -131,6 +138,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         iv_community.setOnClickListener(this);
         tv_load_more.setOnClickListener(this);
         ll_submit_post.setOnClickListener(this);
+        ll_currenttab.setOnClickListener(this);
+        iv_notification.setOnClickListener(this);
     }
 
     @Override
@@ -158,9 +167,22 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     ll_discussiontab.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 }
                 break;
-            case R.id.iv_discussion_back:
+            case R.id.ll_currenttab:
                 onBackPressed();
+                finish();
                 break;
+            case R.id.iv_notification:
+                startActivity(new Intent(CommunityDiscussionsActivity.this, NotificationsActivity.class));
+                finish();
+                break;
+            case R.id.iv_community:
+                Intent intent1 = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
+                intent1.putExtra("Key_CourseID", course_ID);
+                intent1.putExtra("Key_CurseName", course_name);
+                startActivity(intent1);
+                finish();
+                break;
+
             case R.id.ll_currenttab_events:
 
                 if (position0 == false) {
@@ -185,6 +207,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 intent.putExtra("Key_CourseID", course_ID);
                 intent.putExtra("Key_CurseName", course_name);
                 startActivity(intent);
+                finish();
 
 
 //                if (position2 == false) {
@@ -198,6 +221,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 //                    Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
 //                    intent.putExtra("Key_CourseID", course_ID);
 //                    intent.putExtra("Key_CurseName", course_name);
+//                    startActivity(intent);
 //                    startActivity(intent);
 //
 //                }
@@ -249,6 +273,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 createIntent.putExtra("Key_ClassId", course_ID);
                 createIntent.putExtra("Key_CourseName", course_name);
                 startActivity(createIntent);
+                finish();
                 break;
 
             case R.id.iv_add_tutor_events:
@@ -256,9 +281,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 createTutorIntent.putExtra("Key_Event", "tutor");
                 createTutorIntent.putExtra("Key_ClassId", course_ID);
                 createTutorIntent.putExtra("Key_CourseName", course_name);
-
                 startActivity(createTutorIntent);
-
+                finish();
                 break;
         }
 
@@ -289,6 +313,13 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                             responseBeans.addAll(discussionsPojo.getResponse());
                             discussionsAdapter = new DiscussionsAdapter(CommunityDiscussionsActivity.this, responseBeans);
                             rview_dicussions.setAdapter(discussionsAdapter);
+
+
+                            tv_studyevents.setText(discussionsPojo.getEvent_counts().getStudy_event_count() + "");
+                            tv_tutorevents.setText(discussionsPojo.getEvent_counts().getTutor_event_count() + "");
+                            tv_communitymembers.setText(discussionsPojo.getEvent_counts().getCommunity_count() + "");
+
+
                             discussionsAdapter.setOnItemClickListener(new DiscussionsAdapter.OnitemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
@@ -303,13 +334,13 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                                             callSubmitLikeWs(position);
                                             break;
                                         case R.id.ll_comments_posted:
+
                                             Intent intent = new Intent(CommunityDiscussionsActivity.this, UserPostCommentActivity.class);
                                             intent.putExtra("Key_DiscussionId", responseBeans.get(position).getId());
                                             intent.putExtra("Key_post", responseBeans.get(position).getDescription());
                                             intent.putExtra("Key_classID", course_ID);
                                             intent.putExtra("Key_image", responseBeans.get(position).getImage());
                                             intent.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
-
                                             startActivityForResult(intent, 101);
                                             break;
                                         case R.id.ll_comment:
@@ -403,10 +434,18 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
             if (resultCode == Activity.RESULT_OK) {
                 post_Status = data.getStringExtra("post_Status");
                 if (post_Status.equalsIgnoreCase("ok")) {
+                    String str_count_comments = data.getStringExtra("count_comments");
+
+                    float int_comment_count = Float.valueOf(str_count_comments);
+                    //   int_count = int_count + 1;
+                    responseBeans.get(selected_position).setComments(Math.round(int_comment_count) + "");
+                    // responseBeans.get(selected_position).setComments(str_count_comments);
+                    discussionsAdapter.notifyItemChanged(selected_position);
 //                    TextView count_commnets = adaptet_item_view.getRootView().findViewById(R.id.tv_comments_count);
 //                    int str_count_comments = Integer.parseInt(count_commnets.getText().toString());
 //                    str_count_comments = str_count_comments + 1;
 //                    count_commnets.setText(str_count_comments + "");
+
                 }
                 //Toast.makeText(getActivity(), building_id + "and" + name, Toast.LENGTH_SHORT).show();
             }

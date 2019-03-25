@@ -18,8 +18,10 @@ import android.widget.TextView;
 
 import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.activity.ChatAct;
+import com.iprismtech.komodeo.activity.NotificationsActivity;
 import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.activity.ProfileActivity;
+import com.iprismtech.komodeo.fragments.ChatListFragment;
 import com.iprismtech.komodeo.fragments.ClassesFragment;
 import com.iprismtech.komodeo.activity.ContactusAct;
 import com.iprismtech.komodeo.activity.EventsTabAct;
@@ -53,7 +55,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     private ClassesFragment classesActivity;
     private TutoringAct tutoringAct;
     private EventsTabAct eventsTabAct;
-    private ChatAct chatAct;
+    private ChatListFragment chatAct;
 
 
     @Override
@@ -88,7 +90,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
                     case R.id.action_chat:
 
-                        Intent intent3 = new Intent(MainActivity.this, ChatListAct.class);
+                        Intent intent3 = new Intent(MainActivity.this, ChatListFragment.class);
                         startActivity(intent3);
                         break;
 
@@ -127,6 +129,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         menu_icon.setOnClickListener(this);
         iv_add.setOnClickListener(this);
         searchview.setOnClickListener(this);
+        iv_notification.setOnClickListener(this);
     }
 
     @Override
@@ -136,7 +139,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         classesActivity = new ClassesFragment();
         tutoringAct = new TutoringAct();
         eventsTabAct = new EventsTabAct();
-        chatAct = new ChatAct();
+        chatAct = new ChatListFragment();
 
 
         ll_classes = findViewById(R.id.ll_classes);
@@ -189,7 +192,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 txt_chat.setTextColor(Color.parseColor("#7b7979"));
 
                 ll_classes.setBackgroundColor(Color.parseColor("#a3b5ff"));
-                        ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_chat.setBackgroundColor(Color.parseColor("#ffffff"));
 
@@ -230,8 +233,8 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_chat.setBackgroundColor(Color.parseColor("#a3b5ff"));
 //                replaceFragmets(chatAct);
-                //  replaceFragmets(chatAct);
-                startActivity(new Intent(MainActivity.this, PersonalChatActivity.class));
+                replaceFragmets(chatAct);
+                //  startActivity(new Intent(MainActivity.this, chatAct.class));
                 break;
             case R.id.txt_friends:
                 Intent frnds = new Intent(MainActivity.this, FriendsAct.class);
@@ -272,7 +275,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
             case R.id.iv_notification:
-                Intent Notifyintent = new Intent(MainActivity.this, NotificationAct.class);
+                Intent Notifyintent = new Intent(MainActivity.this, NotificationsActivity.class);
                 startActivity(Notifyintent);
                 break;
 

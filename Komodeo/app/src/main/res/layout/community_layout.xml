@@ -43,8 +43,6 @@
             android:layout_marginLeft="10dp"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/noti_white" />
-
-
     </RelativeLayout>
 
     <LinearLayout
@@ -70,8 +68,9 @@
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="center_vertical"
-                android:padding="@dimen/_2sdp"
-                android:src="@drawable/back_arrow_icon" />
+
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/back_triangleshaped_white" />
 
         </LinearLayout>
 
@@ -170,19 +169,16 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rview_serach_comminty_members"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:background="@color/add_class_form_bg">
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
-    </android.support.v7.widget.RecyclerView>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/ll_communitymembers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ll_communitymembers"
             android:orientation="vertical">
 
 
@@ -193,6 +189,7 @@
                 android:background="@color/add_class_form_bg">
 
             </android.support.v7.widget.RecyclerView>
+
             <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                 android:id="@+id/tv_load_more"
                 android:layout_width="wrap_content"
@@ -203,8 +200,8 @@
                 android:paddingHorizontal="@dimen/_20sdp"
                 android:paddingVertical="@dimen/_5sdp"
                 android:text="Load More"
-                android:visibility="gone"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
