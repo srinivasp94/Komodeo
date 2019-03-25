@@ -38,8 +38,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity android:name=".activity.ViewRatingsAct"/>
-        <activity android:name=".activity.ChatListAct" />
-        <activity android:name=".fragments.ChatListFragment" />
+
         <activity android:name=".activity.SignupAct" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.ContactusAct" />
