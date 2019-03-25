@@ -158,13 +158,13 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                             }
 
 
-                            txt_Date.setText(res.response.date);
+                            txt_Date.setText(res.response.date.replace(" ","\n"));
                             txt_tutoringwith.setText(res.response.eventName + " Created By " + res.response.eventCreatedBy);
                             txtinTime.setText(res.response.eventDate + " " + res.response.startTime + "" + res.response.endTime);
                             txtInvitedBy.setText("Invited By " + res.response.firstName + " " + res.response.lastName);
                             txt_estimation.setText(" $ " + res.response.totalPrice);
                             txtPeopleLeft.setText("Max Group Size " + res.response.maxGroupSize);
-                            txtPeopleGoing.setText(res.response.peopleInvited + " Going ..");
+                            txtPeopleGoing.setText(res.response.peopleInvited + " people Going ");
                             txt_address.setText(res.response.locationAddress);
                             txt_desc.setText(res.response.note);
 
