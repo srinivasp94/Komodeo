@@ -44,13 +44,11 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 public class LoginAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
-
     private TextView txt_signup, txt_signin, txt_forgotpass;
     private EditText edtuserName, edtPassword;
     private ImageView iv_faceBook, iv_google;
     private Object obj;
     SharedPrefsUtils utils;
-
     private CallbackManager callbackManager;
 
 //    private GoogleApiClient mGoogleApiClient;
@@ -80,6 +78,7 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
         super.setListenerToViews();
         txt_signin.setOnClickListener(this);
         iv_faceBook.setOnClickListener(this);
+        txt_forgotpass.setOnClickListener(this);
     }
 
     @Override
@@ -185,6 +184,8 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
             case R.id.iv_google:
 //                signIn();
                 break;
+            case R.id.txt_forgotpass:
+                startActivity(new Intent(LoginAct.this, ForgotPasswordActivity.class));
         }
 
 
@@ -207,22 +208,6 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
         }
     }
 
-   /* private void handleSignInResult(GoogleSignInResult result) {
-        if (result.isSuccess()) {
-            GoogleSignInAccount acct = result.getSignInAccount();
-            if (acct != null) {
-                String personName = acct.getGivenName();
-                String email = acct.getEmail();
-                String lastName = acct.getFamilyName();
-                Uri photoUrl = acct.getPhotoUrl();
-                String id = acct.getId();
-            } else {
-                Toast.makeText(LoginAct.this, "something_went_wrong", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(LoginAct.this, "something_went_wrong", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 
 
     @Override
@@ -242,19 +227,7 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                             SharedPrefsUtils.setString(SharedPrefsUtils.KEY_TOKEN, tokenbase);
 
 
-                            /* "id": "1",
-                                "first_name": "Khadeer",
-                                "last_name": "Mohammed",
-                                "email_id": "khadeer.md@iprismtech.com",
-                                "password": "e10adc3949ba59abbe56e057f20f883e",
-                                "university_id": "1",
-                                "registered_through": "normal",
-                                "token": "asdfsdfg5df65fhgh6kldfdf6552df56fgjiofgf5gfg96f5gfgjfgofkgoffdsfsf748r",
-                                "ios_token": "",
-                                "status": "1",
-                                "delete_status": "1",
-                                "created_on": "2019-02-15 12:29:08",
-                                "modified_on": null*/
+
 
 
                             utils.createUserSession(
@@ -267,9 +240,7 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                             );
                             Common.showToast(LoginAct.this, "" + tokenbase);
                             Common.commonLogs(LoginAct.this, tokenbase);
-
                             Log.d("@@TOKEN", tokenbase);
-
                             Intent intent1 = new Intent(LoginAct.this, MainActivity.class);
                             startActivity(intent1);
                             break;

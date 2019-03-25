@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -23,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/iv_backarrow"
             android:text="Settings"
             android:textColor="@color/white"
@@ -44,6 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rltop"
             android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile_settings"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp" />
 
             <RelativeLayout
                 android:id="@+id/rlaccountdetails"
@@ -92,11 +100,15 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_firstname"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
+                        android:backgroundTint="@color/transparent"
+                        android:singleLine="true"
                         android:text="First Name"
                         android:textColor="@color/black" />
 
@@ -109,11 +121,15 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_lastname"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
+                        android:backgroundTint="@color/transparent"
+                        android:singleLine="true"
                         android:text="Last Name"
                         android:textColor="@color/black" />
 
@@ -126,11 +142,15 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_emailid"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
+                        android:backgroundTint="@color/transparent"
+                        android:singleLine="true"
                         android:text="email id"
                         android:textColor="@color/black" />
 
@@ -143,12 +163,13 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/txt_password"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
-                        android:text="Update"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -160,12 +181,16 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_mobile"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
-                        android:text="0000000000"
+                        android:backgroundTint="@color/transparent"
+                        android:maxLength="10"
+                        android:singleLine="true"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -177,12 +202,13 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_university"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
-                        android:text="university"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -194,8 +220,10 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edt_major"
+                        style="@style/CustomEdittext"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
@@ -254,14 +282,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_comments"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -280,14 +308,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_likes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -295,7 +323,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -306,14 +335,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_mentions"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -332,14 +361,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_event_notifications"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -358,14 +387,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_friend_request"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -373,7 +402,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -384,14 +414,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_message"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -410,14 +440,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_event_cancellation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="true"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -425,7 +455,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -436,14 +467,14 @@
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
-                        <android.support.v7.widget.SwitchCompat
+                        <Switch
+                            android:id="@+id/swch_friend_suggestion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
-                            android:checked="false"
                             app:thumbTint="#144853"
                             app:trackTint="#cccccc" />
 
@@ -451,165 +482,168 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!--
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:id="@+id/rlnotifyfrequency"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#959595"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="Notify Frequency"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/up" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rlnotifyfrequency">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:visibility="visible"
+                                    android:weightSum="1.6">
+
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.4"
+                                        android:background="@drawable/settings_noti_frequency_bg"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Instant"
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.4"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="30 mins"
+
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.4"
+                                        android:background="@drawable/settings_noti_frequency_bg"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="6 hours"
+
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.4"
+                                        android:orientation="horizontal"
+
+                                        android:padding="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="1 day"
+
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+            -->
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!--
+                                <RelativeLayout
+                                    android:id="@+id/rlautomatch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="#959595"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:text="AutoMatch"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                    <ImageView
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:layout_alignParentRight="true"
+                                        android:src="@drawable/up" />
+
+                                </RelativeLayout>
+                -->
+
                 <RelativeLayout
-                    android:id="@+id/rlnotifyfrequency"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#959595"
                     android:padding="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:text="Notify Frequency"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/up" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rlnotifyfrequency">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:visibility="visible"
-                        android:weightSum="1.6">
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:background="@drawable/settings_noti_frequency_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Instant"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:orientation="horizontal"
-
-                            android:padding="10dp">
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="30 mins"
-
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:background="@drawable/settings_noti_frequency_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="6 hours"
-
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:orientation="horizontal"
-
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="1 day"
-
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/rlautomatch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#959595"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:text="AutoMatch"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/up" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rlautomatch"
-                    android:padding="5dp">
-
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/txt_distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -726,7 +760,7 @@
 
                         </LinearLayout>
 
-                    </FrameLayout>
+                    </FrameLayout>-->
 
                     <TextView
                         android:id="@+id/txt_default_location"
@@ -751,9 +785,7 @@
                             android:id="@+id/iv_loc"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/placepicker"
-
-                            />
+                            android:src="@drawable/placepicker" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -763,7 +795,6 @@
                             android:layout_toRightOf="@id/iv_loc"
                             android:gravity="center_vertical"
                             android:text="Cafe Paradiso" />
-
 
                     </RelativeLayout>
 
@@ -811,10 +842,10 @@
 
 
                             <LinearLayout
+                                android:id="@+id/ll_pament_venmo"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/settings_noti_frequency_bg"
                                 android:orientation="horizontal"
                                 android:padding="10dp">
 
@@ -830,11 +861,11 @@
 
 
                             <LinearLayout
+                                android:id="@+id/ll_Paypal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.4"
                                 android:orientation="horizontal"
-
                                 android:padding="10dp">
 
 
@@ -849,10 +880,10 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/ll_gpay"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/settings_noti_frequency_bg"
                                 android:orientation="horizontal"
                                 android:padding="10dp">
 
@@ -868,11 +899,11 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/ll_cash"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.4"
                                 android:orientation="horizontal"
-
                                 android:padding="10dp">
 
                                 <TextView
@@ -902,6 +933,7 @@
 
 
     <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/txt_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ed8405"
@@ -910,8 +942,6 @@
         android:text="Update"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
-
-        />
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -110,7 +110,7 @@ public class ProfileActivity extends BaseAbstractActivity implements View.OnClic
         iv_profile = findViewById(R.id.iv_profile);
         txt_profile_friends = findViewById(R.id.txt_profile_friends);
         txt_study = findViewById(R.id.txt_study);
-        tv_profile_tutor = findViewById(R.id.tv_profile_tutor);
+//        tv_profile_tutor = findViewById(R.id.tv_profile_tutor);
 
 
         UserProfileReq userProfileReq = new UserProfileReq();

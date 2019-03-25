@@ -20,6 +20,8 @@ import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.activity.ChatAct;
 import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.activity.ProfileActivity;
+import com.iprismtech.komodeo.activity.SettingsAct;
+import com.iprismtech.komodeo.activity.UserProfileActivity;
 import com.iprismtech.komodeo.fragments.ClassesFragment;
 import com.iprismtech.komodeo.activity.ContactusAct;
 import com.iprismtech.komodeo.activity.EventsTabAct;
@@ -35,7 +37,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     private ImageView iv_notification;
     private EditText searchview;
 
-    private ImageView iv_logout, iv_share;
+    private ImageView iv_logout, iv_share, profileimage;
 
 
     private LinearLayout ll_classes, ll_tutoring, ll_events, ll_chat;
@@ -133,12 +135,12 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     protected void initializeViews() {
         super.initializeViews();
 
+
         classesActivity = new ClassesFragment();
         tutoringAct = new TutoringAct();
         eventsTabAct = new EventsTabAct();
         chatAct = new ChatAct();
-
-
+        profileimage = findViewById(R.id.profileimage);
         ll_classes = findViewById(R.id.ll_classes);
         txt_classes = findViewById(R.id.txt_classes);
 
@@ -168,6 +170,13 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         drawer_layout = findViewById(R.id.drawer_layout);
 
         menu_icon = findViewById(R.id.menu_icon);
+
+        menu_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         tabLayout = findViewById(R.id.tab_layout);
 
         try {
@@ -189,7 +198,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 txt_chat.setTextColor(Color.parseColor("#7b7979"));
 
                 ll_classes.setBackgroundColor(Color.parseColor("#a3b5ff"));
-                        ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
+                ll_tutoring.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_chat.setBackgroundColor(Color.parseColor("#ffffff"));
 
@@ -238,8 +247,9 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 startActivity(frnds);
                 break;
             case R.id.txt_settings:
-                /*Intent intent = new Intent(MainActivity.this, SettingsAct.class);
-                startActivity(intent);*/
+                Intent settings = new Intent(MainActivity.this, SettingsAct.class);
+                startActivity(settings);
+
                 break;
 
 
@@ -250,7 +260,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
             case R.id.txt_profile:
-                Intent profileintent = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent profileintent = new Intent(MainActivity.this, UserProfileActivity.class);
                 startActivity(profileintent);
                 break;
 

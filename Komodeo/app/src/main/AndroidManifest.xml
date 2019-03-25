@@ -40,18 +40,22 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".activity.ViewRatingsAct"/>
         <activity android:name=".activity.ChatListAct" />
         <activity android:name=".activity.SignupAct" />
         <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.SettingsAct" />
         <activity android:name=".activity.ContactusAct" />
+        <activity android:name=".activity.SettingsAct"/>
         <activity android:name=".activity.FriendsAct" />
         <activity android:name=".activity.AddclassFormAct" />
         <activity android:name=".activity.NotificationAct" />
         <activity android:name=".activity.CommunityDiscussionsActivity" />
-        <activity android:name=".activity.ViewRatingsAct" />
+
+
         <activity android:name=".activity.CreateChatAct" />
         <activity android:name=".activity.TutorEventAct" />
+        <activity android:name=".activity.ForgotPasswordActivity" />
+        <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".TutoringTabFilterAct" />
         <activity android:name=".activity.CreateTutorRequestAct" />
         <activity android:name=".activity.InviteFriendsAct" />
@@ -61,6 +65,8 @@
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.PersonalChatActivity" />
         <activity android:name=".activity.LocationGetActivity" />
+        <activity android:name=".activity.UserProfileActivity"/>
+
         <!--android:stackFromBottom="true"-->
         <!--android:transcriptMode="alwaysScroll" />-->
 
