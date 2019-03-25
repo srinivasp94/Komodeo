@@ -75,7 +75,7 @@
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/ic_add_frd" />
+                android:src="@drawable/addfriends" />
 
             <ImageView
                 android:id="@+id/iv_request_sent"

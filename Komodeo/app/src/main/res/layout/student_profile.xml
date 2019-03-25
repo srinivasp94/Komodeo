@@ -80,10 +80,10 @@
 
 
                 <ImageView
+                    android:id="@+id/iv_edit_profile"
                     android:layout_width="20sp"
                     android:layout_height="20sp"
                     android:layout_below="@id/txt_ratings"
-
                     android:layout_alignParentRight="true"
                     android:layout_margin="5sp"
                     android:src="@drawable/pencil_gray" />
@@ -99,7 +99,7 @@
             </RelativeLayout>
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -108,13 +108,12 @@
                 android:src="@drawable/png" />
 
             <TextView
-                android:id="@+id/txt_name"
+                android:id="@+id/txt_name_user_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_profile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="Joseph Louise Xavier"
                 android:textStyle="bold" />
 
 
@@ -122,7 +121,7 @@
                 android:id="@+id/txt_profile_subject"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_name"
+                android:layout_below="@id/txt_name_user_profile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/profile_designation_bg"
@@ -221,72 +220,84 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="5sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="5sp"
                 android:text="Bio"
-
                 android:textColor="@color/black" />
 
             <ImageView
-                android:layout_width="20sp"
-                android:layout_height="20sp"
+                android:id="@+id/iv_editbio"
+                android:layout_width="17dp"
+                android:layout_height="19dp"
                 android:layout_below="@id/view"
                 android:layout_alignParentRight="true"
-                android:layout_margin="5sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginBottom="5sp"
                 android:src="@drawable/pencil_gray" />
 
 
             <TextView
                 android:id="@+id/txt_biodesc"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_bio"
                 android:layout_margin="5dp"
-                android:text="I'm a grad student in the college of business.I also have a scary amount of math under my belt."
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+
+                android:hint="Brief about yourself"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
 
-            <RelativeLayout
-                android:id="@+id/rl_studyandtutor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_biodesc"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
+            <!--
+                        <RelativeLayout
+                            android:id="@+id/rl_studyandtutor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_biodesc"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center">
 
 
-                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-                    android:id="@+id/txt_study"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/profilepageleftunselectedcurved_bg"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Study"
-                    android:textColor="@color/white" />
+                            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                                android:id="@+id/txt_study"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/profilepageleftunselectedcurved_bg"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Study"
+                                android:textColor="@color/white" />
 
 
-                <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/txt_study"
-                    android:background="@drawable/profilepagrightunselectedcurved_bg"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:id="@+id/tv_profile_tutor"
-                    android:text="Tutor"
-                    android:textColor="@color/white" />
+                            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                                android:id="@+id/tv_profile_tutor"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/txt_study"
+                                android:background="@drawable/profilepagrightunselectedcurved_bg"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Tutor"
+                                android:textColor="@color/white" />
 
-            </RelativeLayout>
+                        </RelativeLayout>
+            -->
 
-            <TextView
-                android:id="@+id/txt_class"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl_studyandtutor"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Select A Class" />
+            <!--      <TextView
+                      android:id="@+id/txt_class"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@id/rl_studyandtutor"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="Select A Class" />-->
 
             <!--    <GridView
                     android:id="@+id/gridview"
@@ -296,48 +307,50 @@
                     android:numColumns="4" />-->
 
 
-            <LinearLayout
-                android:id="@+id/ll_subjects"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_class"
-                android:gravity="center"
-                android:orientation="horizontal">
+            <!--
+                        <LinearLayout
+                            android:id="@+id/ll_subjects"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_class"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/subject_cover"
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/subject_cover"
 
 
-                    />
+                                />
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/subject_cover"
-
-
-                    />
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/subject_cover"
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/subject_cover"
 
 
-                    />
+                                />
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/subject_cover"
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/subject_cover"
 
 
-                    />
+                                />
 
-            </LinearLayout>
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/subject_cover"
+
+
+                                />
+
+                        </LinearLayout>
+            -->
 
 
             <TextView
@@ -348,14 +361,16 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Select time &amp; date"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/rl_taptojoing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_selecttimedate"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txt_tap"
@@ -415,7 +430,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_taptojoing"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txt_taptoadd"
@@ -1183,7 +1199,6 @@
                     android:src="@drawable/right" />
 
             </RelativeLayout>
-
 
         </RelativeLayout>
 

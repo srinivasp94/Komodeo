@@ -37,16 +37,15 @@
                 android:layot_width="34dp"
                 android:layout_height="34dp" />-->
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_chatprofile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_centerVertical="true"
-            android:visibility="gone"
-            android:src="@drawable/png" />
+            android:src="@drawable/png"
+            android:visibility="visible" />
 
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/custom_item_textview"
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:id="@+id/txt_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

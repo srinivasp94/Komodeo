@@ -5,7 +5,10 @@
     android:layout_marginBottom="@dimen/_5sdp"
     android:background="@color/white"
     android:orientation="vertical">
-
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/iv_posted_img"/>
     <RelativeLayout
         android:id="@+id/rl_post_layout"
         android:layout_width="match_parent"
@@ -20,31 +23,33 @@
             android:src="@drawable/png" />
 
         <android.support.v7.widget.AppCompatTextView
-            style="@style/custom_item_textview"
             android:id="@+id/txt_postername"
+            style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/_20sdp"
             android:layout_toRightOf="@id/iv_post_layout"
             android:text="Trish status"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatTextView
-            style="@style/custom_item_textview"
             android:id="@+id/tv_post_time"
+            style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_postername"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/_20sdp"
             android:layout_toRightOf="@id/iv_post_layout"
-            android:text="time ago" />
+            android:text="time ago"
+            android:textSize="@dimen/_11sdp" />
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:id="@+id/txt_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_post_layout"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="Lorem Ipsum is simply dummy text of printing and typesetting industry"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp" />
@@ -127,8 +132,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
                 android:id="@+id/ll_submit_like"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 

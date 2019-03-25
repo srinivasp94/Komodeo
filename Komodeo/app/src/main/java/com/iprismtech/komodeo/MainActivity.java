@@ -19,10 +19,14 @@ import android.widget.TextView;
 import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.activity.ChatAct;
 import com.iprismtech.komodeo.activity.FAQActivity;
+import com.iprismtech.komodeo.activity.NotificationsActivity;
 import com.iprismtech.komodeo.activity.PersonalChatActivity;
 import com.iprismtech.komodeo.activity.ProfileActivity;
 import com.iprismtech.komodeo.activity.SplashActivity;
 import com.iprismtech.komodeo.activity.UploadCredentialsActivity;
+import com.iprismtech.komodeo.fragments.ChatListFragment;
+import com.iprismtech.komodeo.activity.SettingsAct;
+import com.iprismtech.komodeo.activity.UserProfileActivity;
 import com.iprismtech.komodeo.fragments.ClassesFragment;
 import com.iprismtech.komodeo.activity.ContactusAct;
 import com.iprismtech.komodeo.activity.EventsTabAct;
@@ -40,7 +44,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     private ImageView iv_notification;
     private EditText searchview;
 
-    private ImageView iv_logout, iv_share;
+    private ImageView iv_logout, iv_share, profileimage;
 
 
     private LinearLayout ll_classes, ll_tutoring, ll_events, ll_chat;
@@ -58,7 +62,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     private ClassesFragment classesActivity;
     private TutoringAct tutoringAct;
     private EventsTabAct eventsTabAct;
-    private ChatAct chatAct;
+    private ChatListFragment chatAct;
 
 
     @Override
@@ -134,18 +138,22 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         searchview.setOnClickListener(this);
         txt_faqs.setOnClickListener(this);
         iv_logout.setOnClickListener(this);
+        iv_notification.setOnClickListener(this);
     }
 
     @Override
     protected void initializeViews() {
         super.initializeViews();
 
+
         classesActivity = new ClassesFragment();
         tutoringAct = new TutoringAct();
         eventsTabAct = new EventsTabAct();
-        chatAct = new ChatAct();
+        chatAct = new ChatListFragment();
 
 
+
+        profileimage = findViewById(R.id.profileimage);
         ll_classes = findViewById(R.id.ll_classes);
         txt_classes = findViewById(R.id.txt_classes);
 
@@ -237,16 +245,17 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
                 ll_events.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_chat.setBackgroundColor(Color.parseColor("#a3b5ff"));
 //                replaceFragmets(chatAct);
-                //  replaceFragmets(chatAct);
-                startActivity(new Intent(MainActivity.this, PersonalChatActivity.class));
+                replaceFragmets(chatAct);
+                //  startActivity(new Intent(MainActivity.this, chatAct.class));
                 break;
             case R.id.txt_friends:
                 Intent frnds = new Intent(MainActivity.this, FriendsAct.class);
                 startActivity(frnds);
                 break;
             case R.id.txt_settings:
-                /*Intent intent = new Intent(MainActivity.this, SettingsAct.class);
-                startActivity(intent);*/
+                Intent settings = new Intent(MainActivity.this, SettingsAct.class);
+                startActivity(settings);
+
                 break;
 
 
@@ -257,7 +266,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
             case R.id.txt_profile:
-                Intent profileintent = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent profileintent = new Intent(MainActivity.this, UserProfileActivity.class);
                 startActivity(profileintent);
                 break;
 
@@ -279,7 +288,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
             case R.id.iv_notification:
-                Intent Notifyintent = new Intent(MainActivity.this, NotificationAct.class);
+                Intent Notifyintent = new Intent(MainActivity.this, NotificationsActivity.class);
                 startActivity(Notifyintent);
                 break;
 

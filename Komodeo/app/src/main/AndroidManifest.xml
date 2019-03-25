@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:name=".MyApplication"
@@ -18,14 +21,14 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyDAub648ZuMc6Sbnbg1fOzSoaDbEWUsi3U" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDAub648ZuMc6Sbnbg1fOzSoaDbEWUsi3U" />
         <!--<meta-data-->
-            <!--android:name="com.google.android.geo.API_KEY"-->
-            <!--android:value="AIzaSyBJTKQDparmWew0LQyf8XUo_Xq48U_69dM" />-->
-<!--<meta-data-->
-            <!--android:name="com.google.android.geo.API_KEY"-->
-            <!--android:value="AIzaSyBctZfklbLmSCMcrhmTJCI8RpUUvyNRUJo" />-->
+        <!--android:name="com.google.android.geo.API_KEY"-->
+        <!--android:value="AIzaSyBJTKQDparmWew0LQyf8XUo_Xq48U_69dM" />-->
+        <!--<meta-data-->
+        <!--android:name="com.google.android.geo.API_KEY"-->
+        <!--android:value="AIzaSyBctZfklbLmSCMcrhmTJCI8RpUUvyNRUJo" />-->
 
         <activity android:name=".activity.LoginAct">
 
@@ -34,18 +37,22 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity android:name=".activity.ChatListAct" />
+        <activity android:name=".activity.ViewRatingsAct"/>
+
         <activity android:name=".activity.SignupAct" />
         <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.SettingsAct" />
         <activity android:name=".activity.ContactusAct" />
+        <activity android:name=".activity.SettingsAct"/>
         <activity android:name=".activity.FriendsAct" />
         <activity android:name=".activity.AddclassFormAct" />
         <activity android:name=".activity.NotificationAct" />
         <activity android:name=".activity.CommunityDiscussionsActivity" />
-        <activity android:name=".activity.ViewRatingsAct" />
+
+
         <activity android:name=".activity.CreateChatAct" />
         <activity android:name=".activity.TutorEventAct" />
+        <activity android:name=".activity.ForgotPasswordActivity" />
+        <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".TutoringTabFilterAct" />
         <activity android:name=".activity.CreateTutorRequestAct" />
         <activity android:name=".activity.InviteFriendsAct" />
@@ -55,12 +62,14 @@
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.PersonalChatActivity" />
         <activity android:name=".activity.LocationGetActivity" />
+        <activity android:name=".activity.UserProfileActivity"/>
+
         <!--android:stackFromBottom="true"-->
         <!--android:transcriptMode="alwaysScroll" />-->
 
-       <!-- <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDKymeBXNeiFWY5jRUejv6zItpmr2MVyQ0" />-->
+        <!-- <meta-data
+             android:name="com.google.android.maps.v2.API_KEY"
+             android:value="AIzaSyDKymeBXNeiFWY5jRUejv6zItpmr2MVyQ0" />-->
 
         <!--<meta-data
             android:name="com.google.android.gms.version"
@@ -87,6 +96,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.FriendRequestsActivity" />
+        <activity android:name=".activity.NotificationsActivity" />
 
         <!-- <activity android:name=".fragments.ClassesFragment"></activity> -->
         <activity android:name=".activity.UploadCredentialsActivity" />

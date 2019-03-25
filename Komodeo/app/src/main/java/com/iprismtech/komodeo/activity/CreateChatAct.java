@@ -11,8 +11,11 @@ import android.widget.ImageView;
 import com.iprismtech.komodeo.R;
 
 public class CreateChatAct extends AppCompatActivity {
+
     ImageView menu_icon;
+
     DrawerLayout drawer_layout;
+
     ImageView iv_chatback;
 
     @Override

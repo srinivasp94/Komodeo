@@ -1,11 +1,13 @@
 package com.iprismtech.komodeo.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
     private Handler handler;
     private int idx_count = 0;
     private Runnable runnable;
+    private String str_name, str_receiver_id, str_senderID;
+    private ImageView iv_chatback;
 
     Thread t1;
 
@@ -60,8 +64,8 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                 PersonalChatRequest request = new PersonalChatRequest();
                 request.numItems = String.valueOf(chat_count);
                 request.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-                request.receiverId = "2";
-                request.senderId = "1";
+                request.receiverId = str_receiver_id;
+                request.senderId = str_senderID;
                 //flatListRequest.building_id="4";
 
                 try {
@@ -69,8 +73,13 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", true);
 
+                break;
+            case R.id.iv_chatback:
+                onBackPressed();
+                finish();
                 break;
             case R.id.ll_chat_send:
                 if (et_chat_text.getText().toString().isEmpty()) {
@@ -80,8 +89,8 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                     ChatMsgSendReq chatMsgSendReq = new ChatMsgSendReq();
                     chatMsgSendReq.numItems = String.valueOf(chat_count);
                     chatMsgSendReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-                    chatMsgSendReq.receiverId = "2";
-                    chatMsgSendReq.senderId = "1";
+                    chatMsgSendReq.receiverId = str_receiver_id;
+                    chatMsgSendReq.senderId = str_senderID;
                     chatMsgSendReq.message = et_chat_text.getText().toString();
                     chatMsgSendReq.numItems = "0";
 
@@ -110,11 +119,21 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         super.setListenerToViews();
         tv_load_more.setOnClickListener(this);
         ll_chat_send.setOnClickListener(this);
+        iv_chatback.setOnClickListener(this);
     }
 
     @Override
     protected void initializeViews() {
         super.initializeViews();
+
+//        intent.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
+//        intent.putExtra("Key_ReceiverId", responseBeans.get(position).getReceiver_id());
+//        intent.putExtra("Key_SenderId", responseBeans.get(position).getSender_id());
+
+        Intent intent = getIntent();
+        str_name = intent.getStringExtra("Key_name");
+        str_receiver_id = intent.getStringExtra("Key_ReceiverId");
+        str_senderID = intent.getStringExtra("Key_SenderId");
 
 
         responseBeans = new ArrayList<>();
@@ -125,19 +144,14 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         ll_chat_send = findViewById(R.id.ll_chat_send);
         et_chat_text = findViewById(R.id.et_chat_text);
         chatlist = findViewById(R.id.chatlist);
-
+        iv_chatback = findViewById(R.id.iv_chatback);
+        tv_chat_personal_name.setText(str_name);
 
         PersonalChatRequest request = new PersonalChatRequest();
         request.numItems = String.valueOf(chat_count);
         request.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        request.receiverId = "2";
-        request.senderId = "1";
-
-        t1 = new Thread();
-
-        handler = new Handler();
-        //flatListRequest.building_id="4";
-
+        request.receiverId = str_receiver_id;
+        request.senderId = str_senderID;
         try {
             obj = Class.forName(PersonalChatRequest.class.getName()).cast(request);
         } catch (Exception e) {
@@ -145,6 +159,14 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         }
         new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", true);
 
+
+        handler = new Handler();
+        runnable = new Runnable() {
+            public void run() {
+                makeServiceCallWS();
+                handler.postDelayed(this, 10000);
+            }
+        };
     }
 
     @Override
@@ -222,13 +244,14 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
 //                                };
 
 
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        makeServiceCallWS();
-                                        //handler.postDelayed(this, 10000);
-                                    }
-                                }, 9000);
+//                                handler.postDelayed(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        makeServiceCallWS();
+//                                        handler.postDelayed(this, 9000);
+//                                    }
+//                                }, 9000);
+                                handler.postDelayed(runnable, 10000);
 
 
                                 break;
@@ -251,8 +274,8 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         PersonalChatRequest request = new PersonalChatRequest();
         request.numItems = String.valueOf(chat_count);
         request.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        request.receiverId = "2";
-        request.senderId = "1";
+        request.receiverId = str_receiver_id;
+        request.senderId = str_senderID;
         //flatListRequest.building_id="4";
         try {
             obj = Class.forName(PersonalChatRequest.class.getName()).cast(request);
@@ -262,11 +285,11 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", false);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        makeServiceCallWS();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // makeServiceCallWS();
+    }
 
     @Override
     protected void onPause() {
@@ -286,6 +309,8 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
 
     @Override
     public void onBackPressed() {
+        if (handler != null)
+            handler.removeCallbacks(runnable);
         finish();
 
     }

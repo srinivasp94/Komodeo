@@ -22,6 +22,7 @@ import com.iprismtech.komodeo.pojo.SearchCommunityPojo;
 import com.iprismtech.komodeo.request.CommunityMembersReq;
 import com.iprismtech.komodeo.request.FriendRequstReq;
 import com.iprismtech.komodeo.request.SearchUsesReq;
+import com.iprismtech.komodeo.request.SerchCommunityReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
@@ -35,7 +36,7 @@ import java.util.List;
 import okhttp3.Cookie;
 
 public class CommunityActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
-    private LinearLayout ll_discussiontab, ll_currenttab_events, ll_communitymembers;
+    private LinearLayout ll_discussiontab, ll_currenttab_events, ll_communitymembers, ll_currenttab;
     private TextView tv_course_name, tv_load_more;
     private EditText et_search_name;
     private ImageView iv_notification;
@@ -49,7 +50,8 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
     private CommunityMembersPojo communityMembersPojo;
     private SearchCommunityPojo searchCommunityPojo;
     private List<CommunityMembersPojo.CommunityBean> responseBeans;
-    private List<SearchCommunityPojo.ResponseBean> search_responseBeans;
+    private List<SearchCommunityPojo.CommunityBean> search_responseBeans;
+    private SearchCommunityMembersAdapter adapter;
 
     @Override
     public void onClick(View v) {
@@ -69,6 +71,25 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                     e.printStackTrace();
                 }
                 new RetrofitRequester(this).callPostServices(obj, 1, "community", true);
+                break;
+            case R.id.iv_notification:
+                startActivity(new Intent(CommunityActivity.this, NotificationsActivity.class));
+                finish();
+                break;
+
+            case R.id.ll_discussiontab:
+                Intent intent = new Intent(CommunityActivity.this, CommunityDiscussionsActivity.class);
+                intent.putExtra("Key_course_name", course_name);
+                intent.putExtra("Key_course_ID", course_ID);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.ll_currenttab:
+                Intent intent1 = new Intent(CommunityActivity.this, CommunityDiscussionsActivity.class);
+                intent1.putExtra("Key_course_name", course_name);
+                intent1.putExtra("Key_course_ID", course_ID);
+                startActivity(intent1);
+                finish();
                 break;
         }
     }
@@ -111,13 +132,18 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                                 public void onItemClick(View view, int position) {
                                     switch (view.getId()) {
                                         case R.id.iv_chat:
+                                            Intent intent = new Intent(CommunityActivity.this, PersonalChatActivity.class);
+                                            intent.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
+                                            intent.putExtra("Key_ReceiverId", responseBeans.get(position).getId());
+                                            intent.putExtra("Key_SenderId", SharedPrefsUtils.getInstance(CommunityActivity.this).getId());
+//
+//                                            intent.putExtra("Key_SenderId", responseBeans.get(position).getId());
+//                                            intent.putExtra("Key_ReceiverId", SharedPrefsUtils.getInstance(CommunityActivity.this).getId());
 
+                                            startActivity(intent);
                                             break;
                                         case R.id.iv_add_frd:
                                             callSendFriendReqWs(position);
-
-
-
                                             break;
                                     }
                                 }
@@ -131,11 +157,33 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                             rview_serach_comminty_members.setLayoutManager(layoutManager);
 
-                            if (searchCommunityPojo.getResponse() != null && searchCommunityPojo.getResponse().size() > 0) {
-                                search_responseBeans = searchCommunityPojo.getResponse();
-                                SearchCommunityMembersAdapter adapter = new SearchCommunityMembersAdapter(CommunityActivity.this, search_responseBeans);
+                            if (searchCommunityPojo.getCommunity() != null && searchCommunityPojo.getCommunity().size() > 0) {
+                                search_responseBeans = searchCommunityPojo.getCommunity();
+                                adapter = new SearchCommunityMembersAdapter(CommunityActivity.this, search_responseBeans);
                                 rview_serach_comminty_members.setAdapter(adapter);
                             }
+                            adapter.setOnItemClickListener(new SearchCommunityMembersAdapter.OnitemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    switch (view.getId()) {
+                                        case R.id.iv_chat:
+                                            Intent intent = new Intent(CommunityActivity.this, PersonalChatActivity.class);
+                                            intent.putExtra("Key_name", search_responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
+                                            intent.putExtra("Key_ReceiverId", search_responseBeans.get(position).getId());
+                                            intent.putExtra("Key_SenderId", SharedPrefsUtils.getInstance(CommunityActivity.this).getId());
+//
+//                                            intent.putExtra("Key_SenderId", responseBeans.get(position).getId());
+//                                            intent.putExtra("Key_ReceiverId", SharedPrefsUtils.getInstance(CommunityActivity.this).getId());
+
+                                            startActivity(intent);
+                                            break;
+                                        case R.id.iv_add_frd:
+                                            callSendFriendReqWs(position);
+                                            break;
+                                    }
+                                }
+                            });
+
                             break;
                         case 3:
                             Toast.makeText(this, "Friend Request Sent Successfully", Toast.LENGTH_SHORT).show();
@@ -164,7 +212,6 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
             e.printStackTrace();
         }
         new RetrofitRequester(this).callPostServices(obj, 3, "send_friend_request", true);
-
     }
 
     @Override
@@ -173,6 +220,8 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
         ll_discussiontab.setOnClickListener(this);
         ll_currenttab_events.setOnClickListener(this);
         tv_load_more.setOnClickListener(this);
+        iv_notification.setOnClickListener(this);
+        ll_currenttab.setOnClickListener(this);
     }
 
     @Override
@@ -191,6 +240,7 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
         rview_comminty_members = findViewById(R.id.rview_comminty_members);
         tv_load_more = findViewById(R.id.tv_load_more);
         ll_communitymembers = findViewById(R.id.ll_communitymembers);
+        ll_currenttab = findViewById(R.id.ll_currenttab);
         rview_serach_comminty_members = findViewById(R.id.rview_serach_comminty_members);
 
         tv_course_name.setText(course_name);
@@ -239,16 +289,17 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
     }
 
     private void callSearchUserWS() {
-        SearchUsesReq req = new SearchUsesReq();
+        SerchCommunityReq req = new SerchCommunityReq();
         req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        ;
         req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
         req.keyword = et_search_name.getText().toString();
+        req.classId = course_ID;
+        req.count = "0";
         try {
-            obj = Class.forName(SearchUsesReq.class.getName()).cast(req);
+            obj = Class.forName(SerchCommunityReq.class.getName()).cast(req);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new RetrofitRequester(this).callPostServices(obj, 2, "search_users", false);
+        new RetrofitRequester(this).callPostServices(obj, 2, "search_community", false);
     }
 }

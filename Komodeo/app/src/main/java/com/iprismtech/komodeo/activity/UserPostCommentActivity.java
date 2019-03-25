@@ -20,6 +20,7 @@ import com.iprismtech.komodeo.request.SubmitCommentReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
+import com.iprismtech.komodeo.utils.Constants;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 import com.squareup.picasso.Picasso;
 
@@ -137,7 +138,7 @@ public class UserPostCommentActivity extends BaseAbstractActivity implements Vie
         tv_posted.setText(str_Post);
         tv_name_posted_name.setText(str_Name);
 
-        Picasso.with(UserPostCommentActivity.this).load(str_Img).into(iv_main_posted_person);
+        Picasso.with(UserPostCommentActivity.this).load(Constants.BASE_IMAGE_URL + str_Img).error(R.drawable.ic_no_image).into(iv_main_posted_person);
 
         CommentsReq commentsReq = new CommentsReq();
         commentsReq.discussionId = discussionsId;
@@ -206,12 +207,15 @@ public class UserPostCommentActivity extends BaseAbstractActivity implements Vie
 
                             Intent returnIntent = new Intent();
                             returnIntent.putExtra("post_Status", "ok");
+                            returnIntent.putExtra("count_comments", object.optString("comments") + "");
+
                             setResult(Activity.RESULT_OK, returnIntent);
                             finish();
                             break;
                     }
                 } else {
                     Common.showToast(UserPostCommentActivity.this, object.optString("message"));
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
