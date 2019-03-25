@@ -8,12 +8,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +27,16 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.R;
+import com.iprismtech.komodeo.adapters.ClassHorizontalAdapter;
+import com.iprismtech.komodeo.adapters.ClassesSearchApdapter;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
+import com.iprismtech.komodeo.pojo.SearchClassesPojo;
+import com.iprismtech.komodeo.request.SearchClassesReq;
+import com.iprismtech.komodeo.request.SimpleReq;
 import com.iprismtech.komodeo.request.SubmitContactReq;
+import com.iprismtech.komodeo.request.uploadCredentialsReq;
+import com.iprismtech.komodeo.responses.ClassList;
+import com.iprismtech.komodeo.responses.ClassResponse;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
@@ -33,35 +45,38 @@ import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
-public class ContactusAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
+public class UploadCredentialsActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
+
+    private AppCompatSpinner spinnerClass;
     private ImageView iv_backbtn, image1, image2, image3;
     private int GALLERY_DOC = 101, CAMERA_DOC = 102;
     private String base64profile1, base64profile2, base64profile3;
     private int imageViewId;
     private String result;
     private Object obj;
-    private EditText edtDescription;
-    private TextView txtSendComment;
+    private EditText et_search;
+    private SearchClassesPojo searchClassesPojo;
+    private RecyclerView rview_search_classes;
+    private LinearLayoutManager manager;
+    private ClassesSearchApdapter adapter;
+
+    private TextView txtSendCredentials;
+    private ArrayList<ClassList> classLists = new ArrayList<>();
+    private String classid = "";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.li_contactus);
-
+//        setContentView(R.layout.activity_upload_credentials);
     }
 
     @Override
     protected View getView() {
-        View view = getLayoutInflater().inflate(R.layout.li_contactus, null);
+        View view = getLayoutInflater().inflate(R.layout.activity_upload_credentials, null);
         return view;
     }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
 
     @Override
     public void setPresenter() {
@@ -75,19 +90,59 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
-        txtSendComment.setOnClickListener(this);
+        txtSendCredentials.setOnClickListener(this);
     }
+
 
     @Override
     protected void initializeViews() {
         super.initializeViews();
+//        spinnerClass = findViewById(R.id.spinnerClass);
 
         iv_backbtn = findViewById(R.id.iv_backbtn_contact);
         image1 = findViewById(R.id.image1);
         image2 = findViewById(R.id.image2);
         image3 = findViewById(R.id.image3);
-        edtDescription = findViewById(R.id.edtDescription);
-        txtSendComment = findViewById(R.id.txtSendComment);
+        txtSendCredentials = findViewById(R.id.txtSendCredentials);
+
+        et_search = findViewById(R.id.et_search);
+        rview_search_classes = findViewById(R.id.rview_search_classes);
+
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 1) {
+
+                    callSearchWS(s.toString());
+                } else if (s.length() == 0) {
+                    adapter = null;
+                }
+                // return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+       /* SimpleReq req = new SimpleReq();
+        req.userId = SharedPrefsUtils.getInstance(UploadCredentialsActivity.this).getId();
+        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        try {
+            obj = Class.forName(SimpleReq.class.getName()).cast(req);
+        } catch (Exception e) {
+
+        }
+        new RetrofitRequester(this).callPostServices(obj, 1, "user_classes", true);*/
+
+
     }
 
     @Override
@@ -108,39 +163,54 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
                 imageViewId = image3.getId();
                 showPictureDialog("", image3);
                 break;
-            case R.id.txtSendComment:
-                if (edtDescription.getText().toString().length() == 0) {
-                    Common.showToast(ContactusAct.this, "Please enter Description");
-                } else if (base64profile1==null || base64profile2==null || base64profile3==null) {
-                    Common.showToast(ContactusAct.this, "Please Select Images");
+            case R.id.txtSendCredentials:
+                if (classid == null || classid.equalsIgnoreCase("")) {
+                    Common.showToast(UploadCredentialsActivity.this, "Please Select class");
+                } else if (base64profile1 == null || base64profile2 == null || base64profile3 == null) {
+                    Common.showToast(UploadCredentialsActivity.this, "Please Select Images");
                 } else {
-                    SubmitContactReq req = new SubmitContactReq();
-                    req.userId = SharedPrefsUtils.getInstance(ContactusAct.this).getId();
+                    uploadCredentialsReq req = new uploadCredentialsReq();
+                    req.userId = SharedPrefsUtils.getInstance(UploadCredentialsActivity.this).getId();
                     req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-                    req.description = "edtte";
+                    req.classId = classid;
                     if (base64profile1 != null)
-                        req.image1 = base64profile1;
+                        req.images.get(0).image = base64profile1;
                     if (base64profile2 != null)
-                        req.image3 = base64profile2;
+                        req.images.get(1).image = base64profile1;
                     if (base64profile1 != null)
-                        req.image3 = base64profile3;
-                    req.description = edtDescription.getText().toString();
+                        req.images.get(2).image = base64profile1;
                     try {
-                        obj = Class.forName(SubmitContactReq.class.getName()).cast(req);
+                        obj = Class.forName(uploadCredentialsReq.class.getName()).cast(req);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    new RetrofitRequester(this).callPostServices(obj, 1, "submit_contact", true);
+                    new RetrofitRequester(this).callPostServices(obj, 2, "upload_credentials", true);
                 }
                 break;
 
         }
     }
 
+    private void callSearchWS(String s) {
+
+        SearchClassesReq searchClassesReq = new SearchClassesReq();
+        searchClassesReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        searchClassesReq.keyword = s;
+        //flatListRequest.building_id="4";
+
+        try {
+            obj = Class.forName(SearchClassesReq.class.getName()).cast(searchClassesReq);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new RetrofitRequester(this).callPostServices(obj, 1, "search_classes", false);
+    }
+
+
     @Override
     public void onResponseSuccess(Object objectResponse, Object objectRequest, int requestId) {
         if (objectResponse == null || objectResponse.equals("")) {
-            Common.showToast(ContactusAct.this, "Please Try Again");
+            Common.showToast(UploadCredentialsActivity.this, "Please Try Again");
         } else {
             try {
                 Gson gson = new Gson();
@@ -149,12 +219,25 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
                 if (jsonObject.optBoolean("status")) {
                     switch (requestId) {
                         case 1:
-                            Common.showToast(ContactusAct.this, jsonObject.optString("message"));
-                            finish();
+                            searchClassesPojo = gson.fromJson(jsonString, SearchClassesPojo.class);
+                            manager = new LinearLayoutManager(UploadCredentialsActivity.this);
+                            manager.setOrientation(LinearLayoutManager.VERTICAL);
+                            rview_search_classes.setLayoutManager(manager);
+                            adapter = new ClassesSearchApdapter(UploadCredentialsActivity.this, searchClassesPojo);
+                            rview_search_classes.setAdapter(adapter);
+                            adapter.setOnItemClickListener(new ClassesSearchApdapter.OnitemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    classid = searchClassesPojo.getResponse().get(position).getId();
+                                }
+                            });
+                            break;
+                        case 2:
+                            Common.showToast(UploadCredentialsActivity.this, jsonObject.optString("message"));
                             break;
                     }
                 } else {
-                    Common.showToast(ContactusAct.this, jsonObject.optString("message"));
+                    Common.showToast(UploadCredentialsActivity.this, jsonObject.optString("message"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -164,7 +247,7 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
     }
 
     private void showPictureDialog(final String base64, final ImageView imageView) {
-        android.app.AlertDialog.Builder pictureDialog = new android.app.AlertDialog.Builder(ContactusAct.this);
+        android.app.AlertDialog.Builder pictureDialog = new android.app.AlertDialog.Builder(UploadCredentialsActivity.this);
         pictureDialog.setTitle("Select Action");
         String[] pictureDialogItems = {
                 "Select photo from gallery",
@@ -188,12 +271,12 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
 
     public void choosePhotoFromGallary(String base64, ImageView imageView) {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                    ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 Log.d("hhhh", "Permissions not granted");
                 // ask for permission
-                ActivityCompat.requestPermissions(ContactusAct.this, new String[]{Manifest.permission.CAMERA}, 1);
+                ActivityCompat.requestPermissions(UploadCredentialsActivity.this, new String[]{Manifest.permission.CAMERA}, 1);
             }
         }
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
@@ -206,12 +289,12 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
 
     private void takePhotoFromCamera(String base64, ImageView imageView) {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                    ContextCompat.checkSelfPermission(ContactusAct.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(UploadCredentialsActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 Log.d("hhhh", "Permissions not granted");
                 // ask for permission
-                ActivityCompat.requestPermissions(ContactusAct.this, new String[]{Manifest.permission.CAMERA}, 1);
+                ActivityCompat.requestPermissions(UploadCredentialsActivity.this, new String[]{Manifest.permission.CAMERA}, 1);
             }
         }
         try {
@@ -295,7 +378,7 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(ContactusAct.this.getContentResolver().openInputStream(selectedImage), null, o);
+            BitmapFactory.decodeStream(UploadCredentialsActivity.this.getContentResolver().openInputStream(selectedImage), null, o);
             // The new size we want to scale to
             // final int REQUIRED_SIZE =  size;
             // Find the correct scale value. It should be the power of 2.
@@ -313,12 +396,10 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
             // Decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(ContactusAct.this.getContentResolver().openInputStream(selectedImage), null, o2);
+            return BitmapFactory.decodeStream(UploadCredentialsActivity.this.getContentResolver().openInputStream(selectedImage), null, o2);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-
 }

@@ -5,5 +5,125 @@
     <string name="fb_login_protocol_scheme">fb323252511620098</string>
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="general">General</string>
+
+
+    <string name="q1">What is Komodeo App?</string>
+
+    <string name="a1">Komodeo is a study networking app that connects students with other students in class, as well as with tutors. Our goal is to make studying for classes more productive for students, thereby boosting the GPA.
+    </string>
+
+    <string name="q2">What all can I do in Komodeo?</string>
+
+    <string name="a2">It is exclusively for classmates in your University so you will connect with people in your    classes, find a tutor or become a tutor and get cash money $$$, easily coordinate a study group,    match right now with a study partner near you, or post your queries in the exclusive discussion    forum for your classmates.    </string>
+
+    <string name="q3">I don’t see my university yet!</string>
+
+    <string name="a3">We’re a new platform that just launched at UIUC this semester, however we’re adding many more    this spring or summer. In case you do not find your university in the list, reach out and    Contact us, to request for your university to be added.</string>
+    <string name="q4">How can I add and invite my friends to events?</string>
+
+    <string name="a4">You can share events and invite others to download the app via the    “Share” button on the event itself, or invite your contacts through your Friends list under “suggested friends”</string>
+
+    <string name="q5">Is Komodeo available in my country?</string>
+
+    <string name="a5">Currently we are focusing in the American universities, we’ll add more    universities in the US    and other countries soon!</string>
+
+    <string name="q6">I would like to be an ambassador for my University, how can I go about    finding out more?</string>
+
+    <string name="a6">-We’d love to have you join our team, please Contact us to take this    further. Teammates enjoy tons of free swag, local discounts, and school supplies!</string>
+
+    <string name="q7">I like the concept of the app and believe in the cause!</string>
+
+    <string name="a7">-We appreciate your support, feel free to share our app with more    people, because the bigger the  community, the better it is for all users.</string>
+
+    <string name="classes">Classes</string>
+
+    <string name="qc1">Why can I do in the class tab?</string>
+
+    <string name="ac1">-The class tab enables you to post any questions you have, find answers    for similar questions and also answer questions from other students. Class tab also provides    users with access to lots    of other classmates. We believe that no student should miss out points on assignments because    they couldn’t figure out solutions to it.</string>
+
+    <string name="qc2">What if I added a course late, or dropped my course, or changed my    major, or…!</string>
+
+    <string name="ac2">-No fretting! You can join up to 8 class discussions at any given time.</string>
+
+    <string name="qc3">How can I add classes?</string>
+
+    <string name="ac3">-Add them on the Add Class Homepage!</string>
+
+    <string name="qc4">I don’t see my class in the default class list</string>
+
+    <string name="ac4">-Firstly, you will need to add the university you are attending, in    order to have the class    data. This is done in the beginning, when the app account is created or    can be added in    “Settings”. We are constantly updating the class database, so it might    be possible that we might    have been unaware of some of the classes. In case you don’t find your    class in the list, you can    “+ Add class”.
+</string>
+
+    <string name="qc5">There are duplicates of classes, which one do I join?</string>
+
+    <string name="ac5">-Users might have created multiple groups for the same class, make sure    you join the class with    most amount of members in it.</string>
+
+    <string name="tutoring">Tutoring</string>
+
+    <string name="qt1">Why do I need to use Komodeo for Tutoring sessions?</string>
+
+    <string name="at1">-Admit it, there are classes that are just so hard that you and your    buddies have a hard time    figuring it out. Professors and TAs are just going to answer, but none    of them are going to    teach the whole content? So what do we do when we are completely lost    and tutors are freaking    expensive? :We use Komodeo. Komodeo let us upperclassmen, TAs, and    other classmates who understand the content, to be able to conduct tutoring events. The    prices of these tutoring    events will be affordable because other classmates (that you’ve never    met) could also pool in    the costs and let the session happen! Now you could have a tutoring    session going over the    weekly quiz for $4 right at your place for 1 hr every Sunday, with your    neighbours!! What do you    tell the professor tryin’ to screw your GPA? Not today. 👋🎤</string>
+
+    <string name="qt2">How much will a tutoring session cost?</string>
+
+    <string name="at2">-Prices of the tutoring session are decided by tutors based on $/head    or $/session. $/head price    is fixed and tutors might cancel the session due to lack of interest in    the session. So, if a    tutor charges $4/head and requires $20/session, then the tutor might    likely cancel the event in    case there are less than 5 students interested. $/session price is    variable per user based on    the number of students attending, although the income is fixed for the    tutor. If the event is    $15/session, then attendance of 5 students would cost $3 per student    and an attendance of 2    students would cost $7.5 per student.</string>
+
+    <string name="qt3">>How can I pay for the tutor?</string>
+
+    <string name="at3">-Check out the top left payment icon on your tutor’s profile. This is    the method that they prefer. In-app payments coming soon!</string>
+
+    <string name="qt4">How can I show that I am qualified to tutor?</string>
+
+    <string name="at5">-Your profile will have a “Star” icon on the top right, where documents    proving the credentials can be uploaded. Credentials can include official transcripts, pictures    of Exams/HW/Quiz scores. But ultimately, credibility is built by positive ratings from satisfied    students!</string>
+    <string name="qt6">Who are the tutors?</string>
+
+    <string name="at6">-The tutors can be TAs, professors, upperclassmen, local residents or    even other classmates who understand the class well. Be sure to select the tutor based on the    uploaded credentials and positive ratings from other users! How do I become a tutor? Go to the    “Tutor” tab in Settings and simply add your classes you can    tutor for! Helpful Hint: To greatly increase requests for you, add your credentials on your    Profile.</string>
+
+    <string name="qt7">Can I have a private tutoring session?</string>
+
+    <string name="at7">-Absolutely! You can customize the amount of students that you would    want, for the tutoring    session that you create. An event can either have 1 student (private  tutoring), or a lot of  students (thereby cutting the payment per student costs).
+    </string>
+
+    <string name="qt8">What should I bring to a Tutor event? </string>
+
+    <string name="at8">It’s up to you how you want to make use of your time with the tutor, so    come prepared with  homework problems (and your etext/notes, if applicable). It’s also    helpful to message your tutor    in advance so they can bring helpful material to you</string>
+    <string name="qt9">How I available do events for for make me myself register students to tutoring with?</string>
+
+    <string name="at9">- We gotta wait and see what Khadeer did to this.</string>
+
+    <string name="study">Study</string>
+
+    <string name="qs1">Why do I need to use Komodeo Study events?</string>
+
+    <string name="as1">-A lot of research has shown that group studying increases    productivity. Group study, created    through Komodeo, helps students find other classmates living nearby to    study with. This helps    students save time on commuting and creates a schedule for themselves,    that enables them to    consistently study for the class throughout the semester. An efficient    study schedule enables    students to have a less stressful time before their exams or other    assignment deadlines, while    boosting their GPA simultaneously.</string>
+
+    <string name="qs2">How do the study events work?</string>
+
+    <string name="as">-You can create a custom study event with different timings, dates,    location as well as group size. The events can also be recurred throughout the semester, so that    students consistently  study for the class throughout the semester. You can invite friends as    well as enable other    classmates living nearby to find and join the event. It is possible    that your neighbour might be    in your class!</string>
+    <string name="qs3">Where do I create a study event?</string>
+
+    <string name="as3">-You can create a study group event by going to the class discussion    page and clicking the plus    sign under “Study Events”, OR while viewing your profile you can    schedule an event in your    Availability Calendar.</string>
+
+
+    <string name="events">Events (General)</string>
+
+    <string name="qs4">Where do the events take place?</string>
+
+    <string name="as4">Tutoring events have the location default to the one chosen by whoever    creates the event    (student/tutor). However, location for the study event is always    decided by one who creates it.</string>
+    <string name="qs5">What’s the difference between a Study event and a Tutor event?</string>
+
+    <string name="as5">-Study events are always free and consist of your classmates, while    Tutor events cost a few dollars and are led by an experienced tutor. Anyone can create a study    event, while you can  either request a tutor or join an existing session. You can also become    a tutor by adding classes that you are qualified to tutor in Settings and uploading    credentials at the top of your    Profile.</string>
+    <string name="miscellaneous">Miscellaneous</string>
+
+    <string name="mq1">There is a glitch in the app.</string>
+
+    <string name="ma1">-We apologize for the inconvenience. Komodeo is a new app and we are    refining it to best fit the needs of its users. Please do Contact us, to report any bugs    encountered.</string>
+    <string name="mq2">How do I trust strangers who I meet through app?</string>
+
+    <string name="ma2">-University/College campuses are relatively safe environment with lower    crime rate. However,    it’s better to be safe than sorry. Try to visit events set up in public    places (cafes, lounges,    libraries etc), rather than at someones home. If it’s at someone’s    home, try visiting with other    people you already know, or an event with a lot of people going.    Komodeo is just a platform and    is not liable for any misbehavior from users.</string>
+    <string name="mq3">I am interested in creating a partnership</string>
+
+    <string name="ma3">Yes, please do Contact Us! Whether you’re a local business, an    interested sponsor for our    events, influencer, or even in a similar space, send us over a chat or    email admin@komodeo.com,    and we will get in touch.</string>
 
 </resources>

@@ -79,6 +79,7 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
     protected void setListenerToViews() {
         super.setListenerToViews();
         txt_signin.setOnClickListener(this);
+        txt_signup.setOnClickListener(this);
         iv_faceBook.setOnClickListener(this);
     }
 

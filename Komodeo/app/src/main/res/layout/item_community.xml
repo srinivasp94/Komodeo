@@ -17,11 +17,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_community_post_layout"
                 android:layout_width="50dp"
                 android:layout_height="51dp"
-                android:src="@drawable/png" />
+                android:src="@drawable/boy" />
 
         </FrameLayout>
 
@@ -29,22 +29,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_toRightOf="@id/frame_layout"
             android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@id/frame_layout"
             android:orientation="vertical">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/txt_name"
+                style="@style/custom_item_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Abhinav Che"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textColor="@color/black" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/custom_item_textview"
                 android:id="@+id/txt_subject"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_name"

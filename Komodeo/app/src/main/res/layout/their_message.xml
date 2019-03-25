@@ -45,7 +45,8 @@
             android:visibility="gone"
             android:src="@drawable/png" />
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/custom_item_textview"
             android:id="@+id/txt_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

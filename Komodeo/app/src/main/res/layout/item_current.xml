@@ -15,8 +15,9 @@
         android:orientation="vertical"
         android:padding="@dimen/_3sdp">
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_new_events_count"
+            style="@style/custom_item_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

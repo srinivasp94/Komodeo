@@ -3,8 +3,8 @@
     package="com.iprismtech.komodeo">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".MyApplication"
@@ -14,24 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!--<meta-data-->
-        <!--android:name="com.google.android.geo.API_KEY"-->
-        <!--android:value="AIzaSyDAub648ZuMc6Sbnbg1fOzSoaDbEWUsi3U" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="AIzaSyDAub648ZuMc6Sbnbg1fOzSoaDbEWUsi3U" /> -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBJTKQDparmWew0LQyf8XUo_Xq48U_69dM" />
 
-
         <activity android:name=".activity.LoginAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
@@ -57,16 +51,22 @@
         <activity android:name=".activity.UserPostCommentActivity" />
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.PersonalChatActivity" />
-        <!--android:stackFromBottom="true"-->
-        <!--android:transcriptMode="alwaysScroll" />-->
+        <!-- android:stackFromBottom="true" -->
+        <!-- android:transcriptMode="alwaysScroll" /> -->
 
-       <!-- <meta-data
+
+        <!--
+            <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDKymeBXNeiFWY5jRUejv6zItpmr2MVyQ0" />-->
+            android:value="AIzaSyDKymeBXNeiFWY5jRUejv6zItpmr2MVyQ0" />
+        -->
 
-        <!--<meta-data
+
+        <!--
+            <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
+            android:value="@integer/google_play_services_version" />
+        -->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -76,7 +76,6 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -90,7 +89,16 @@
             </intent-filter>
         </activity>
 
-        <!--<activity android:name=".fragments.ClassesFragment"></activity>-->
+        <!-- <activity android:name=".fragments.ClassesFragment"></activity> -->
+        <activity android:name=".activity.UploadCredentialsActivity" />
+        <activity android:name=".activity.FAQActivity" />
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

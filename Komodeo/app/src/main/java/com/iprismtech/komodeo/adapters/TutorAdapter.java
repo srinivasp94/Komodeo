@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.responses.EventsList;
+import com.iprismtech.komodeo.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,16 +49,18 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.ViewHolder> 
         if (model.firstName != null || model.lastName != null)
             viewHolder.txt_personName.setText(model.firstName);
         if (model.eventName != null)
-            viewHolder.txt_name.setText(model.eventName + "\n" + model.eventDate);
+            viewHolder.txt_name.setText(model.eventName);
         if (model.maxGroupSize != null)
-            viewHolder.txtMax.setText(model.maxGroupSize);
-        viewHolder.txt_subject.setText(model.startTime + " " + model.endTime);
+            viewHolder.txtMax.setText("Max " + model.maxGroupSize);
+        viewHolder.txt_subject.setText(model.eventDate + " " + model.startTime + " " + model.endTime);
         if (model.locationAddress != null)
             viewHolder.txt_mutual_friends.setText(model.locationAddress);
         if (model.totalPrice != null)
             viewHolder.txt_price.setText("$ " + model.totalPrice);
         if (model.ratings != null)
             viewHolder.txtRating.setText(model.ratings);
+        Picasso.with(context).load(Constants.BASE_IMAGE_URL + model.profilePic).
+                error(R.drawable.boy).into(viewHolder.iv_post_layout);
     }
 
     @Override
@@ -86,7 +90,7 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.ViewHolder> 
         @Override
         public void onClick(View v) {
             if (mListner != null) {
-                mListner.onItemClick(v,getAdapterPosition());
+                mListner.onItemClick(v, getAdapterPosition());
             }
         }
     }

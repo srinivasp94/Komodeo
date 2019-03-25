@@ -83,6 +83,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         ll_share.setOnClickListener(this);
         ll_SendMsg.setOnClickListener(this);
         txttoolbaBook.setOnClickListener(this);
+        iv_te_back.setOnClickListener(this);
     }
 
     @Override
@@ -261,5 +262,10 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         }
         new RetrofitRequester(this).callPostServices(obj, 4, "book_event", true);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
