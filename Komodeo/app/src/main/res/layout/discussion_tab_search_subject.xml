@@ -397,13 +397,25 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:visibility="visible"
-        android:weightSum="2">
+        android:weightSum="2.1">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_cam"
+            android:background="#d3d3d3"
+            android:src="@drawable/gal"
+            android:id="@+id/iv_post_img"
+            android:visibility="visible" />
 
 
         <!--<LinearLayout-->
         <!--android:layout_width="0dp"-->
         <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="0.7"-->
+        <!--android:layout_weight="0.3"-->
         <!--android:background="#d3d3d3"-->
         <!--android:orientation="horizontal">-->
 
@@ -413,7 +425,6 @@
         <!--android:layout_height="30dp"-->
         <!--android:layout_centerVertical="true"-->
         <!--android:layout_gravity="center_vertical"-->
-        <!--android:visibility="gone"-->
         <!--android:layout_marginLeft="45dp"-->
         <!--android:src="@drawable/camera_black" />-->
 
@@ -424,8 +435,8 @@
         <!--android:layout_gravity="center_vertical"-->
         <!--android:layout_marginLeft="10dp"-->
         <!--android:layout_toRightOf="@+id/iv_cam"-->
-        <!--android:visibility="gone"-->
-        <!--android:src="@drawable/gal" />-->
+        <!--android:src="@drawable/gal"-->
+        <!--android:visibility="visible" />-->
 
         <!--</LinearLayout>-->
 
@@ -434,7 +445,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.7"
-            android:background="#d3d3d3"
             android:orientation="horizontal">
 
             <com.iprismtech.komodeo.customtextview.CustomEditText
