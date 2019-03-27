@@ -32,10 +32,10 @@ import org.json.JSONObject;
 public class UserProfileActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
     private Object obj;
     ImageView iv_profile, iv_edit_profile,iv_pro_back;
-    TextView txt_name, txt_profile_subject, txt_biodesc;
+    private TextView txt_name, txt_profile_subject, txt_biodesc,txt_profile_friends;
     AlertDialog alert;
     ImageView iv_editbio;
-    LinearLayout ll_Uploadcredentials;
+    LinearLayout ll_Uploadcredentials,ll_MyEvents;
     RetrofitResponseListener retrofitResponseListener;
 
     @Override
@@ -64,6 +64,8 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         iv_edit_profile.setOnClickListener(this);
         iv_pro_back.setOnClickListener(this);
         ll_Uploadcredentials.setOnClickListener(this);
+        ll_MyEvents.setOnClickListener(this);
+        txt_profile_friends.setOnClickListener(this);
     }
 
     @Override
@@ -76,9 +78,11 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         iv_edit_profile = findViewById(R.id.iv_edit_profile);
         iv_editbio = findViewById(R.id.iv_editbio);
         ll_Uploadcredentials = findViewById(R.id.ll_Uploadcredentials);
+        ll_MyEvents = findViewById(R.id.ll_MyEvents);
         txt_name = findViewById(R.id.txt_name_user_profile);
         txt_profile_subject = findViewById(R.id.txt_profile_subject);
         txt_biodesc = findViewById(R.id.txt_biodesc);
+        txt_profile_friends = findViewById(R.id.txt_profile_friends);
 
        /* txt_biodesc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +130,7 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                             txt_biodesc.setText((CharSequence) res.response.bio);
                             Picasso.with(context).load(Constants.BASE_IMAGE_URL + res.response.profilePic).
                                     error(R.drawable.manager).into(iv_profile);
+                            txt_profile_friends.setText(" Friends Count is "+res.friends_count);
                             break;
 
                         case 3:
@@ -258,8 +263,11 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         switch (v.getId()) {
             case R.id.ll_Uploadcredentials:
                 startActivity(new Intent(UserProfileActivity.this,UploadCredentialsActivity.class));
-
                 break;
+                case R.id.txt_profile_friends:
+                startActivity(new Intent(UserProfileActivity.this,FriendsAct.class));
+                break;
+
             case R.id.iv_editbio:
                 opeDialog();
                 break;
@@ -270,6 +278,10 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                 break;
             case R.id.iv_pro_back:
                 onBackPressed();
+                break;
+            case R.id.ll_MyEvents:
+                Intent eventsIntent = new Intent(UserProfileActivity.this, MyEventsActivity.class);
+                startActivity(eventsIntent);
                 break;
 
         }

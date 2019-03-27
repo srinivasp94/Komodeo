@@ -3,6 +3,7 @@ package com.iprismtech.komodeo.activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
     private FriendRequestsPojo friendRequestsPojo;
     private FriendRequestsAdapter adapter;
     private int selected_position;
+    private ImageView iv_invite_back;
 
     @Override
     public void onClick(View v) {
@@ -42,12 +44,24 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
     @Override
     protected void setListenerToViews() {
         super.setListenerToViews();
+        iv_invite_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
     protected void initializeViews() {
         super.initializeViews();
         rview_frd_reqs = findViewById(R.id.rview_frd_reqs);
+        iv_invite_back = findViewById(R.id.iv_invite_back);
 
         FriendRequestsListReq listReq = new FriendRequestsListReq();
         listReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);

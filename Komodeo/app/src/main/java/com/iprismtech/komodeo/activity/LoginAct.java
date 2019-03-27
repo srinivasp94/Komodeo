@@ -231,10 +231,6 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                             String tokenbase = jsonObject.optString("token");
                             SharedPrefsUtils.setString(SharedPrefsUtils.KEY_TOKEN, tokenbase);
 
-
-
-
-
                             utils.createUserSession(
                                     response.optString("id"),
                                     response.optString("first_name"),
@@ -244,9 +240,6 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                                     response.optString("registered_through")
                             );
                             SharedPrefsUtils.setString(SharedPrefsUtils.KEY_PROFILE,response.optString("profile_pic"));
-                            Common.showToast(LoginAct.this, "" + tokenbase);
-                            Common.commonLogs(LoginAct.this, tokenbase);
-                            Log.d("@@TOKEN", tokenbase);
                             Intent intent1 = new Intent(LoginAct.this, MainActivity.class);
                             startActivity(intent1);
                             finish();

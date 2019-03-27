@@ -12,13 +12,20 @@ public class UserProfileRequest {
     @SerializedName("message")
     @Expose
     public String message;
+    @SerializedName("friends_count")
+    @Expose
+    public int friends_count;
     @SerializedName("response")
     @Expose
     public UserProfilePojo response;
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("status", status).append("message", message).append("response", response).toString();
+        return new ToStringBuilder(this)
+                .append("status", status)
+                .append("message", message)
+                .append("friends_count", friends_count)
+                .append("response", response)
+                .toString();
     }
-
 }

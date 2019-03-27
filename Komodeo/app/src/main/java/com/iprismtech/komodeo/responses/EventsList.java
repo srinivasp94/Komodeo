@@ -90,9 +90,42 @@ public class EventsList {
     @SerializedName("date")
     @Expose
     public String date;
+    @SerializedName("event_member_id")
+    @Expose
+    public String event_member_id;
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("userId", userId).append("universityId", universityId).append("classId", classId).append("eventName", eventName).append("eventType", eventType).append("eventDate", eventDate).append("startTime", startTime).append("endTime", endTime).append("locationLat", locationLat).append("locationLng", locationLng).append("locationAddress", locationAddress).append("peopleInvited", peopleInvited).append("privacy", privacy).append("note", note).append("eventPaymentType", eventPaymentType).append("perHead", perHead).append("perSession", perSession).append("maxGroupSize", maxGroupSize).append("createdOn", createdOn).append("modifiedOn", modifiedOn).append("profilePic", profilePic).append("firstName", firstName).append("lastName", lastName).append("ratings", ratings).append("totalPrice", totalPrice).append("dateTime", dateTime).append("date", date).toString();
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("userId", userId)
+                .append("universityId", universityId)
+                .append("classId", classId)
+                .append("eventName", eventName)
+                .append("eventType", eventType)
+                .append("eventDate", eventDate)
+                .append("startTime", startTime)
+                .append("endTime", endTime)
+                .append("locationLat", locationLat)
+                .append("locationLng", locationLng)
+                .append("locationAddress", locationAddress)
+                .append("peopleInvited", peopleInvited)
+                .append("privacy", privacy)
+                .append("note", note)
+                .append("eventPaymentType", eventPaymentType)
+                .append("perHead", perHead)
+                .append("perSession", perSession)
+                .append("maxGroupSize", maxGroupSize)
+                .append("createdOn", createdOn)
+                .append("modifiedOn", modifiedOn)
+                .append("profilePic", profilePic)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("ratings", ratings)
+                .append("totalPrice", totalPrice)
+                .append("dateTime", dateTime)
+                .append("date", date)
+                .append("event_member_id", event_member_id)
+                .toString();
     }
 }

@@ -260,7 +260,30 @@
                 </LinearLayout>
 
                 <View style="@style/custom_view" />
+                <LinearLayout
+                    android:id="@+id/ll_MyEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal">
 
+                    <ImageView
+
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:layout_marginRight="3dp"
+                        android:padding="@dimen/_3sdp"
+                        android:src="@drawable/attach" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtMyEvents"
+                        style="@style/custom_textview"
+                        android:text="My Events"
+                        android:textSize="@dimen/_15sdp" />
+
+                </LinearLayout>
+                <View style="@style/custom_view" />
 
             </LinearLayout>
 

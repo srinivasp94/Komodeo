@@ -3,6 +3,7 @@ package com.iprismtech.komodeo.activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.R;
@@ -23,6 +24,7 @@ public class NotificationsActivity extends BaseAbstractActivity implements View.
     private NotificationsPojo notificationsPojo;
     private NotificationsAdapter adapter;
     private Object obj;
+    ImageView iv_invite_back;
 
     @Override
     public void onClick(View v) {
@@ -32,6 +34,17 @@ public class NotificationsActivity extends BaseAbstractActivity implements View.
     @Override
     protected void setListenerToViews() {
         super.setListenerToViews();
+        iv_invite_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
@@ -44,6 +57,7 @@ public class NotificationsActivity extends BaseAbstractActivity implements View.
     protected void initializeViews() {
         super.initializeViews();
         rview_notifications = findViewById(R.id.rview_notifications);
+        iv_invite_back = findViewById(R.id.iv_invite_back);
 
 
         NotoficationsReq notoficationsReq = new NotoficationsReq();
