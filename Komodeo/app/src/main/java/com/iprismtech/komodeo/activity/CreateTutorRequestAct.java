@@ -141,8 +141,9 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
             txtCreateEvent.setText("Create Tutor Request");
         } else {
             txtCreateEvent.setText("Create Study Request");
-//            rg_paymentType.setVisibility(View.GONE);
-//            edtSessionAmount.setVisibility(View.GONE);
+
+            rg_paymentType.setVisibility(View.GONE);
+            edtSessionAmount.setVisibility(View.GONE);
         }
 
 
@@ -352,9 +353,11 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                     Common.showToast(CreateTutorRequestAct.this, "please Select Start Time");
                 } else if (edtEndTime.getText().toString().length() == 0) {
                     Common.showToast(CreateTutorRequestAct.this, "please Select End Time");
-                } else if (edtSessionAmount.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Enter Amount");
-                } else if (edtmaxSize.getText().toString().length() == 0) {
+                }
+//                else if (edtSessionAmount.getText().toString().length() == 0) {
+//                    Common.showToast(CreateTutorRequestAct.this, "please Enter Amount");
+//                }
+                else if (edtmaxSize.getText().toString().length() == 0) {
                     Common.showToast(CreateTutorRequestAct.this, "please Enter Size");
                 } else if (edtAddNote.getText().toString().length() == 0) {
                     Common.showToast(CreateTutorRequestAct.this, "please Enter Note");
@@ -371,11 +374,21 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                     req.startTime = edtStartTime.getText().toString();
                     req.endTime = edtEndTime.getText().toString();
 
-                    if (result_paymnet.equalsIgnoreCase("Per Session")) {
-                        req.eventPaymentType = "per_session";
+                    if (event_type.equalsIgnoreCase("study")) {
+
+                        req.eventPaymentType = "0";
+                        req.perSession = "0";
+                        req.per_head = "0";
                     } else {
-                        req.eventPaymentType = "per_head";
+                        if (result_paymnet.equalsIgnoreCase("Per Session")) {
+                            req.eventPaymentType = "per_session";
+                            req.perSession = edtSessionAmount.getText().toString();
+                        } else {
+                            req.eventPaymentType = "per_head";
+                            req.per_head = edtSessionAmount.getText().toString();
+                        }
                     }
+
                     req.eventType = event_type;
                     req.maxGroupSize = edtmaxSize.getText().toString();
                     req.note = edtAddNote.getText().toString();
@@ -385,11 +398,6 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                     req.peopleInvited = stringBuilder.toString();
                     req.privacy = result_privacy_type;
 
-                    if (result_paymnet.equalsIgnoreCase("Per Session")) {
-                        req.perSession = edtSessionAmount.getText().toString();
-                    } else {
-                        req.per_head = edtSessionAmount.getText().toString();
-                    }
 
 //                    req.perSession = "50";
 //                    req.per_head = "10";
