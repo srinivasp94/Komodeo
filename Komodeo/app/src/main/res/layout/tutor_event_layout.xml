@@ -326,10 +326,12 @@
                         style="@style/custom_item_textview"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
+                        android:textStyle="bold"
                         android:layout_below="@id/txt_address"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:gravity="center"
                         android:text="Click here to redirect to MAP"
+                        android:background="@drawable/map_bg"
                         android:textColor="@color/black" />
 
                     <android.support.v7.widget.AppCompatTextView

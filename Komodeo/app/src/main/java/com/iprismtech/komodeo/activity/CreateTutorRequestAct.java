@@ -35,7 +35,7 @@ import java.util.Calendar;
 
 public class CreateTutorRequestAct extends BaseAbstractActivity implements RetrofitResponseListener, View.OnClickListener {
 
-    TextView txt_datentime,edtStartDate,txt_reoccuring_settings, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
+    TextView txt_datentime, edtStartDate, txt_reoccuring_settings, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
     LinearLayout ll_addfriends;
     ImageView iv_back;
     private EditText edtTitle, edtStartTime, edtEndDate,
@@ -141,6 +141,8 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
             txtCreateEvent.setText("Create Tutor Request");
         } else {
             txtCreateEvent.setText("Create Study Request");
+//            rg_paymentType.setVisibility(View.GONE);
+//            edtSessionAmount.setVisibility(View.GONE);
         }
 
 
@@ -347,9 +349,9 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                 } else if (edtStartDate.getText().toString().length() == 0) {
                     Common.showToast(CreateTutorRequestAct.this, "please Select Date");
                 } else if (edtStartTime.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Selct Start Time");
+                    Common.showToast(CreateTutorRequestAct.this, "please Select Start Time");
                 } else if (edtEndTime.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Selct End Time");
+                    Common.showToast(CreateTutorRequestAct.this, "please Select End Time");
                 } else if (edtSessionAmount.getText().toString().length() == 0) {
                     Common.showToast(CreateTutorRequestAct.this, "please Enter Amount");
                 } else if (edtmaxSize.getText().toString().length() == 0) {

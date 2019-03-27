@@ -1,10 +1,10 @@
 package com.iprismtech.komodeo.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -12,8 +12,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
@@ -24,10 +22,8 @@ import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.activity.AddclassFormAct;
 import com.iprismtech.komodeo.adapters.ClassesSearchApdapter;
 import com.iprismtech.komodeo.base.BaseAbstractFragment;
-import com.iprismtech.komodeo.factories.Constants.AppConstants;
-import com.iprismtech.komodeo.factories.controllers.ApplicationController;
 import com.iprismtech.komodeo.pojo.SearchClassesPojo;
-import com.iprismtech.komodeo.request.AddClassReq;
+import com.iprismtech.komodeo.request.AssignClassReq;
 import com.iprismtech.komodeo.request.SearchClassesReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
@@ -99,7 +95,6 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
             public void afterTextChanged(Editable s) {
                 if (s.length() == 0) {
                     searchClassesPojo = null;
-                    adapter.notifyDataSetChanged();
                     rview_search_classes.setVisibility(View.GONE);
                 }
 
@@ -167,7 +162,12 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
                             break;
                         case 2:
                             Toast.makeText(getActivity(), "Class Added Successfully", Toast.LENGTH_SHORT).show();
-
+                            try {
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                fragmentManager.beginTransaction().replace(R.id.framelayout_Main, new ClassesFragment(), "").commit();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             break;
                     }
                 } else {
@@ -175,6 +175,8 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
                     Common.showToast(getActivity(), object.optString("message"));
                     searchClassesPojo = null;
                     adapter.notifyDataSetChanged();
+                    rview_search_classes.setVisibility(View.GONE);
+
 
                 }
             } catch (Exception e) {
@@ -184,18 +186,16 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
     }
 
     private void callSelectClassWS(int position) {
-        AddClassReq req = new AddClassReq();
+        AssignClassReq req = new AssignClassReq();
         req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
         req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
-        req.courseName = searchClassesPojo.getResponse().get(position).getTitle();
-        req.subjectName = searchClassesPojo.getResponse().get(position).getSubject_name();
-        req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+        req.classId = searchClassesPojo.getResponse().get(position).getId();
         try {
-            obj = Class.forName(AddClassReq.class.getName()).cast(req);
+            obj = Class.forName(AssignClassReq.class.getName()).cast(req);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new RetrofitRequester(this).callPostServices(obj, 2, "add_class", true);
+        new RetrofitRequester(this).callPostServices(obj, 2, "assign_class", true);
 
     }
 }

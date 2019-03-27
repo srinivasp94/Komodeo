@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,13 +55,14 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
     private ImageView iv_chatback;
 
     Thread t1;
+    private boolean flag_loading = false;
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_load_more:
-                chat_count = chat_count + 15;
+                chat_count = chat_count + 30;
                 PersonalChatRequest request = new PersonalChatRequest();
                 request.numItems = String.valueOf(chat_count);
                 request.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
@@ -167,6 +169,28 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                 handler.postDelayed(this, 10000);
             }
         };
+
+//        chatlist.setOnScrollListener(new ListView.OnScrollListener() {
+//
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//
+//
+//            }
+//
+//            public void onScroll(AbsListView view, int firstVisibleItem,
+//                                 int visibleItemCount, int totalItemCount) {
+//
+//                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
+//                    if (flag_loading == false) {
+//                        flag_loading = true;
+//                        callAutoLoad();
+//
+//                    }
+//                }
+//            }
+//        });
+
+
     }
 
     @Override
@@ -198,10 +222,23 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                                 responseBeans_next.addAll(0, responseBeans);
                                 // idx_count = idx_count + 15;
                                 responseBeans.clear();
-
+                                //  flag_loading = false;
                                 adapter = new ChatAdapter(PersonalChatActivity.this, responseBeans_next);
+
+
                                 chatlist.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
                                 chatlist.setAdapter(adapter);
+
+// save index and top position
+                                    int index = chatlist.getFirstVisiblePosition();
+                                    View v = chatlist.getChildAt(0);
+                                    int top = (v == null) ? 0 : (v.getTop() - chatlist.getPaddingTop());
+// ...
+// restore index and position
+                                    chatlist.setSelectionFromTop(index, top);
+
+
+
                                 //   personalChatAdapter = new PersonalChatAdapter(PersonalChatActivity.this, responseBeans);
                                 // rview_personal_chat.scrollToPosition(responseBeans.size());
                                 //   rview_personal_chat.setAdapter(personalChatAdapter);
@@ -266,6 +303,7 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
         }
     }
 
+
     private void makeServiceCallWS() {
         responseBeans = new ArrayList<>();
         responseBeans_next = new ArrayList<>();
@@ -283,6 +321,26 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
             e.printStackTrace();
         }
         new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", false);
+    }
+
+    private void callAutoLoad() {
+        chat_count = chat_count + 30;
+        PersonalChatRequest request = new PersonalChatRequest();
+        request.numItems = String.valueOf(chat_count);
+        request.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        request.receiverId = str_receiver_id;
+        request.senderId = str_senderID;
+        //flatListRequest.building_id="4";
+
+        try {
+            obj = Class.forName(PersonalChatRequest.class.getName()).cast(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        new RetrofitRequester(this).callPostServices(obj, 1, "chat_details", true);
+
+
     }
 
     @Override
