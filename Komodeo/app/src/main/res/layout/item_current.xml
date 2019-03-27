@@ -39,6 +39,7 @@
             style="@style/custom_textview"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_margin="@dimen/_5sdp"
             android:text="This is static text"
             android:textColor="@color/white"
             android:textSize="@dimen/_18sdp"

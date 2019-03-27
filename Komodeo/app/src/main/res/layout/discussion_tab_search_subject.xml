@@ -82,9 +82,10 @@
 
                 <ImageView
                     android:id="@+id/iv_discussion_back"
-                    android:layout_width="18dp"
-                    android:layout_height="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_22sdp"
                     android:layout_gravity="center"
+                    android:padding="@dimen/_3sdp"
                     android:src="@drawable/back_triangleshaped_white" />
 
             </LinearLayout>

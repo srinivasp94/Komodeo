@@ -1,339 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.FAQActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/_5sdp"
-        android:orientation="vertical"
-        android:padding="@dimen/_5sdp">
+        android:layout_height="50dp"
+        android:background="#0e3e4a">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/txtGeneral"
-            style="@style/custom_textview"
-            android:text="@string/general"
-            android:textColor="@color/colorPrimaryDark" />
-        <View style="@style/custom_view"/>
+
+        <ImageView
+            android:id="@+id/iv_invite_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back_triangleshaped_white" />
+
+
+        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="FAQs"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llGeneral"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtGeneral"
                 style="@style/custom_textview"
-                android:text="@string/q1"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a1" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/q2"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a2" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/q3"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a3" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/q4"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a5" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/q6"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a6" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/q7"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/a7" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/classes"
+                android:text="@string/general"
                 android:textColor="@color/colorPrimaryDark" />
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qc1"
-                android:textColor="@color/colorPrimary" />
+            <View style="@style/custom_view" />
+
+            <LinearLayout
+                android:id="@+id/llGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q1"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q2"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a2" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q3"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a3" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q4"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a5" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q6"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a6" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/q7"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/a7" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/classes"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qc1"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ac1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qc2"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ac2" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qc3"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ac3" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qc4"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ac4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qc5"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ac5" />
+            </LinearLayout>
+
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/TxtTutor"
                 style="@style/custom_textview"
-                android:text="@string/ac1" />
+                android:text="@string/tutoring"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View style="@style/custom_view" />
+
+            <LinearLayout
+                android:id="@+id/llTutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt1"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt2"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at2" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt3"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at3" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt4"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at5" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt6"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at6" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt7"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at7" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at8" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qt9"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/at9" />
+            </LinearLayout>
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtStudy"
                 style="@style/custom_textview"
-                android:text="@string/qc2"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/study"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View style="@style/custom_view" />
+
+            <LinearLayout
+                android:id="@+id/llStudy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qs1"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/as1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qs2"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/as" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qs3"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/as3" />
+            </LinearLayout>
+
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtEvents"
                 style="@style/custom_textview"
-                android:text="@string/ac2" />
+                android:text="@string/events"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View style="@style/custom_view" />
+
+            <LinearLayout
+                android:id="@+id/llEvents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qs4"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/as4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/qs5"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/as5" />
+            </LinearLayout>
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtMiscel"
                 style="@style/custom_textview"
-                android:text="@string/qc3"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/miscellaneous"
+                android:textColor="@color/colorPrimaryDark" />
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ac3" />
+            <View style="@style/custom_view" />
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qc4"
-                android:textColor="@color/colorPrimary" />
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ac4" />
+            <LinearLayout
+                android:id="@+id/llMiscel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qc5"
-                android:textColor="@color/colorPrimary" />
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/mq1"
+                    android:textColor="@color/colorPrimary" />
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ac5" />
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ma1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/mq2"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ma2" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/mq3"
+                    android:textColor="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/custom_textview"
+                    android:text="@string/ma3" />
+            </LinearLayout>
         </LinearLayout>
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/TxtTutor"
-            style="@style/custom_textview"
-            android:text="@string/tutoring"
-            android:textColor="@color/colorPrimaryDark" />
-
-        <View style="@style/custom_view"/>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llTutor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt1"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at1" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt2"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at2" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt3"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at3" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt4"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at5" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt6"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at6" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt7"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at7" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at8" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qt9"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/at9" />
-        </LinearLayout>
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/txtStudy"
-            style="@style/custom_textview"
-            android:text="@string/study"
-            android:textColor="@color/colorPrimaryDark" />
-        <View style="@style/custom_view"/>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llStudy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qs1"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/as1" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qs2"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/as" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qs3"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/as3" />
-        </LinearLayout>
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/txtEvents"
-            style="@style/custom_textview"
-            android:text="@string/events"
-            android:textColor="@color/colorPrimaryDark" />
-        <View style="@style/custom_view"/>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llEvents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qs4"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/as4" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/qs5"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/as5" />
-        </LinearLayout>
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/txtMiscel"
-            style="@style/custom_textview"
-            android:text="@string/miscellaneous"
-            android:textColor="@color/colorPrimaryDark" />
-        <View style="@style/custom_view"/>
-
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llMiscel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/mq1"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ma1" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/mq2"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ma2" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/mq3"
-                android:textColor="@color/colorPrimary" />
-
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/custom_textview"
-                android:text="@string/ma3" />
-        </LinearLayout>
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
