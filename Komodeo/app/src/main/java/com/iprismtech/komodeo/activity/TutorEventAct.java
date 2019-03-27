@@ -1,9 +1,12 @@
 package com.iprismtech.komodeo.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +29,7 @@ import com.iprismtech.komodeo.responses.TutorSingelRes;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
+import com.iprismtech.komodeo.utils.GPSTracker;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 
 import org.json.JSONObject;
@@ -36,7 +40,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
 
     private ImageView iv_te_back;
     private TextView txt_Date, txt_tutoringwith, txtinTime, txtInvitedBy, txttoolbaBook,
-            txt_estimation, txtPeopleLeft, txtPeopleGoing, txt_address, txt_desc;
+            txt_estimation, txtPeopleLeft, txtPeopleGoing, txt_address, txt_desc, txt_map_coming_soon;
     private EditText edtMessage;
     LinearLayout ll_book, ll_share, ll_SendMsg;
     private EventuserHorizonAdapter mUserHorizonAdapter;
@@ -49,6 +53,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
     private String eventId;
     private Object obj;
     private String eventCreateATutorId;
+    private String lat, lng;
 
    /* book_event
     {
@@ -84,6 +89,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         ll_SendMsg.setOnClickListener(this);
         txttoolbaBook.setOnClickListener(this);
         iv_te_back.setOnClickListener(this);
+        txt_map_coming_soon.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +109,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
         txt_address = findViewById(R.id.txt_address);
         txt_desc = findViewById(R.id.txt_desc);
         txttoolbaBook = findViewById(R.id.txttoolbaBook);
+        txt_map_coming_soon = findViewById(R.id.txt_map_coming_soon);
 
         edtMessage = findViewById(R.id.edtMessage);
 
@@ -145,6 +152,8 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                     switch (requestId) {
                         case 1:
                             TutorSingelRes res = Common.getSpecificDataObject(objectResponse, TutorSingelRes.class);
+                            lat = res.response.locationLat;
+                            lng = res.response.locationLng;
                             eventCreateATutorId = res.response.userId;
                             memberArrayList = (ArrayList<EventMember>) res.response.eventMembers;
                             if (memberArrayList != null && memberArrayList.size() > 0) {
@@ -158,7 +167,7 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                             }
 
 
-                            txt_Date.setText(res.response.date.replace(" ","\n"));
+                            txt_Date.setText(res.response.date.replace(" ", "\n"));
                             txt_tutoringwith.setText(res.response.eventName + " Created By " + res.response.eventCreatedBy);
                             txtinTime.setText(res.response.eventDate + " " + res.response.startTime + "" + res.response.endTime);
                             txtInvitedBy.setText("Invited By " + res.response.firstName + " " + res.response.lastName);
@@ -224,6 +233,17 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                 break;
             case R.id.txttoolbaBook:
                 bookEventWS();
+                break;
+            case R.id.txt_map_coming_soon:
+                try {
+                    GPSTracker gpsTracker = new GPSTracker(TutorEventAct.this);
+                    String uri = "http://maps.google.com/maps?f=d&hl=en&saddr=" + gpsTracker.getLatitude() + "," + gpsTracker.getLongitude() + "&daddr=" + lat + "," + lng;
+                    Intent intent1 = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(Intent.createChooser(intent1, "Select an application"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Error Maps", e.toString());
+                }
                 break;
             case R.id.iv_te_back:
                 onBackPressed();
