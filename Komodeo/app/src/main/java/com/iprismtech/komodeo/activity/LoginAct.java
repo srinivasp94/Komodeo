@@ -35,6 +35,7 @@ import com.iprismtech.komodeo.request.LoginReq;
 import com.iprismtech.komodeo.request.SocialLoginReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
+import com.iprismtech.komodeo.utils.AppPermissions;
 import com.iprismtech.komodeo.utils.Common;
 import com.iprismtech.komodeo.utils.LogUtils;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
@@ -87,6 +88,9 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
         super.initializeViews();
 
         utils = SharedPrefsUtils.getInstance(LoginAct.this);
+
+        AppPermissions.callPermissionForContact(LoginAct.this);
+
         txt_signup = findViewById(R.id.txt_signup);
         txt_signin = findViewById(R.id.txt_signin);
         txt_forgotpass = findViewById(R.id.txt_forgotpass);
@@ -239,11 +243,13 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                                     response.optString("university_id"),
                                     response.optString("registered_through")
                             );
+                            SharedPrefsUtils.setString(SharedPrefsUtils.KEY_PROFILE,response.optString("profile_pic"));
                             Common.showToast(LoginAct.this, "" + tokenbase);
                             Common.commonLogs(LoginAct.this, tokenbase);
                             Log.d("@@TOKEN", tokenbase);
                             Intent intent1 = new Intent(LoginAct.this, MainActivity.class);
                             startActivity(intent1);
+                            finish();
                             break;
                     }
                 } else {

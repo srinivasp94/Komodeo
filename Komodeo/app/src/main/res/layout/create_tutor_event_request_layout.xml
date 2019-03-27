@@ -98,7 +98,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@id/civ_profile"
                                 android:backgroundTint="@color/transparent"
-                                android:text="MATH 241 tutoring with James C"
+                                android:text="Class Name "
                                 android:textColor="@color/black"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
@@ -389,7 +389,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="5dp"
                                 android:layout_toRightOf="@id/iv_edit"
-                                android:text="2 people invited"
+                                android:text="0 people invited"
                                 android:textStyle="bold" />
 
 

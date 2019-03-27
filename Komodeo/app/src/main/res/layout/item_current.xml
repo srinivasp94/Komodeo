@@ -32,15 +32,16 @@
             android:visibility="gone" />
 
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_sub_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/custom_textview"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="This is static text"
             android:textColor="@color/white"
-            android:textSize="@dimen/_22sdp"
+            android:textSize="@dimen/_18sdp"
             android:textStyle="bold" />
 
         <!--<ImageView-->

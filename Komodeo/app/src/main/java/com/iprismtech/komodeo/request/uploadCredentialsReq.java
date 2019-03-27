@@ -26,7 +26,7 @@ public class uploadCredentialsReq {
         return new ToStringBuilder(this).append("token", token).append("userId", userId).append("classId", classId).append("images", images).toString();
     }
 
-    public class ImageList {
+    public static class ImageList {
         @SerializedName("image")
         @Expose
         public String image;

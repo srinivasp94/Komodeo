@@ -48,7 +48,7 @@ public class ClassesSearchApdapter extends RecyclerView.Adapter<ClassesSearchApd
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.tv_class_code.setText(searchClassesPojo.getResponse().get(i).getTitle());
         viewHolder.tv_sub_class.setText(searchClassesPojo.getResponse().get(i).getSubject_name());
-        Picasso.with(context).load(Constants.BASE_IMAGE_URL + searchClassesPojo.getResponse().get(i).getIcon()).error(R.drawable.addclass).into(viewHolder.iv_item_classes_search);
+//        Picasso.with(context).load(Constants.BASE_IMAGE_URL + searchClassesPojo.getResponse().get(i).getIcon()).error(R.drawable.addclass).into(viewHolder.iv_item_classes_search);
 
     }
 

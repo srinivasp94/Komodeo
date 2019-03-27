@@ -33,7 +33,6 @@
             android:id="@+id/rl_noti_titleandtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/frame"
             android:padding="5dp">
 
             <LinearLayout

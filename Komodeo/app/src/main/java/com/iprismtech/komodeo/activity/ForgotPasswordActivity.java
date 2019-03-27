@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -24,6 +25,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
     ForgotPasswordReq forgotPasswordReq;
     private Object obj;
     TextView btn_resetpassword;
+    private ImageView myaccountback;
 
     @Override
     public void onClick(View v) {
@@ -43,6 +45,9 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
                     e.printStackTrace();
                 }
                 new RetrofitRequester(this).callPostServices(obj, 2, "forgot_password", true);
+                break;
+            case R.id.myaccountback:
+                onBackPressed();
                 break;
 
         }
@@ -90,6 +95,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
                             Common.showToast(ForgotPasswordActivity.this, jsonObject.optString("message"));
 
                             startActivity(new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class));
+                            finish();
 
 
                     }
@@ -112,6 +118,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
     protected void setListenerToViews() {
         super.setListenerToViews();
         btn_resetpassword.setOnClickListener(this);
+        myaccountback.setOnClickListener(this);
 
     }
 
@@ -122,5 +129,10 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
         btn_resetpassword = findViewById(R.id.btn_resetpassword);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

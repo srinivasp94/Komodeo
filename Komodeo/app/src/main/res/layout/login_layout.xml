@@ -78,10 +78,11 @@
             android:gravity="center"
             android:hint="Email Address"
             android:padding="10dp"
-            android:text="khadeer.md@iprismtech.com" />
+            android:singleLine="true"
+            android:text="" />
 
 
-        <com.iprismtech.komodeo.customtextview.CustomEditText
+        <EditText
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,10 +91,11 @@
             android:layout_marginRight="50dp"
             android:background="@drawable/rounded_btn"
             android:gravity="center"
-            android:hint="******"
+            android:hint="123456"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:singleLine="true"
-            android:text="123456" />
+            android:text="" />
 
 
         <LinearLayout

@@ -85,16 +85,23 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 1) {
-
+                    rview_search_classes.setVisibility(View.VISIBLE);
                     callSearchWS(s.toString());
-                } else if (s.length() == 0) {
-                    adapter = null;
-                }
+                } /*else if (s.length() == 0) {
+
+                    searchClassesPojo = null;
+                    adapter.notifyDataSetChanged();
+                }*/
                 // return false;
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (s.length() == 0) {
+                    searchClassesPojo = null;
+                    adapter.notifyDataSetChanged();
+                    rview_search_classes.setVisibility(View.GONE);
+                }
 
             }
         });
@@ -166,6 +173,9 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
                 } else {
                     rlnosearchresults.setVisibility(View.VISIBLE);
                     Common.showToast(getActivity(), object.optString("message"));
+                    searchClassesPojo = null;
+                    adapter.notifyDataSetChanged();
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

@@ -26,7 +26,7 @@ public class ProfileActivity extends BaseAbstractActivity implements View.OnClic
     private ImageView iv_viewratings, iv_chat;
     private RelativeLayout rl_review_events;
     private ImageView iv_pro_back, iv_profile;
-    private LinearLayout ll_editavailability, llcal1;
+    private LinearLayout ll_editavailability, llcal1,ll_Uploadcredentials;
     private boolean istrue = true;
     private TextView txt_profile, txt_name, txt_profile_subject, txt_profile_friends, txt_study, tv_profile_tutor;
     private Object obj;
@@ -92,6 +92,7 @@ public class ProfileActivity extends BaseAbstractActivity implements View.OnClic
         iv_viewratings.setOnClickListener(this);
         iv_chat.setOnClickListener(this);
         ll_editavailability.setOnClickListener(this);
+        ll_Uploadcredentials.setOnClickListener(this);
         rl_review_events.setOnClickListener(this);
         iv_pro_back.setOnClickListener(this);
     }
@@ -105,6 +106,7 @@ public class ProfileActivity extends BaseAbstractActivity implements View.OnClic
         rl_review_events = findViewById(R.id.rl_review_events);
         ll_editavailability = findViewById(R.id.ll_editavailability);
         llcal1 = findViewById(R.id.ll_cal1);
+        ll_Uploadcredentials = findViewById(R.id.ll_Uploadcredentials);
         txt_name = findViewById(R.id.txt_name);
         txt_profile_subject = findViewById(R.id.txt_profile_subject);
         iv_profile = findViewById(R.id.iv_profile);

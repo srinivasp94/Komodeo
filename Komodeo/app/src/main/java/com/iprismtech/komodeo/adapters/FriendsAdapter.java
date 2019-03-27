@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.responses.FriendList;
+import com.iprismtech.komodeo.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,11 +46,12 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         FriendList member = list.get(i);
-        /*Picasso.with(context).load(Constants.BASE_IMAGE_URL + member.).
-                error(R.drawable.manager).into(viewHolder.imgPic);*/
+        Picasso.with(context).load(Constants.BASE_IMAGE_URL + member.profilePic).
+                error(R.drawable.boy).into(viewHolder.imgPic);
         viewHolder.txtName.setText(member.firstName + " " + member.lastName);
-        viewHolder.txt_subject.setText(member.events);
-        viewHolder.txt_mutualfriends.setText(member.friendRequests);
+        if (member.major != null)
+            viewHolder.txt_subject.setText(member.major);
+        viewHolder.txt_mutualfriends.setText(member.emailId);
     }
 
     @Override
@@ -62,7 +65,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgPic = itemView.findViewById(R.id.imgPic);
+            imgPic = itemView.findViewById(R.id.iv_profile);
             imgMessage = itemView.findViewById(R.id.imgMessage);
             txtName = itemView.findViewById(R.id.txt_name);
             txt_subject = itemView.findViewById(R.id.txt_subject);

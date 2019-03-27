@@ -171,6 +171,7 @@ public class SignupAct extends BaseAbstractActivity implements View.OnClickListe
                         case 2:
                             Common.showToast(SignupAct.this, jsonObject.optString("message"));
                             startActivity(new Intent(SignupAct.this, LoginAct.class));
+                            finish();
                             break;
                     }
                 } else {
@@ -182,5 +183,10 @@ public class SignupAct extends BaseAbstractActivity implements View.OnClickListe
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

@@ -57,7 +57,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     Switch swch_comments, swch_likes, swch_mentions, swch_event_notifications, swch_friend_request, swch_message, swch_event_cancellation, swch_friend_suggestion;
 
-    ImageView iv_profile_settings;
+    ImageView iv_profile_settings, iv_loc;
 
     RetrofitResponseListener retrofitResponseListener;
 
@@ -73,15 +73,16 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     private String base64pic;
 
-    TextView txt_default_location, txt_update;
+    private TextView txt_default_location, txt_update, tv_address;
 
-    EditText txt_password, edt_firstname, edt_lastname, edt_mobile, edt_email, edt_university, edt_major;
+    private EditText txt_password, edt_firstname, edt_lastname, edt_mobile, edt_email, edt_university, edt_major;
 
-    SettingsReq settingsReq;
+    private SettingsReq settingsReq;
 
     LinearLayout ll_pament_venmo, ll_gpay, ll_Paypal, ll_cash;
 
     private Object obj;
+    private String post_Status, selected_lat, selected_lng, selected_address;
 
 
     @Override
@@ -116,6 +117,8 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
         ll_Paypal = findViewById(R.id.ll_Paypal);
         ll_cash = findViewById(R.id.ll_cash);
+        iv_loc = findViewById(R.id.iv_loc);
+        tv_address = findViewById(R.id.tv_address);
 
 
         txt_password = findViewById(R.id.txt_password);
@@ -180,6 +183,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         ll_gpay.setOnClickListener(this);
         ll_Paypal.setOnClickListener(this);
         ll_cash.setOnClickListener(this);
+        iv_loc.setOnClickListener(this);
 
 
         swch_comments.setOnClickListener(this);
@@ -264,6 +268,12 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
             case R.id.iv_profile_settings:
                 showPictureDialog("document");
+                break;
+            case R.id.iv_loc:
+                Intent intent1 = new Intent(SettingsAct.this, LocationGetActivity.class);
+                startActivityForResult(intent1, 101);
+
+                // startActivityForResult(new Intent(CreateTutorRequestAct.this,LocationGetActivity.class));
                 break;
 
 
@@ -515,6 +525,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         }
     }
 
+    @Override
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -577,6 +588,20 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
                 new Async_BitmapWorkerTaskForPic().execute();
             } else if (type.equalsIgnoreCase("document")) {
                 new Async_BitmapWorkerTaskForPic().execute();
+            }
+
+        }
+        if (requestCode == 101) {
+            post_Status = data.getStringExtra("location_Status");
+            if (post_Status.equalsIgnoreCase("ok")) {
+//                    TextView count_commnets = adaptet_item_view.getRootView().findViewById(R.id.tv_comments_count);
+//                    int str_count_comments = Integer.parseInt(count_commnets.getText().toString());
+//                    str_count_comments = str_count_comments + 1;
+//                    count_commnets.setText(str_count_comments + "");
+                selected_lat = data.getStringExtra("user_lat");
+                selected_lng = data.getStringExtra("user_lang");
+                selected_address = data.getStringExtra("user_address");
+                tv_address.setText(selected_address);
             }
 
         }
@@ -665,9 +690,9 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         settingsReq.mobile = edt_mobile.getText().toString();
         settingsReq.major = edt_major.getText().toString();
         settingsReq.paymentPreference = paymentpreference;
-        settingsReq.defaultLat = "17.5654";
-        settingsReq.defaultLng = "78.65464";
-        settingsReq.defaultAddress = "madhapur,hyderabad";
+        settingsReq.defaultLat = selected_lat;
+        settingsReq.defaultLng = selected_lng;
+        settingsReq.defaultAddress = selected_address;
         settingsReq.comments = settingsReq.comments;
         settingsReq.likes = settingsReq.likes;
         settingsReq.friendRequests = settingsReq.friendRequests;
@@ -686,4 +711,6 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         new RetrofitRequester(this).callPostServices(obj, 3, "update_profile", true);
 
     }
+
+
 }

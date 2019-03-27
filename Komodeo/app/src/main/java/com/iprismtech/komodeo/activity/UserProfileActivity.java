@@ -31,10 +31,11 @@ import org.json.JSONObject;
 
 public class UserProfileActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
     private Object obj;
-    ImageView iv_profile, iv_edit_profile;
+    ImageView iv_profile, iv_edit_profile,iv_pro_back;
     TextView txt_name, txt_profile_subject, txt_biodesc;
     AlertDialog alert;
     ImageView iv_editbio;
+    LinearLayout ll_Uploadcredentials;
     RetrofitResponseListener retrofitResponseListener;
 
     @Override
@@ -61,6 +62,8 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         super.setListenerToViews();
         iv_editbio.setOnClickListener(this);
         iv_edit_profile.setOnClickListener(this);
+        iv_pro_back.setOnClickListener(this);
+        ll_Uploadcredentials.setOnClickListener(this);
     }
 
     @Override
@@ -69,8 +72,10 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         ApplicationController.getInstance().setContext(this);
         retrofitResponseListener = this;
         iv_profile = findViewById(R.id.iv_profile);
+        iv_pro_back = findViewById(R.id.iv_pro_back);
         iv_edit_profile = findViewById(R.id.iv_edit_profile);
         iv_editbio = findViewById(R.id.iv_editbio);
+        ll_Uploadcredentials = findViewById(R.id.ll_Uploadcredentials);
         txt_name = findViewById(R.id.txt_name_user_profile);
         txt_profile_subject = findViewById(R.id.txt_profile_subject);
         txt_biodesc = findViewById(R.id.txt_biodesc);
@@ -251,7 +256,10 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.ll_Uploadcredentials:
+                startActivity(new Intent(UserProfileActivity.this,UploadCredentialsActivity.class));
 
+                break;
             case R.id.iv_editbio:
                 opeDialog();
                 break;
@@ -260,7 +268,15 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                 Intent intent = new Intent(UserProfileActivity.this, SettingsAct.class);
                 startActivity(intent);
                 break;
+            case R.id.iv_pro_back:
+                onBackPressed();
+                break;
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

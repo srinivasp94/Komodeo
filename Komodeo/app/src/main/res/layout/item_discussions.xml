@@ -5,10 +5,7 @@
     android:layout_marginBottom="@dimen/_5sdp"
     android:background="@color/white"
     android:orientation="vertical">
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/iv_posted_img"/>
+
     <RelativeLayout
         android:id="@+id/rl_post_layout"
         android:layout_width="match_parent"
@@ -44,11 +41,21 @@
             android:text="time ago"
             android:textSize="@dimen/_11sdp" />
 
+        <ImageView
+            android:id="@+id/iv_posted_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_post_layout"
+
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/tv_post_time"
+            android:src="@drawable/ic_no_image" />
+
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:id="@+id/txt_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_post_layout"
+            android:layout_below="@+id/iv_posted_img"
             android:layout_marginTop="@dimen/_10sdp"
             android:text="Lorem Ipsum is simply dummy text of printing and typesetting industry"
             android:textColor="@color/black"

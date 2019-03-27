@@ -60,6 +60,7 @@
                     android:hint="Enter Location manually"
                     android:id="@+id/et_location_search"
                     android:gravity="start|center"
+                    android:focusable="false"
                     android:paddingHorizontal="@dimen/_5sdp"
                     android:textColorHint="@color/white"
                     android:textSize="@dimen/_11sdp" />

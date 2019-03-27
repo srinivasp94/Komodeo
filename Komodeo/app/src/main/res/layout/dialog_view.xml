@@ -3,7 +3,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-
     android:gravity="center"
     android:orientation="vertical"
     android:padding="4dp">
@@ -17,7 +16,8 @@
         android:progressTint="@color/colorPrimary"
         android:scrollbars="none" />
 
-    <com.iprismtech.komodeo.customtextview.CustomEditText
+    <android.support.v7.widget.AppCompatTextView
+        style="@style/custom_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

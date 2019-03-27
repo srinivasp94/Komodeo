@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -30,39 +30,106 @@
         <!--android:name="com.google.android.geo.API_KEY"-->
         <!--android:value="AIzaSyBctZfklbLmSCMcrhmTJCI8RpUUvyNRUJo" />-->
 
-        <activity android:name=".activity.LoginAct">
+        <activity
+            android:name=".activity.LoginAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden">
 
         </activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity android:name=".activity.ViewRatingsAct"/>
+        <activity
+            android:name=".activity.ViewRatingsAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity android:name=".activity.SignupAct" />
-        <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.ContactusAct" />
-        <activity android:name=".activity.SettingsAct"/>
-        <activity android:name=".activity.FriendsAct" />
-        <activity android:name=".activity.AddclassFormAct" />
-        <activity android:name=".activity.NotificationAct" />
-        <activity android:name=".activity.CommunityDiscussionsActivity" />
+        <activity
+            android:name=".activity.SignupAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ContactusAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.SettingsAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.FriendsAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.AddclassFormAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.NotificationAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.CommunityDiscussionsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
 
-        <activity android:name=".activity.CreateChatAct" />
-        <activity android:name=".activity.TutorEventAct" />
-        <activity android:name=".activity.ForgotPasswordActivity" />
-        <activity android:name=".activity.ResetPasswordActivity" />
+        <activity
+            android:name=".activity.CreateChatAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.TutorEventAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ResetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity android:name=".TutoringTabFilterAct" />
-        <activity android:name=".activity.CreateTutorRequestAct" />
-        <activity android:name=".activity.InviteFriendsAct" />
+
+        <activity
+            android:name=".activity.CreateTutorRequestAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.InviteFriendsAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity android:name=".activity.CreateQuarterEventAct" />
         <activity android:name=".activity.ReoccuringSettingsAct" />
-        <activity android:name=".activity.UserPostCommentActivity" />
-        <activity android:name=".activity.CommunityActivity" />
-        <activity android:name=".activity.PersonalChatActivity" />
-        <activity android:name=".activity.LocationGetActivity" />
-        <activity android:name=".activity.UserProfileActivity"/>
+
+        <activity
+            android:name=".activity.UserPostCommentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.CommunityActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.PersonalChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.LocationGetActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.UserProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!--android:stackFromBottom="true"-->
         <!--android:transcriptMode="alwaysScroll" />-->
@@ -96,13 +163,28 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FriendRequestsActivity" />
-        <activity android:name=".activity.NotificationsActivity" />
+        <activity
+            android:name=".activity.FriendRequestsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.NotificationsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- <activity android:name=".fragments.ClassesFragment"></activity> -->
-        <activity android:name=".activity.UploadCredentialsActivity" />
-        <activity android:name=".activity.FAQActivity" />
-        <activity android:name=".activity.SplashActivity">
+        <activity
+            android:name=".activity.UploadCredentialsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.FAQActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

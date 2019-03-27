@@ -7,7 +7,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#0e3e4a"
+        android:gravity="center|left"
         android:padding="@dimen/_8sdp">
 
         <ImageView
@@ -15,8 +17,8 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_centerVertical="true"
-
             android:layout_marginLeft="5dp"
+            android:padding="@dimen/_2sdp"
             android:src="@drawable/back_triangleshaped_white" />
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
@@ -24,8 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-
             android:layout_toRightOf="@id/iv_arrow"
+            android:gravity="center"
             android:text="Friends"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sdp" />
@@ -36,9 +38,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"

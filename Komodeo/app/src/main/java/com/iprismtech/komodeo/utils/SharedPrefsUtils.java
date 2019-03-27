@@ -20,6 +20,7 @@ public class SharedPrefsUtils {
     public static final String KEY_LAST_NAME = "last_name";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_PROFILE = "profile_pic";
 
     public static final String KEY_UNIVERSITY_ID = "university_id";
     public static final String KEY_STATUS = "status";
@@ -94,7 +95,6 @@ public class SharedPrefsUtils {
     public String getPhoneNumber() {
         return preferences.getString(KEY_PHONE, "");
     }
-
 
 
     public boolean isUserLoggedIn() {

@@ -36,7 +36,9 @@ import com.iprismtech.komodeo.activity.CommunityDiscussionsActivity;
 import com.iprismtech.komodeo.activity.TutoringAct;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.utils.AlertUtils;
+import com.iprismtech.komodeo.utils.Constants;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends BaseAbstractActivity implements View.OnClickListener {
 
@@ -48,7 +50,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
     private LinearLayout ll_classes, ll_tutoring, ll_events, ll_chat;
-    private TextView txt_classes, txt_tutoring, txt_events, txt_chat;
+    private TextView txt_classes, txt_tutoring, txt_events, txt_chat,txtprofile;
     private TextView txt_profile, txt_friends, txt_settings, txt_faqs, txt_terms, txt_contactus;
     private ImageView menu_icon;
     private DrawerLayout drawer_layout;
@@ -133,6 +135,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         txt_settings.setOnClickListener(this);
         txt_contactus.setOnClickListener(this);
         txt_profile.setOnClickListener(this);
+        txt_terms.setOnClickListener(this);
         menu_icon.setOnClickListener(this);
         iv_add.setOnClickListener(this);
         searchview.setOnClickListener(this);
@@ -166,6 +169,13 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         ll_chat = findViewById(R.id.ll_chat);
         txt_chat = findViewById(R.id.txt_chat);
 
+        txtprofile = findViewById(R.id.txtprofile);
+        SharedPrefsUtils prefsUtils = SharedPrefsUtils.getInstance(MainActivity.this);
+        txtprofile.setText(SharedPrefsUtils.getString(SharedPrefsUtils.KEY_NAME));
+
+        Picasso.with(this).load(Constants.BASE_IMAGE_URL+ SharedPrefsUtils.getString(SharedPrefsUtils.KEY_PROFILE))
+                .error(R.drawable.boy).into(profileimage);
+
         txt_friends = findViewById(R.id.txt_friends);
         txt_settings = findViewById(R.id.txt_settings);
         txt_faqs = findViewById(R.id.txt_faqs);
@@ -197,6 +207,10 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.txt_terms:
+
+//                startActivity(new Intent(MainActivity.this,UploadCredentialsActivity.class));
+                break;
             case R.id.ll_classes:
                 txt_classes.setTextColor(Color.parseColor("#000000"));
                 txt_tutoring.setTextColor(Color.parseColor("#7b7979"));

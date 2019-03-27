@@ -130,7 +130,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
-                android:text="Nandini invited you"
+                android:text=". invited you"
                 android:textColor="#4324e2" />
 
             <RelativeLayout
@@ -156,7 +156,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:gravity="center"
-                    android:text=" $3.33"
+                    android:text=" $0.00"
                     android:textColor="#e0a534"
                     android:textSize="15sp" />
 
@@ -180,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="4 Spots Left"
+                android:text="0 Spots Left"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -267,7 +267,7 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_toRightOf="@id/imgprofile"
                     android:gravity="center"
-                    android:text="5 people including group are going"
+                    android:text="0 people including group are going"
                     android:textColor="@color/black" />
 
                 <android.support.v7.widget.RecyclerView
@@ -307,7 +307,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_toRightOf="@id/iv_placeholder"
-                        android:text="Undergraduate Library"
+                        android:text="Location"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -319,7 +319,7 @@
                         android:layout_below="@id/txt_undergraduatelibrary"
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_toRightOf="@id/iv_placeholder"
-                        android:text="1402 W Gregory Dr, Urbana, IL 61801" />
+                        android:text="Address" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_map_coming_soon"
@@ -329,8 +329,7 @@
                         android:layout_below="@id/txt_address"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:gravity="center"
-
-                        android:text="Map is coming soon"
+                        android:text="Click here to redirect to MAP"
                         android:textColor="@color/black" />
 
                     <android.support.v7.widget.AppCompatTextView

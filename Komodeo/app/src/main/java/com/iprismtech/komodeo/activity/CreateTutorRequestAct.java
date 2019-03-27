@@ -230,6 +230,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                         case 1:
                             String mMessage = jsonObject.optString("message");
                             Common.showToast(CreateTutorRequestAct.this, mMessage);
+                            finish();
                             break;
                     }
                 } else {

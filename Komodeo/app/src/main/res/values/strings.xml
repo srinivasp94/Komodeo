@@ -63,7 +63,7 @@
 
     <string name="qt1">Why do I need to use Komodeo for Tutoring sessions?</string>
 
-    <string name="at1">-Admit it, there are classes that are just so hard that you and your    buddies have a hard time    figuring it out. Professors and TAs are just going to answer, but none    of them are going to    teach the whole content? So what do we do when we are completely lost    and tutors are freaking    expensive? :We use Komodeo. Komodeo let us upperclassmen, TAs, and    other classmates who understand the content, to be able to conduct tutoring events. The    prices of these tutoring    events will be affordable because other classmates (that you’ve never    met) could also pool in    the costs and let the session happen! Now you could have a tutoring    session going over the    weekly quiz for $4 right at your place for 1 hr every Sunday, with your    neighbours!! What do you    tell the professor tryin’ to screw your GPA? Not today. 👋🎤</string>
+    <string name="at1">-Admit it, there are classes that are just so hard that you and your    buddies have a hard time    figuring it out. Professors and TAs are just going to answer, but none    of them are going to    teach the whole content? So what do we do when we are completely lost    and tutors are freaking    expensive? :We use Komodeo. Komodeo let us upperclassmen, TAs, and    other classmates who understand the content, to be able to conduct tutoring events. The    prices of these tutoring    events will be affordable because other classmates (that you’ve never    met) could also pool in    the costs and let the session happen! Now you could have a tutoring    session going over the    weekly quiz for $4 right at your place for 1 hr every Sunday, with your    neighbours!! What do you    tell the professor trying to screw your GPA? Not today.</string>
 
     <string name="qt2">How much will a tutoring session cost?</string>
 
@@ -125,5 +125,6 @@
     <string name="mq3">I am interested in creating a partnership</string>
 
     <string name="ma3">Yes, please do Contact Us! Whether you’re a local business, an    interested sponsor for our    events, influencer, or even in a similar space, send us over a chat or    email admin@komodeo.com,    and we will get in touch.</string>
+    <string name="rating_reviews"><![CDATA[Rating & Reviews]]></string>
 
 </resources>

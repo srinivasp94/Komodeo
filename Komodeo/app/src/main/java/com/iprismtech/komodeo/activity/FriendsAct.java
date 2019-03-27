@@ -1,5 +1,6 @@
 package com.iprismtech.komodeo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,6 +59,12 @@ public class FriendsAct extends BaseAbstractActivity implements RetrofitResponse
     @Override
     protected void setListenerToViews() {
         super.setListenerToViews();
+        iv_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -142,6 +149,21 @@ public class FriendsAct extends BaseAbstractActivity implements RetrofitResponse
                             if (friendLists != null && friendLists.size() > 0) {
                                 friendsAdapter = new FriendsAdapter(FriendsAct.this, friendLists);
                                 rv_friends.setAdapter(friendsAdapter);
+                                friendsAdapter.setOnItemClickListener(new FriendsAdapter.OnitemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        switch (view.getId()) {
+                                            case R.id.imgMessage:
+                                                Intent intent = new Intent(FriendsAct.this, PersonalChatActivity.class);
+                                                intent.putExtra("Key_name", friendLists.get(position).firstName + " " + friendLists.get(position).lastName);
+                                                intent.putExtra("Key_ReceiverId", friendLists.get(position).id);
+                                                intent.putExtra("Key_SenderId", SharedPrefsUtils.getInstance(FriendsAct.this).getId());
+                                                startActivity(intent);
+
+                                                break;
+                                        }
+                                    }
+                                });
                             }
                             break;
                         case 2:
@@ -167,5 +189,10 @@ public class FriendsAct extends BaseAbstractActivity implements RetrofitResponse
             }
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

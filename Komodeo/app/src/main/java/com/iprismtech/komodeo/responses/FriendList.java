@@ -23,15 +23,39 @@ public class FriendList implements Parcelable {
     @SerializedName("email_id")
     @Expose
     public String emailId;
+    @SerializedName("mobile")
+    @Expose
+    public String mobile;
     @SerializedName("password")
     @Expose
     public String password;
+    @SerializedName("profile_pic")
+    @Expose
+    public String profilePic;
+    @SerializedName("major")
+    @Expose
+    public String major;
     @SerializedName("university_id")
     @Expose
     public String universityId;
+    @SerializedName("default_lat")
+    @Expose
+    public String defaultLat;
+    @SerializedName("default_lng")
+    @Expose
+    public String defaultLng;
+    @SerializedName("default_address")
+    @Expose
+    public String defaultAddress;
     @SerializedName("registered_through")
     @Expose
     public String registeredThrough;
+    @SerializedName("bio")
+    @Expose
+    public String bio;
+    @SerializedName("payment_preference")
+    @Expose
+    public String paymentPreference;
     @SerializedName("comments")
     @Expose
     public String comments;
@@ -49,10 +73,10 @@ public class FriendList implements Parcelable {
     public String eventCancel;
     @SerializedName("token")
     @Expose
-    public Object token;
+    public String token;
     @SerializedName("ios_token")
     @Expose
-    public Object iosToken;
+    public String iosToken;
     @SerializedName("status")
     @Expose
     public String status;
@@ -64,7 +88,12 @@ public class FriendList implements Parcelable {
     public String createdOn;
     @SerializedName("modified_on")
     @Expose
-    public Object modifiedOn;
+    public String modifiedOn;
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("emailId", emailId).append("mobile", mobile).append("password", password).append("profilePic", profilePic).append("major", major).append("universityId", universityId).append("defaultLat", defaultLat).append("defaultLng", defaultLng).append("defaultAddress", defaultAddress).append("registeredThrough", registeredThrough).append("bio", bio).append("paymentPreference", paymentPreference).append("comments", comments).append("likes", likes).append("friendRequests", friendRequests).append("events", events).append("eventCancel", eventCancel).append("token", token).append("iosToken", iosToken).append("status", status).append("deleteStatus", deleteStatus).append("createdOn", createdOn).append("modifiedOn", modifiedOn).toString();
+    }
 
     public boolean invite = false;
 
@@ -108,30 +137,7 @@ public class FriendList implements Parcelable {
     }
 
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .append("emailId", emailId)
-                .append("password", password)
-                .append("universityId", universityId)
-                .append("registeredThrough", registeredThrough)
-                .append("comments", comments)
-                .append("likes", likes)
-                .append("friendRequests", friendRequests)
-                .append("events", events)
-                .append("eventCancel", eventCancel)
-                .append("token", token)
-                .append("iosToken", iosToken)
-                .append("status", status)
-                .append("deleteStatus", deleteStatus)
-                .append("createdOn", createdOn)
-                .append("modifiedOn", modifiedOn)
-                .append("invite", invite)
-                .toString();
-    }
+
 
     @Override
     public int describeContents() {

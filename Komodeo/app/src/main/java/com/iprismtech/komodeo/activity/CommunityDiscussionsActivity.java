@@ -20,6 +20,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
@@ -233,8 +234,10 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 //                rl_post_layout.setVisibility(View.GONE);
 //                rl_profile_details.setVisibility(View.VISIBLE);
 
-
-                ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    ll_eventtab_community.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_tab_unselected));
+//                else
+//                    ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
                 intent.putExtra("Key_CourseID", course_ID);
                 intent.putExtra("Key_CurseName", course_name);
@@ -377,15 +380,17 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         }
         try {
             //   FileName = System.currentTimeMillis() + ".jpg";
+//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//            contentValue = new ContentValues();
+//            contentValue.put(MediaStore.Images.Media.TITLE, "New Picture");
+//            contentValue.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+//            imageUri = getContentResolver().insert(
+//                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValue);
+//
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//            startActivityForResult(intent, CAMERA_INTENT);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-            contentValue = new ContentValues();
-            contentValue.put(MediaStore.Images.Media.TITLE, "New Picture");
-            contentValue.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
-            imageUri = getContentResolver().insert(
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValue);
-
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             startActivityForResult(intent, CAMERA_INTENT);
         } catch (Exception e) {
             e.printStackTrace();
@@ -494,6 +499,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                             }
                             break;
                         case 3:
+                            et_write_post.setText("");
                             Toast.makeText(this, "Posted Successfully", Toast.LENGTH_SHORT).show();
                             recreate();
                             break;
@@ -579,7 +585,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     profile.compress(Bitmap.CompressFormat.JPEG, 90, stream);
                     byte[] byte_arr = stream.toByteArray();
                     base64profile = Base64.encodeToString(byte_arr, Base64.DEFAULT);
-
+                    Toast.makeText(CommunityDiscussionsActivity.this, "Image Selected Successfully, start writing what is in your mind", Toast.LENGTH_LONG).show();
 
                     if (resultCode == Activity.RESULT_CANCELED) {
 
@@ -587,16 +593,14 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                 }
             }
         } else if (requestCode == CAMERA_INTENT) {
-            try {
-                profile = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            profile = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             profile.compress(Bitmap.CompressFormat.JPEG, 90, stream);
             byte[] byte_arr = stream.toByteArray();
             base64profile = Base64.encodeToString(byte_arr, Base64.DEFAULT);
-
+//            Toast.makeText(CommunityDiscussionsActivity.this, "Image Selected Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CommunityDiscussionsActivity.this, "Image Selected Successfully, start writing what is in your mind", Toast.LENGTH_LONG).show();
         }
 
 

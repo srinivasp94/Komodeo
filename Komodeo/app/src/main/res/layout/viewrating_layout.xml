@@ -60,11 +60,11 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_profile"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/png" />
+                    android:src="@drawable/boy" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                     android:id="@+id/txt_name"
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="5dp"
-                    android:text="Joseph Louise Xavier"
+                    android:text="Nam "
                     android:textSize="18dp"
                     android:textStyle="bold" />
 

@@ -59,8 +59,9 @@ public class CurrentFragment extends BaseAbstractFragment implements RetrofitRes
 
         gv_current = view.findViewById(R.id.gv_current);
         UserClassesReq userClassesReq = new UserClassesReq();
+        userClassesReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
         userClassesReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        userClassesReq.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
+
         //flatListRequest.building_id="4";
 
         try {
