@@ -226,6 +226,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10sp"
                             android:layout_marginTop="8sp"
+                            android:id="@+id/tv_txt_paymnet"
                             android:layout_toRightOf="@id/iv_edit"
                             android:text="Event Payment Type"
                             android:textColor="@color/black"

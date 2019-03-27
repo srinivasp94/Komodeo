@@ -35,7 +35,7 @@ import java.util.Calendar;
 
 public class CreateTutorRequestAct extends BaseAbstractActivity implements RetrofitResponseListener, View.OnClickListener {
 
-    TextView txt_datentime, edtStartDate, txt_reoccuring_settings, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
+    TextView txt_datentime, edtStartDate, txt_reoccuring_settings, tv_txt_paymnet, txt_location, txtCreateEvent, txtInvitedFriends, tv_address, tv_payment, tv_title;
     LinearLayout ll_addfriends;
     ImageView iv_back;
     private EditText edtTitle, edtStartTime, edtEndDate,
@@ -135,6 +135,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
         rg_paymentType = findViewById(R.id.rg_paymentType);
         rg_privacy_type = findViewById(R.id.rg_privacy_type);
         tv_title = findViewById(R.id.tv_title);
+        tv_txt_paymnet = findViewById(R.id.tv_txt_paymnet);
 
         tv_title.setText(class_name + " with " + SharedPrefsUtils.getString(SharedPrefsUtils.KEY_NAME) + " " + SharedPrefsUtils.getString(SharedPrefsUtils.KEY_LAST_NAME));
         if (event_type.equalsIgnoreCase("tutor")) {
@@ -144,6 +145,9 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
 
             rg_paymentType.setVisibility(View.GONE);
             edtSessionAmount.setVisibility(View.GONE);
+            tv_txt_paymnet.setVisibility(View.GONE);
+            tv_payment.setVisibility(View.GONE);
+
         }
 
 
