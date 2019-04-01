@@ -176,7 +176,11 @@ public class TutorEventAct extends BaseAbstractActivity implements RetrofitRespo
                             txtPeopleGoing.setText(res.response.peopleInvited + " people Going ");
                             txt_address.setText(res.response.locationAddress);
                             txt_desc.setText(res.response.note);
-
+                            if (res.response.eventCreatedBy.equalsIgnoreCase("my_event")) {
+                                Common.showToast(TutorEventAct.this, "You are not able to Book your Events.. ");
+                                ll_book.setClickable(false);
+                            } else
+                                ll_book.setClickable(true);
                             break;
                         case 2:
                             Common.showToast(TutorEventAct.this, jsonObject.optString("message"));

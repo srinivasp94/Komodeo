@@ -44,7 +44,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
+public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
     ImageView iv_back;
     ImageView iv_back_ratings;
     RatingBar ratingbar;
