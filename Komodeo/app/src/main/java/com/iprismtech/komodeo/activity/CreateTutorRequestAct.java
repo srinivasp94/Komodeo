@@ -98,6 +98,7 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
         edtEndTime.setOnClickListener(this);
         txtCreateEvent.setOnClickListener(this);
         ll_addfriends.setOnClickListener(this);
+        iv_back.setOnClickListener(this);
     }
 
     @Override
