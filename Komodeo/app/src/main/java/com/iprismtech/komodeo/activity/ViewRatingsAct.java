@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +23,9 @@ import com.iprismtech.komodeo.adapters.CredentialBannerAdapter;
 import com.iprismtech.komodeo.adapters.ReviewsAdapter;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.pojo.GiveRatingPojo;
-import com.iprismtech.komodeo.pojo.UserProfileRequest;
 import com.iprismtech.komodeo.pojo.UserRatingPojo;
-import com.iprismtech.komodeo.request.EditBioReq;
 import com.iprismtech.komodeo.request.GiveRatingReq;
 import com.iprismtech.komodeo.request.SimpleReq;
-import com.iprismtech.komodeo.request.UserProfileReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
 import com.iprismtech.komodeo.utils.Common;
@@ -39,23 +33,23 @@ import com.iprismtech.komodeo.utils.Constants;
 import com.iprismtech.komodeo.utils.SharedPrefsUtils;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
 
-public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
+public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
     ImageView iv_back;
     ImageView iv_back_ratings;
     RatingBar ratingbar;
     private Object obj;
+    ImageView iv_profile_ratings;
     AlertDialog alert;
     CredentialBannerAdapter credentialBannerAdapter;
     GiveRatingPojo giveRatingPojo;
     String rating;
     List jsonArray;
+    TextView txtoneratings, txt_tworatings, txt_threeratings, txt_fourratings, txt_fiveratings;
     final String[] ratingValue = {null};
-
     RecyclerView rv_reviews;
     EditText edt_reviews;
     TextView txt_viewcredentials;
@@ -70,6 +64,7 @@ public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 //        setContentView(R.layout.viewrating_layout);
 
 
@@ -77,6 +72,7 @@ public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClic
 
     @Override
     protected View getView() {
+
         View view = getLayoutInflater().inflate(R.layout.viewrating_layout, null);
         return view;
     }
@@ -165,10 +161,14 @@ public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClic
                             Common.showToast(ViewRatingsAct.this, jsonObject.optString("message"));
                             txt_name.setText(res.getResponse().getFirst_name() + " " + res.getResponse().getLast_name());
                             txt_designation.setText(res.getResponse().getMajor());
-                            txt_ratings.setText(res.getResponse().getRatings());
                             Picasso.with(context).load(Constants.BASE_IMAGE_URL + res.getResponse().getProfile_pic()).
-                                    error(R.drawable.manager).into(iv_profile);
-
+                                    error(R.drawable.manager).into(iv_profile_ratings);
+                            txtoneratings.setText(res.getResponse().getRating_details().get(0).getRate1());
+                            txt_tworatings.setText(res.getResponse().getRating_details().get(0).getRate2());
+                            txt_threeratings.setText(res.getResponse().getRating_details().get(0).getRate3());
+                            txt_fourratings.setText(res.getResponse().getRating_details().get(0).getRate4());
+                            txt_fiveratings.setText(res.getResponse().getRating_details().get(0).getRate5());
+                            txt_ratings.setText(res.getResponse().getRatings().toString());
                             break;
 
                         case 3:
@@ -178,6 +178,7 @@ public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClic
                             edt_reviews.setText("");
 
                             break;
+
                     }
                 } else {
                     Common.showToast(ViewRatingsAct.this, jsonObject.optString("message"));
@@ -215,11 +216,24 @@ public class  ViewRatingsAct extends BaseAbstractActivity implements View.OnClic
 
 
         txt_name = findViewById(R.id.txt_name);
+        /*txtoneratings, txt_tworatings, txt_threeratings, txt_fourratings, txt_fiveratings*/
+
+        txtoneratings = findViewById(R.id.txtoneratings);
+
+        txt_tworatings = findViewById(R.id.txt_tworatings);
+        txt_threeratings = findViewById(R.id.txt_threeratings);
+        txt_fourratings = findViewById(R.id.txt_fourratings);
+        txt_fiveratings = findViewById(R.id.txt_fiveratings);
+
+
         txt_designation = findViewById(R.id.txt_designation);
+
         txt_ratings = findViewById(R.id.txt_ratings);
-        iv_profile = findViewById(R.id.iv_profile);
+
+        iv_profile_ratings = findViewById(R.id.iv_profile_ratings);
 
         txt_viewcredentials = findViewById(R.id.txt_viewcredentials);
+
         iv_back_ratings = findViewById(R.id.iv_back_ratings);
 
         iv_back_ratings.setOnClickListener(new View.OnClickListener() {

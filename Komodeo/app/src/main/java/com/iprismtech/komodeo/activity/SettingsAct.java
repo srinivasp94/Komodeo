@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,14 +47,20 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     ImageView iv_backarrow;
     int position = 0;
+    int accountposition = 0;
     String paymentpreference;
+    Boolean accountstatus = false, notifystatus = false, paypref = false;
+
+
     String commentsstat, likesstat, friendrequestsstat, eventstat, eventcancelstat;
+
 
     boolean pos1 = true, pos2 = true, pos3 = true, pos4 = true;
 
     private boolean aBoolean_comments = false, aBoolean_likes = false, aBoolean_friendrequests = false, aBoolean_events = false, aBoolean_event_cancel = false;
 
     ProfileSettingsPojo settingsPojo;
+
 
     Switch swch_comments, swch_likes, swch_mentions, swch_event_notifications, swch_friend_request, swch_message, swch_event_cancellation, swch_friend_suggestion;
 
@@ -75,13 +82,18 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     private TextView txt_default_location, txt_update, tv_address;
 
+    RelativeLayout rlaccount, rlnotify, rlpaymentpref, rl_paymentpreference;
+
     private EditText txt_password, edt_firstname, edt_lastname, edt_mobile, edt_email, edt_university, edt_major;
 
     private SettingsReq settingsReq;
 
-    LinearLayout ll_pament_venmo, ll_gpay, ll_Paypal, ll_cash;
+    LinearLayout ll_pament_venmo, ll_gpay, ll_Paypal, ll_cash,
+            ll_account_details,
+            ll_notifications;
 
     private Object obj;
+
     private String post_Status, selected_lat, selected_lng, selected_address;
 
 
@@ -95,8 +107,11 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     @Override
     protected View getView() {
+
         View view = getLayoutInflater().inflate(R.layout.li_accountsettings, null);
+
         return view;
+
     }
 
     @Override
@@ -113,11 +128,30 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
         ll_gpay = findViewById(R.id.ll_gpay);
 
+        /* ll_account_details,
+            ll_notifications;*/
+
+
+        ll_account_details = findViewById(R.id.ll_account_details);
+
+        ll_notifications = findViewById(R.id.ll_notifications);
+
         ll_pament_venmo = findViewById(R.id.ll_pament_venmo);
 
         ll_Paypal = findViewById(R.id.ll_Paypal);
+
         ll_cash = findViewById(R.id.ll_cash);
+
         iv_loc = findViewById(R.id.iv_loc);
+
+        /*rlaccount, rlnotify, rlpaymentpref, rl_paymentpreference*/
+
+        rlaccount = findViewById(R.id.rlaccount);
+        rlnotify = findViewById(R.id.rlnotify);
+        rlpaymentpref = findViewById(R.id.rlpaymentpref);
+        rl_paymentpreference = findViewById(R.id.rl_paymentpreference);
+
+
         tv_address = findViewById(R.id.tv_address);
 
 
@@ -131,8 +165,11 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
         swch_comments = findViewById(R.id.swch_comments);
         swch_likes = findViewById(R.id.swch_likes);
+
         swch_event_notifications = findViewById(R.id.swch_event_notifications);
+
         swch_friend_request = findViewById(R.id.swch_friend_request);
+
         swch_event_cancellation = findViewById(R.id.swch_event_cancellation);
 
 
@@ -178,7 +215,12 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         iv_backarrow.setOnClickListener(this);
         iv_profile_settings.setOnClickListener(this);
         txt_update.setOnClickListener(this);
-
+        /* rlaccount = findViewById(R.id.rlaccount);
+        rlnotify = findViewById(R.id.rlnotify);
+        rlpaymentpref = findViewById(R.id.rlpaymentpref);*/
+        rlaccount.setOnClickListener(this);
+        rlnotify.setOnClickListener(this);
+        rlpaymentpref.setOnClickListener(this);
         ll_pament_venmo.setOnClickListener(this);
         ll_gpay.setOnClickListener(this);
         ll_Paypal.setOnClickListener(this);
@@ -199,8 +241,45 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
             case R.id.iv_backarrow:
                 onBackPressed();
                 break;
+/*        /* rlaccount = findViewById(R.id.rlaccount);
+        rlnotify = findViewById(R.id.rlnotify);
+        rlpaymentpref = findViewById(R.id.rlpaymentpref);*/
+            case R.id.rlaccount:
 
 
+                if (accountstatus) {
+                    ll_account_details.setVisibility(View.GONE);
+                    accountstatus = false;
+                } else {
+                    ll_account_details.setVisibility(View.VISIBLE);
+                    accountstatus = true;
+
+                }
+                break;
+
+            case R.id.rlnotify:
+
+                if (notifystatus) {
+                    ll_notifications.setVisibility(View.GONE);
+                    notifystatus = false;
+                } else {
+                    ll_notifications.setVisibility(View.VISIBLE);
+                    notifystatus = true;
+                }
+                break;
+
+
+            case R.id.rlpaymentpref:
+
+                if (paypref) {
+                    rl_paymentpreference.setVisibility(View.GONE);
+                    paypref = false;
+                } else {
+                    rl_paymentpreference.setVisibility(View.VISIBLE);
+                    paypref = true;
+                }
+
+                break;
             case R.id.ll_pament_venmo:
                 if (position == 0) {
                     if (pos1) {
@@ -209,7 +288,6 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
                         ll_cash.setBackgroundResource(R.color.transparent);
                         ll_gpay.setBackgroundResource(R.color.transparent);
                         ll_Paypal.setBackgroundResource(R.color.transparent);
-
                         break;
                     }
                 }
@@ -232,12 +310,10 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
                 if (position == 0) {
                     if (pos3) {
                         paymentpreference = "Google Pay";
-
                         ll_gpay.setBackgroundResource(R.drawable.settings_noti_frequency_bg);
                         ll_cash.setBackgroundResource(R.color.transparent);
                         ll_Paypal.setBackgroundResource(R.color.transparent);
                         ll_pament_venmo.setBackgroundResource(R.color.transparent);
-
                         break;
                     }
                 }
@@ -247,7 +323,6 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
                 if (position == 0) {
                     if (pos4) {
                         paymentpreference = "Cash";
-
                         ll_cash.setBackgroundResource(R.drawable.settings_noti_frequency_bg);
                         ll_Paypal.setBackgroundResource(R.color.transparent);
                         ll_gpay.setBackgroundResource(R.color.transparent);

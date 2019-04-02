@@ -31,11 +31,12 @@ import org.json.JSONObject;
 
 public class UserProfileActivity extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
     private Object obj;
-    ImageView iv_profile, iv_edit_profile,iv_pro_back;
-    private TextView txt_name, txt_profile_subject, txt_biodesc,txt_profile_friends;
+    ImageView iv_profile, iv_edit_profile, iv_pro_back;
+    private TextView txt_name, txt_profile_subject, txt_biodesc, txt_profile_friends;
     AlertDialog alert;
+    ImageView iv_viewratings;
     ImageView iv_editbio;
-    LinearLayout ll_Uploadcredentials,ll_MyEvents;
+    LinearLayout ll_Uploadcredentials, ll_MyEvents;
     RetrofitResponseListener retrofitResponseListener;
 
     @Override
@@ -66,6 +67,7 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         ll_Uploadcredentials.setOnClickListener(this);
         ll_MyEvents.setOnClickListener(this);
         txt_profile_friends.setOnClickListener(this);
+        iv_viewratings.setOnClickListener(this);
     }
 
     @Override
@@ -73,6 +75,7 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         super.initializeViews();
         ApplicationController.getInstance().setContext(this);
         retrofitResponseListener = this;
+        iv_viewratings = findViewById(R.id.iv_viewratings);
         iv_profile = findViewById(R.id.iv_profile);
         iv_pro_back = findViewById(R.id.iv_pro_back);
         iv_edit_profile = findViewById(R.id.iv_edit_profile);
@@ -84,13 +87,6 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         txt_biodesc = findViewById(R.id.txt_biodesc);
         txt_profile_friends = findViewById(R.id.txt_profile_friends);
 
-       /* txt_biodesc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                opeDialog();
-            }
-        })*/
-
         UserProfileReq userProfileReq = new UserProfileReq();
 
         userProfileReq.userId = SharedPrefsUtils.getInstance(UserProfileActivity.this).getId();
@@ -99,9 +95,11 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
 
         try {
             obj = Class.forName(UserProfileReq.class.getName()).cast(userProfileReq);
+
         } catch (ClassNotFoundException e) {
 
             e.printStackTrace();
+
         }
         new RetrofitRequester(this).callPostServices(obj, 2, "user_profile", true);
     }
@@ -123,14 +121,14 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                     switch (requestId) {
                         case 2:
                             UserProfileRequest res = Common.getSpecificDataObject(objectResponse, UserProfileRequest.class);
-                            UserProfilePojo userProfilePojo=res.response;
+                            UserProfilePojo userProfilePojo = res.response;
                             Common.showToast(UserProfileActivity.this, jsonObject.optString("message"));
                             txt_name.setText(res.response.firstName + "" + res.response.lastName);
                             txt_profile_subject.setText(res.response.major);
                             txt_biodesc.setText((CharSequence) res.response.bio);
                             Picasso.with(context).load(Constants.BASE_IMAGE_URL + res.response.profilePic).
                                     error(R.drawable.manager).into(iv_profile);
-                            txt_profile_friends.setText(" Friends Count is "+res.friends_count);
+                            txt_profile_friends.setText(" Friends Count is " + res.friends_count);
                             break;
 
                         case 3:
@@ -262,10 +260,10 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_Uploadcredentials:
-                startActivity(new Intent(UserProfileActivity.this,UploadCredentialsActivity.class));
+                startActivity(new Intent(UserProfileActivity.this, UploadCredentialsActivity.class));
                 break;
-                case R.id.txt_profile_friends:
-                startActivity(new Intent(UserProfileActivity.this,FriendsAct.class));
+            case R.id.txt_profile_friends:
+                startActivity(new Intent(UserProfileActivity.this, FriendsAct.class));
                 break;
 
             case R.id.iv_editbio:
@@ -284,6 +282,9 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                 startActivity(eventsIntent);
                 break;
 
+            case R.id.iv_viewratings:
+                startActivity(new Intent(UserProfileActivity.this, ViewRatingsAct.class));
+
         }
     }
 
@@ -291,4 +292,5 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
     public void onBackPressed() {
         finish();
     }
+
 }

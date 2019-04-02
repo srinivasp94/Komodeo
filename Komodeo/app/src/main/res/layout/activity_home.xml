@@ -380,6 +380,7 @@
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:scaleType="centerInside"
                         android:src="@drawable/user_white" />
 
@@ -388,6 +389,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+
                         android:elevation="@dimen/_8sdp"
                         android:gravity="center|left"
                         android:padding="@dimen/_8sdp"
@@ -412,6 +414,8 @@
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_gravity="center_vertical"
+
+                        android:layout_marginBottom="@dimen/_5sdp"
                         android:src="@drawable/contact_linear" />
 
                     <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
@@ -439,6 +443,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/users_white" />
 
@@ -468,6 +473,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/info_linear" />
 
@@ -498,6 +504,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/bookmark_white" />
 
@@ -527,6 +534,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/mail_linear" />
 

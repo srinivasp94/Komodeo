@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:background="#0e3e4a"
         android:gravity="center|left"
-        android:padding="@dimen/_8sdp">
+        android:padding="@dimen/_10sdp">
 
         <ImageView
             android:id="@+id/iv_arrow"
@@ -18,7 +18,6 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:padding="@dimen/_2sdp"
             android:src="@drawable/back_triangleshaped_white" />
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
@@ -27,10 +26,10 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_arrow"
-            android:gravity="center"
             android:text="Friends"
+
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_15sdp" />
 
     </RelativeLayout>
 
@@ -63,7 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/iv_search"
                 android:backgroundTint="@color/transparent"
                 android:gravity="center"
                 android:hint="Type Name..." />
@@ -83,8 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
 
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
