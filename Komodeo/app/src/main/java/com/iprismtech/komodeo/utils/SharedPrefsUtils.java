@@ -74,6 +74,7 @@ public class SharedPrefsUtils {
     }
 
 
+
     public static void setString(String key, String value) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(key, value);
@@ -128,4 +129,5 @@ public class SharedPrefsUtils {
         editor.clear();
         editor.commit();
     }
+
 }

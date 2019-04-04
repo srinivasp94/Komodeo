@@ -256,7 +256,9 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
 //                    e.printStackTrace();
 //                }
 
+
                 break;
+
             case R.id.ll_price:
                 ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_price.setBackgroundColor(Color.parseColor("#a3b5ff"));
@@ -276,6 +278,7 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                     obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
 
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 new RetrofitRequester(this).callPostServices(obj, 2, "get_events", true);
 
