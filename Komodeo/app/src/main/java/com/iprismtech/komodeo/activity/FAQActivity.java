@@ -1,5 +1,6 @@
 package com.iprismtech.komodeo.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 
@@ -64,6 +66,7 @@ public class FAQActivity extends BaseAbstractActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(FAQActivity.this, MainActivity.class));
         finish();
     }
 

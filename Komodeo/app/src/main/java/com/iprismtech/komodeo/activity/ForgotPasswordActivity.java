@@ -127,6 +127,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
         super.initializeViews();
         edt_email = findViewById(R.id.edt_email);
         btn_resetpassword = findViewById(R.id.btn_resetpassword);
+        myaccountback = findViewById(R.id.myaccountback);
 
 
     }

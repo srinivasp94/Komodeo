@@ -239,6 +239,7 @@ public class LoginAct extends BaseAbstractActivity implements View.OnClickListen
                                     response.optString("university_id"),
                                     response.optString("registered_through")
                             );
+
                             SharedPrefsUtils.setString(SharedPrefsUtils.KEY_PROFILE,response.optString("profile_pic"));
                             Intent intent1 = new Intent(LoginAct.this, MainActivity.class);
                             startActivity(intent1);

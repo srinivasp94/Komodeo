@@ -77,16 +77,18 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@id/iv_likes"
-            android:text="5"
+            android:textSize="@dimen/_12sdp"
+            android:text="0"
             android:textColor="@color/black" />
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/iv_likes"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="@dimen/_45sdp"
             android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_toRightOf="@+id/tv_count_likes"
+            android:paddingBottom="@dimen/_1sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
             android:text="Likes"
             android:textColor="@color/black" />
 
@@ -96,15 +98,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_post"
             android:layout_alignParentRight="true"
+            android:padding="@dimen/_5sdp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_comments_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="0"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                 android:layout_width="wrap_content"
@@ -157,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_5sdp"
+                    android:paddingTop="2dp"
                     android:text="Like"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -173,7 +177,7 @@
             <LinearLayout
                 android:id="@+id/ll_comment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -186,8 +190,11 @@
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_5sdp"
+                    android:gravity="center"
                     android:text="Comment"
+                    android:paddingTop="@dimen/_2sdp"
                     android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>

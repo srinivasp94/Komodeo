@@ -4,89 +4,104 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_invite_frds"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#0e3e4a">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#0e3e4a">
 
 
-        <ImageView
-            android:id="@+id/iv_invite_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/back_triangleshaped_white" />
+            <ImageView
+                android:id="@+id/iv_invite_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/back_triangleshaped_white" />
 
 
-        <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
 
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/iv_back"
-            android:text="Invite"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-
-    </RelativeLayout>
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_back"
+                android:text="Invite"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/invitelayout_edtbg">
-
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="25dp"
-
-            android:layout_height="25dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/search_icon" />
+        </RelativeLayout>
 
 
-        <com.iprismtech.komodeo.customtextview.CustomEditText
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_search"
-            android:backgroundTint="@color/transparent"
+            android:layout_margin="10dp"
+            android:background="@drawable/invitelayout_edtbg">
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="25dp"
+
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/search_icon" />
+
+
+            <com.iprismtech.komodeo.customtextview.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_search"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="Type Name" />
+
+
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_selectFreinds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/txtInviteContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#0e3e4a"
             android:gravity="center"
-            android:hint="Type Name" />
+            android:padding="10dp"
+            android:text="Invite Contacts"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
+    </LinearLayout>
 
-    </RelativeLayout>
-
-
-    <TextView
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/txt_no_frds"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#0e3e4a"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:padding="10dp"
-        android:id="@+id/txtInviteContacts"
-        android:text="Invite Contacts"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_selectFreinds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
-        android:padding="@dimen/_5sdp">
-
-    </android.support.v7.widget.RecyclerView>
-
-
+        android:text="No friends.Start making friends from Community"
+        android:textSize="@dimen/_30sdp" />
 </LinearLayout>

@@ -13,6 +13,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_posted_person"
             android:layout_width="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_height="@dimen/_20sdp" />
 
         <LinearLayout

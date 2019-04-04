@@ -106,6 +106,7 @@ public class AddClassesFragment extends BaseAbstractFragment implements Retrofit
             public void onClick(View v) {
                 //ApplicationController.getInstance().handleEvent(AppConstants.EventIds.LAUNCH_ADD_CLASS_FORM_SCREEN);
                 startActivity(new Intent(getActivity(), AddclassFormAct.class));
+                getActivity().finish();
 
             }
         });

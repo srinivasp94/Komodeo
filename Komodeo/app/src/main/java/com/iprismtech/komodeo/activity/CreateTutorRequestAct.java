@@ -42,7 +42,8 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
             edtSessionAmount, edtmaxSize, edtAddNote, edtEndTime;
     private RadioGroup rg_paymentType, rg_privacy_type;
     private RadioButton rb_persession, rb_perHead;
-    private RelativeLayout RelativeSelectLocation, RelativeFriendsAdd;
+    private RelativeLayout  RelativeFriendsAdd;
+    private LinearLayout RelativeSelectLocation;
     private Object obj;
     private ArrayList<FriendList> inviteFriendsList = new ArrayList<>();
     private String screenid;
@@ -53,8 +54,8 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
     Calendar mcurrentTime = Calendar.getInstance();
     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
     int minute = mcurrentTime.get(Calendar.MINUTE);
-    private String result_paymnet, event_type, class_id, class_name, result_privacy_type;
-    private StringBuilder stringBuilder;
+    private String result_paymnet = "", event_type, class_id, class_name, result_privacy_type = "";
+    private StringBuilder stringBuilder = new StringBuilder();
     private String friendsIds;
 
     @Override
@@ -65,14 +66,14 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
 //        setContentView(R.layout.create_tutor_event_request_layout);
 
 
-        txt_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MapDialog ratingDialog = new MapDialog();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                ratingDialog.show(fragmentManager, "Dialog fragment");
-            }
-        });
+//        txt_location.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                MapDialog ratingDialog = new MapDialog();
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                ratingDialog.show(fragmentManager, "Dialog fragment");
+//            }
+//        });
 
 
     }
@@ -350,41 +351,101 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                 mTimePicker.show();
                 break;
             case R.id.txtCreateEvent:
-                if (edtTitle.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please enter title");
-                } else if (edtStartDate.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Select Date");
-                } else if (edtStartTime.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Select Start Time");
-                } else if (edtEndTime.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Select End Time");
-                }
+
+
+                if (event_type.equalsIgnoreCase("study")) {
+                    if (edtTitle.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please enter title");
+                    } else if (edtStartDate.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select Date");
+                    } else if (edtStartTime.getText().toString().equalsIgnoreCase("00:00:00")) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select Start Time");
+                    } else if (edtEndTime.getText().toString().equalsIgnoreCase("00:00:00")) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select End Time");
+                    }
 //                else if (edtSessionAmount.getText().toString().length() == 0) {
 //                    Common.showToast(CreateTutorRequestAct.this, "please Enter Amount");
 //                }
-                else if (edtmaxSize.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Enter Size");
-                } else if (edtAddNote.getText().toString().length() == 0) {
-                    Common.showToast(CreateTutorRequestAct.this, "please Enter Note");
-                } else {
-                    CreateEventReq req = new CreateEventReq();
-                    req.userId = SharedPrefsUtils.getInstance(CreateTutorRequestAct.this).getId();
-                    req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-                    req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
-                    req.classId = class_id;
-                    req.eventName = edtTitle.getText().toString();
-                    req.eventDate = edtStartDate.getText().toString();
+                    else if (edtmaxSize.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Enter Size");
+                    } else if (edtAddNote.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Enter Note");
+                    } else if (tv_address.getText().toString().isEmpty() || tv_address.getText().toString().equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select Location", Toast.LENGTH_SHORT).show();
+                    } else if (result_privacy_type.equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select privacy type", Toast.LENGTH_SHORT).show();
+                    } else if (result_privacy_type.equalsIgnoreCase("invitees") && stringBuilder.toString().equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select Friends from list", Toast.LENGTH_SHORT).show();
+                    } else {
+
+
+                        CreateEventReq req = new CreateEventReq();
+                        req.userId = SharedPrefsUtils.getInstance(CreateTutorRequestAct.this).getId();
+                        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+                        req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                        req.classId = class_id;
+                        req.eventName = edtTitle.getText().toString();
+                        req.eventDate = edtStartDate.getText().toString();
                     /*req.startTime = edtStartTime.getText().toString();
                     req.endTime = edtEndDate.getText().toString();*/
-                    req.startTime = edtStartTime.getText().toString();
-                    req.endTime = edtEndTime.getText().toString();
-
-                    if (event_type.equalsIgnoreCase("study")) {
+                        req.startTime = edtStartTime.getText().toString();
+                        req.endTime = edtEndTime.getText().toString();
 
                         req.eventPaymentType = "0";
                         req.perSession = "0";
                         req.per_head = "0";
+                        req.eventType = event_type;
+                        req.maxGroupSize = edtmaxSize.getText().toString();
+                        req.note = edtAddNote.getText().toString();
+                        req.locationAddress = tv_address.getText().toString();
+                        req.locationLat = selected_lat;
+                        req.locationLng = selected_lng;
+                        req.peopleInvited = stringBuilder.toString();
+                        req.privacy = result_privacy_type;
+                        try {
+                            obj = Class.forName(CreateEventReq.class.getName()).cast(req);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        new RetrofitRequester(this).callPostServices(obj, 1, "create_event", true);
+                    }
+                } else {
+
+                    if (edtTitle.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please enter title");
+                    } else if (edtStartDate.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select Date");
+                    } else if (edtStartTime.getText().toString().equalsIgnoreCase("00:00:00")) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select Start Time");
+                    } else if (edtEndTime.getText().toString().equalsIgnoreCase("00:00:00")) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Select End Time");
+                    } else if (result_paymnet.equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select payment type", Toast.LENGTH_SHORT).show();
+                    } else if (edtSessionAmount.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Enter Amount");
+                    } else if (edtmaxSize.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Enter Size");
+                    } else if (edtAddNote.getText().toString().length() == 0) {
+                        Common.showToast(CreateTutorRequestAct.this, "Please Enter Note");
+                    } else if (tv_address.getText().toString().isEmpty() || tv_address.getText().toString().equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select Location", Toast.LENGTH_SHORT).show();
+                    } else if (result_privacy_type.equalsIgnoreCase("")) {
+                        Toast.makeText(this, "Please select privacy type", Toast.LENGTH_SHORT).show();
                     } else {
+
+                        CreateEventReq req = new CreateEventReq();
+                        req.userId = SharedPrefsUtils.getInstance(CreateTutorRequestAct.this).getId();
+                        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+                        req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                        req.classId = class_id;
+                        req.eventName = edtTitle.getText().toString();
+                        req.eventDate = edtStartDate.getText().toString();
+                    /*req.startTime = edtStartTime.getText().toString();
+                    req.endTime = edtEndDate.getText().toString();*/
+                        req.startTime = edtStartTime.getText().toString();
+                        req.endTime = edtEndTime.getText().toString();
+
                         if (result_paymnet.equalsIgnoreCase("Per Session")) {
                             req.eventPaymentType = "per_session";
                             req.perSession = edtSessionAmount.getText().toString();
@@ -392,29 +453,28 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                             req.eventPaymentType = "per_head";
                             req.per_head = edtSessionAmount.getText().toString();
                         }
-                    }
+                        req.eventType = event_type;
+                        req.maxGroupSize = edtmaxSize.getText().toString();
+                        req.note = edtAddNote.getText().toString();
+                        req.locationAddress = tv_address.getText().toString();
+                        req.locationLat = selected_lat;
+                        req.locationLng = selected_lng;
+                        req.peopleInvited = stringBuilder.toString();
+                        req.privacy = result_privacy_type;
+                        try {
+                            obj = Class.forName(CreateEventReq.class.getName()).cast(req);
 
-                    req.eventType = event_type;
-                    req.maxGroupSize = edtmaxSize.getText().toString();
-                    req.note = edtAddNote.getText().toString();
-                    req.locationAddress = tv_address.getText().toString();
-                    req.locationLat = selected_lat;
-                    req.locationLng = selected_lng;
-                    req.peopleInvited = stringBuilder.toString();
-                    req.privacy = result_privacy_type;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        new RetrofitRequester(this).callPostServices(obj, 1, "create_event", true);
+
+                    }
 
 
 //                    req.perSession = "50";
 //                    req.per_head = "10";
 
-
-                    try {
-                        obj = Class.forName(CreateEventReq.class.getName()).cast(req);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    new RetrofitRequester(this).callPostServices(obj, 1, "create_event", true);
 
                 }
                 break;
@@ -456,10 +516,16 @@ public class CreateTutorRequestAct extends BaseAbstractActivity implements Retro
                         stringBuilder.append(friendsIds);
                     }
 
-                    Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(context, "" + stringBuilder, Toast.LENGTH_SHORT).show();
                 }
             }
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

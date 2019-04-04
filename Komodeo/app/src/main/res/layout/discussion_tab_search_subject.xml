@@ -46,6 +46,7 @@
                 android:layout_marginStart="69dp"
                 android:background="@drawable/edt_rounded_textdrawable_orange"
                 android:gravity="center_horizontal"
+                android:paddingHorizontal="@dimen/_5sdp"
                 android:paddingTop="@dimen/_3sdp"
                 android:textColor="@color/white" />
 
@@ -68,7 +69,7 @@
             android:background="#fe4800"
 
             android:orientation="horizontal"
-            android:weightSum="2.2">
+            android:weightSum="2.3">
 
 
             <LinearLayout
@@ -76,14 +77,14 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="start"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:gravity="start"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_discussion_back"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/back_triangleshaped_white" />
@@ -383,7 +384,8 @@
                         android:paddingHorizontal="@dimen/_20sdp"
                         android:paddingVertical="@dimen/_5sdp"
                         android:text="Load More"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
@@ -396,20 +398,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#d3d3d3"
+
         android:orientation="horizontal"
         android:visibility="visible"
         android:weightSum="2.1">
 
         <ImageView
+            android:id="@+id/iv_post_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignTop="@+id/ll_post_layout"
             android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_gravity="start"
             android:layout_toRightOf="@+id/iv_cam"
             android:background="#d3d3d3"
             android:src="@drawable/gal"
-            android:id="@+id/iv_post_img"
             android:visibility="visible" />
 
 
@@ -445,7 +449,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.7"
+            android:layout_weight="1.80"
             android:orientation="horizontal">
 
             <com.iprismtech.komodeo.customtextview.CustomEditText
@@ -453,6 +457,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_toRightOf="@id/iv_search"
                 android:background="@drawable/sendtext_bg"
                 android:hint="Aa"

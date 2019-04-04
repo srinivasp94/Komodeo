@@ -56,7 +56,11 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.ViewHolder> 
         if (model.locationAddress != null)
             viewHolder.txt_mutual_friends.setText(model.locationAddress);
         if (model.totalPrice != null)
-            viewHolder.txt_price.setText("$ " + model.totalPrice);
+            if (model.totalPrice.equalsIgnoreCase("0")) {
+                viewHolder.txt_price.setText("Free");
+            } else {
+                viewHolder.txt_price.setText("$ " + model.totalPrice);
+            }
         if (model.ratings != null)
             viewHolder.txtRating.setText(model.ratings);
         Picasso.with(context).load(Constants.BASE_IMAGE_URL + model.profilePic).

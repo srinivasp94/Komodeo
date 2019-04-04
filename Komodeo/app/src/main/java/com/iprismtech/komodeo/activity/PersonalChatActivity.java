@@ -217,6 +217,11 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
 //                                manager.setReverseLayout(true);
 //                                manager.setOrientation(LinearLayoutManager.VERTICAL);
 //                                rview_personal_chat.setLayoutManager(manager);
+                                if (personalChatPojo.getResponse().size() < 30) {
+                                    tv_load_more.setVisibility(View.GONE);
+                                } else if (personalChatPojo.getResponse().size() == 30) {
+                                    tv_load_more.setVisibility(View.VISIBLE);
+                                }
                                 responseBeans = personalChatPojo.getResponse();
                                 Collections.reverse(responseBeans);
                                 responseBeans_next.addAll(0, responseBeans);
@@ -230,13 +235,12 @@ public class PersonalChatActivity extends BaseAbstractActivity implements View.O
                                 chatlist.setAdapter(adapter);
 
 // save index and top position
-                                    int index = chatlist.getFirstVisiblePosition();
-                                    View v = chatlist.getChildAt(0);
-                                    int top = (v == null) ? 0 : (v.getTop() - chatlist.getPaddingTop());
+                                int index = chatlist.getFirstVisiblePosition();
+                                View v = chatlist.getChildAt(0);
+                                int top = (v == null) ? 0 : (v.getTop() - chatlist.getPaddingTop());
 // ...
 // restore index and position
-                                    chatlist.setSelectionFromTop(index, top);
-
+                                chatlist.setSelectionFromTop(index, top);
 
 
                                 //   personalChatAdapter = new PersonalChatAdapter(PersonalChatActivity.this, responseBeans);

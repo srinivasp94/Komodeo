@@ -4,10 +4,11 @@ import java.util.List;
 
 public class ChatListPojo {
 
+
     /**
      * status : true
      * message : Data Fetched Successfully!
-     * response : [{"id":"153","sender_id":"2","receiver_id":"1","message":"Khadeer","created_on":"2019-03-23 19:48:34","modified_on":null,"first_name":"Jhon","last_name":"Doe","profile_pic":"storage/2.jpg","major":"Finance","email_id":"jhon_doe@gmail.com","mobile":null},{"id":"59","sender_id":"3","receiver_id":"1","message":"3rd user chat ","created_on":"2019-03-15 03:03:00","modified_on":null,"first_name":"Khadeer","last_name":"Mohammed","profile_pic":"storage/profile_pics/5c9628f284f3c.","major":"Finance","email_id":"smith@gmail.com","mobile":"9999999999"}]
+     * response : [{"id":"194","sender_id":"10","receiver_id":"1","message":"Send","created_on":"02 April 2019 02:08 PM","modified_on":null,"first_name":"rekha","last_name":"s","profile_pic":"storage/profile_pics/5c9cb68491f69.png","major":"","email_id":"rekha@test.com","mobile":"","original_receiver_id":"10"},{"id":"187","sender_id":"13","receiver_id":"1","message":"Else","created_on":"02 April 2019 02:05 PM","modified_on":null,"first_name":"sweety","last_name":"s","profile_pic":"storage/profile_pics/5ca33405b439c.png","major":"","email_id":"sweety@test.com","mobile":"","original_receiver_id":"13"},{"id":"186","sender_id":"14","receiver_id":"1","message":"Else","created_on":"02 April 2019 02:05 PM","modified_on":null,"first_name":"snigdha","last_name":"s","profile_pic":null,"major":null,"email_id":"snigdha@test.com","mobile":null,"original_receiver_id":"14"},{"id":"193","sender_id":"1","receiver_id":"2","message":"Send","created_on":"02 April 2019 02:07 PM","modified_on":null,"first_name":"Jhon","last_name":"Doe","profile_pic":"storage/2.jpg","major":"Finance","email_id":"jhon_doe@gmail.com","mobile":null,"original_receiver_id":"2"},{"id":"192","sender_id":"1","receiver_id":"3","message":"Send","created_on":"02 April 2019 02:07 PM","modified_on":null,"first_name":"Khadeer","last_name":"Mohammed","profile_pic":"storage/profile_pics/5ca2f30620222.","major":"Finance","email_id":"smith@gmail.com","mobile":"9999999999","original_receiver_id":"3"}]
      */
 
     private boolean status;
@@ -40,18 +41,19 @@ public class ChatListPojo {
 
     public static class ResponseBean {
         /**
-         * id : 153
-         * sender_id : 2
+         * id : 194
+         * sender_id : 10
          * receiver_id : 1
-         * message : Khadeer
-         * created_on : 2019-03-23 19:48:34
+         * message : Send
+         * created_on : 02 April 2019 02:08 PM
          * modified_on : null
-         * first_name : Jhon
-         * last_name : Doe
-         * profile_pic : storage/2.jpg
-         * major : Finance
-         * email_id : jhon_doe@gmail.com
-         * mobile : null
+         * first_name : rekha
+         * last_name : s
+         * profile_pic : storage/profile_pics/5c9cb68491f69.png
+         * major :
+         * email_id : rekha@test.com
+         * mobile :
+         * original_receiver_id : 10
          */
 
         private String id;
@@ -65,7 +67,8 @@ public class ChatListPojo {
         private String profile_pic;
         private String major;
         private String email_id;
-        private Object mobile;
+        private String mobile;
+        private String original_receiver_id;
 
         public String getId() {
             return id;
@@ -155,12 +158,20 @@ public class ChatListPojo {
             this.email_id = email_id;
         }
 
-        public Object getMobile() {
+        public String getMobile() {
             return mobile;
         }
 
-        public void setMobile(Object mobile) {
+        public void setMobile(String mobile) {
             this.mobile = mobile;
+        }
+
+        public String getOriginal_receiver_id() {
+            return original_receiver_id;
+        }
+
+        public void setOriginal_receiver_id(String original_receiver_id) {
+            this.original_receiver_id = original_receiver_id;
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.iprismtech.komodeo.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -43,7 +44,9 @@ public class MyEventsActivity extends BaseAbstractActivity {
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(MyEventsActivity.this, UserProfileActivity.class));
         finish();
+
     }
 
     @Override
@@ -70,7 +73,7 @@ public class MyEventsActivity extends BaseAbstractActivity {
         iv_invite_back = findViewById(R.id.iv_invite_back);
 
         rl_rootEvents = findViewById(R.id.rl_rootEvents);
-        rl_rootEvents.setVisibility(View.VISIBLE    );
+        rl_rootEvents.setVisibility(View.VISIBLE);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override

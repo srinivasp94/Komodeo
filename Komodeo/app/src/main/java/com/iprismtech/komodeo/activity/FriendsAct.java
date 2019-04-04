@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.adapters.FriendsAdapter;
 import com.iprismtech.komodeo.adapters.SearchFriendsAdapter;
@@ -128,7 +129,7 @@ public class FriendsAct extends BaseAbstractActivity implements RetrofitResponse
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new RetrofitRequester(this).callPostServices(obj, 2, "search_users", true);
+        new RetrofitRequester(this).callPostServices(obj, 2, "search_users", false);
     }
 
     @Override
@@ -193,6 +194,7 @@ public class FriendsAct extends BaseAbstractActivity implements RetrofitResponse
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(FriendsAct.this,MainActivity.class));
         finish();
     }
 }

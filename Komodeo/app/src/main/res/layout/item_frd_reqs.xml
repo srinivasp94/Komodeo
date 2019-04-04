@@ -43,7 +43,9 @@
             android:layout_marginRight="@dimen/_5sdp"
             android:background="@drawable/search_bg"
             android:paddingHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:paddingTop="@dimen/_5sdp"
+            android:gravity="center_vertical"
             android:text="Confirm"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />

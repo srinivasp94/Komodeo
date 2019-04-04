@@ -45,6 +45,8 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
     private Object obj;
     private EventsReq eventsReq;
     private LinearLayout ll_time, ll_rating, ll_price;
+    int selected_position;
+    private boolean default_state = true;
 
     @Override
     protected View getFragmentView() {
@@ -120,7 +122,9 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                             if (classLists != null && classLists.size() > 0) {
                                 mHorizontalAdapter = new ClassHorizontalAdapter(getActivity(), classLists);
                                 rcv_Classes.setAdapter(mHorizontalAdapter);
-                                callWSforTutors(0);
+                                if (default_state) {
+                                    callWSforTutors(0);
+                                }
                                 mHorizontalAdapter.setOnItemClickListener(new ClassHorizontalAdapter.OnitemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
@@ -152,10 +156,15 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                                     public void onItemClick(View view, int position) {
                                         Intent intent = new Intent(getActivity(), TutorEventAct.class);
                                         intent.putExtra("Key_eventId", mTutorList.get(position).id);
+                                        intent.putExtra("Key_Type", "Tutor Event");
                                         startActivity(intent);
                                     }
                                 });
                             }
+
+                            break;
+                        case 3:
+
 
                             break;
                     }
@@ -172,10 +181,12 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
     }
 
     private void callWSforTutors(int i) {
+        default_state = false;
+        selected_position = i;
         eventsReq = new EventsReq();
         eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
         eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
-        eventsReq.classId = classLists.get(i).classId;
+        eventsReq.classId = classLists.get(selected_position).classId;
         eventsReq.eventType = "tutor";
         eventsReq.section = "time";
         eventsReq.count = "0";
@@ -195,40 +206,91 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                 ll_time.setBackgroundColor(Color.parseColor("#a3b5ff"));
                 ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                default_state = false;
+                eventsReq = new EventsReq();
+                eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
+                eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                eventsReq.classId = classLists.get(selected_position).classId;
+                eventsReq.eventType = "tutor";
+                eventsReq.section = "time";
+                eventsReq.count = "0";
+                eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+                try {
+                    obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
+
+                } catch (Exception e) {
+                }
+                new RetrofitRequester(this).callPostServices(obj, 2, "get_events", true);
+
                 break;
             case R.id.ll_rating:
                 ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_rating.setBackgroundColor(Color.parseColor("#a3b5ff"));
 
-
+                default_state = false;
+                eventsReq = new EventsReq();
+                eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
+                eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                eventsReq.classId = classLists.get(selected_position).classId;
+                eventsReq.eventType = "tutor";
+                eventsReq.section = "rating";
+                eventsReq.count = "0";
+                eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
                 try {
-                    Collections.sort(mTutorList, new Comparator<EventsList>() {
-                        @Override
-                        public int compare(EventsList o1, EventsList o2) {
-                            return o1.ratings.compareTo(o2.ratings);
-                        }
-                    });
-                    tutorAdapter.notifyDataSetChanged();
+                    obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
+
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
+                new RetrofitRequester(this).callPostServices(obj, 2, "get_events", true);
+//                try {
+//                    Collections.sort(mTutorList, new Comparator<EventsList>() {
+//                        @Override
+//                        public int compare(EventsList o1, EventsList o2) {
+//                            return o1.ratings.compareTo(o2.ratings);
+//                        }
+//                    });
+//                    tutorAdapter.notifyDataSetChanged();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+
                 break;
             case R.id.ll_price:
                 ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_price.setBackgroundColor(Color.parseColor("#a3b5ff"));
                 ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
+
+
+                default_state = false;
+                eventsReq = new EventsReq();
+                eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
+                eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+                eventsReq.classId = classLists.get(selected_position).classId;
+                eventsReq.eventType = "tutor";
+                eventsReq.section = "price";
+                eventsReq.count = "0";
+                eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
                 try {
-                    Collections.sort(mTutorList, new Comparator<EventsList>() {
-                        @Override
-                        public int compare(EventsList o1, EventsList o2) {
-                            return o1.totalPrice.compareTo(o2.totalPrice);
-                        }
-                    });
-                    tutorAdapter.notifyDataSetChanged();
+                    obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
+
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
+                new RetrofitRequester(this).callPostServices(obj, 2, "get_events", true);
+
+
+//                try {
+//                    Collections.sort(mTutorList, new Comparator<EventsList>() {
+//                        @Override
+//                        public int compare(EventsList o1, EventsList o2) {
+//                            return o1.totalPrice.compareTo(o2.totalPrice);
+//                        }
+//                    });
+//                    tutorAdapter.notifyDataSetChanged();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
                 break;
         }
     }

@@ -7,7 +7,7 @@ public class ChatSearchPojo {
     /**
      * status : true
      * message : Data Fetched Successfully!
-     * response : [{"id":"59","sender_id":"3","receiver_id":"1","message":"3rd user chat last","created_on":"2019-03-15 03:03:00","modified_on":null,"first_name":"Smith","last_name":"Jhony","profile_pic":"storage/3.jpg","major":"Finance","email_id":"smith@gmail.com","mobile":"9999888888"}]
+     * response : [{"id":"194","sender_id":"10","receiver_id":"1","message":"Send","created_on":"02 April 2019 02:08 PM","modified_on":null,"first_name":"rekha","last_name":"s","profile_pic":"storage/profile_pics/5c9cb68491f69.png","major":"","email_id":"rekha@test.com","mobile":"","original_receiver_id":"10"},{"id":"187","sender_id":"13","receiver_id":"1","message":"Else","created_on":"02 April 2019 02:05 PM","modified_on":null,"first_name":"sweety","last_name":"s","profile_pic":"storage/profile_pics/5ca33405b439c.png","major":"","email_id":"sweety@test.com","mobile":"","original_receiver_id":"13"},{"id":"212","sender_id":"1","receiver_id":"14","message":"test","created_on":"02 April 2019 06:04 PM","modified_on":null,"first_name":"Khadeer","last_name":"Mohammed","profile_pic":"storage/profile_pics/5ca1d9249ad9c.png","major":"finance","email_id":"khadeer.md@iprismtech.com","mobile":"9123456789","original_receiver_id":"14"},{"id":"193","sender_id":"1","receiver_id":"2","message":"Send","created_on":"02 April 2019 02:07 PM","modified_on":null,"first_name":"Khadeer","last_name":"Mohammed","profile_pic":"storage/profile_pics/5ca1d9249ad9c.png","major":"finance","email_id":"khadeer.md@iprismtech.com","mobile":"9123456789","original_receiver_id":"2"},{"id":"192","sender_id":"1","receiver_id":"3","message":"Send","created_on":"02 April 2019 02:07 PM","modified_on":null,"first_name":"Khadeer","last_name":"Mohammed","profile_pic":"storage/profile_pics/5ca1d9249ad9c.png","major":"finance","email_id":"khadeer.md@iprismtech.com","mobile":"9123456789","original_receiver_id":"3"}]
      */
 
     private boolean status;
@@ -40,18 +40,19 @@ public class ChatSearchPojo {
 
     public static class ResponseBean {
         /**
-         * id : 59
-         * sender_id : 3
+         * id : 194
+         * sender_id : 10
          * receiver_id : 1
-         * message : 3rd user chat last
-         * created_on : 2019-03-15 03:03:00
+         * message : Send
+         * created_on : 02 April 2019 02:08 PM
          * modified_on : null
-         * first_name : Smith
-         * last_name : Jhony
-         * profile_pic : storage/3.jpg
-         * major : Finance
-         * email_id : smith@gmail.com
-         * mobile : 9999888888
+         * first_name : rekha
+         * last_name : s
+         * profile_pic : storage/profile_pics/5c9cb68491f69.png
+         * major :
+         * email_id : rekha@test.com
+         * mobile :
+         * original_receiver_id : 10
          */
 
         private String id;
@@ -66,6 +67,7 @@ public class ChatSearchPojo {
         private String major;
         private String email_id;
         private String mobile;
+        private String original_receiver_id;
 
         public String getId() {
             return id;
@@ -161,6 +163,14 @@ public class ChatSearchPojo {
 
         public void setMobile(String mobile) {
             this.mobile = mobile;
+        }
+
+        public String getOriginal_receiver_id() {
+            return original_receiver_id;
+        }
+
+        public void setOriginal_receiver_id(String original_receiver_id) {
+            this.original_receiver_id = original_receiver_id;
         }
     }
 }

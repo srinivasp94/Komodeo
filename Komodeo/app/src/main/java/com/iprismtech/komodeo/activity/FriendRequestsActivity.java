@@ -48,6 +48,7 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
             @Override
             public void onClick(View v) {
                 onBackPressed();
+
             }
         });
     }
@@ -113,7 +114,7 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
                                 public void onItemClick(View view, int position) {
                                     selected_position = position;
                                     switch (view.getId()) {
-                                        case R.id.rv_chat:
+                                        case R.id.txt_confirm:
                                             callConfirmFrdWs();
                                             break;
                                     }
@@ -154,9 +155,10 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
     private void callConfirmFrdWs() {
         AcceptFrdRequestReq req = new AcceptFrdRequestReq();
         req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
+        req.userId = friendRequestsPojo.getResponse().get(selected_position).getUser_id();
         req.friendId = friendRequestsPojo.getResponse().get(selected_position).getFriend_id();
-        req.status = friendRequestsPojo.getResponse().get(selected_position).getStatus();
+        //req.status = friendRequestsPojo.getResponse().get(selected_position).getStatus();
+        req.status = "accept";
         //flatListRequest.building_id="4";
 
         try {
@@ -167,4 +169,5 @@ public class FriendRequestsActivity extends BaseAbstractActivity implements View
         new RetrofitRequester(this).callPostServices(obj, 2, "accept_friend_request", true);
 
     }
+
 }

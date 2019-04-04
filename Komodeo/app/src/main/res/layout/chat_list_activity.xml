@@ -9,7 +9,7 @@
         android:id="@+id/ll_frd_reqs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:orientation="vertical">
@@ -17,6 +17,8 @@
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="Click here to see Friend Requests"
             android:textColor="@color/black" />
 
@@ -50,7 +52,9 @@
             android:layout_marginLeft="10dp"
             android:background="@null"
             android:hint="Type Name"
-            android:paddingVertical="@dimen/_5sdp" />
+            android:maxLines="1"
+            android:paddingVertical="@dimen/_5sdp"
+            android:singleLine="true" />
 
     </LinearLayout>
 

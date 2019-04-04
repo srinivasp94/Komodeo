@@ -58,7 +58,7 @@ public class UserPostCommentActivity extends BaseAbstractActivity implements Vie
                 discussions_count = discussions_count + 10;
 
                 CommentsReq commentsReq = new CommentsReq();
-                commentsReq.discussionId = "1";
+                commentsReq.discussionId = discussionsId;
                 commentsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
                 commentsReq.count = String.valueOf(discussions_count);
                 //flatListRequest.building_id="4";

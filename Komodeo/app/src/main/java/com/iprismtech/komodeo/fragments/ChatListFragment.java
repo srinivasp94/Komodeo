@@ -148,7 +148,6 @@ public class ChatListFragment extends BaseAbstractFragment implements View.OnCli
         req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
         req.keyword = et_search_name.getText().toString();
         req.numItems = "0";
-
         try {
             obj = Class.forName(SearchChatReq.class.getName()).cast(req);
         } catch (Exception e) {
@@ -200,8 +199,8 @@ public class ChatListFragment extends BaseAbstractFragment implements View.OnCli
                                         case R.id.rv_chat:
                                             Intent intent = new Intent(getActivity(), PersonalChatActivity.class);
                                             intent.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
-                                            intent.putExtra("Key_ReceiverId", responseBeans.get(position).getReceiver_id());
-                                            intent.putExtra("Key_SenderId", responseBeans.get(position).getSender_id());
+                                            intent.putExtra("Key_ReceiverId", responseBeans.get(position).getOriginal_receiver_id());
+                                            intent.putExtra("Key_SenderId", SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID));
                                             startActivity(intent);
                                             break;
                                     }
@@ -231,9 +230,9 @@ public class ChatListFragment extends BaseAbstractFragment implements View.OnCli
                                     switch (view.getId()) {
                                         case R.id.rv_chat:
                                             Intent intent = new Intent(getActivity(), PersonalChatActivity.class);
-                                            intent.putExtra("Key_name", responseBeans_search.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
-                                            intent.putExtra("Key_ReceiverId", responseBeans_search.get(position).getReceiver_id());
-                                            intent.putExtra("Key_SenderId", responseBeans_search.get(position).getSender_id());
+                                            intent.putExtra("Key_name", responseBeans_search.get(position).getFirst_name() + " " + responseBeans_search.get(position).getLast_name());
+                                            intent.putExtra("Key_ReceiverId", responseBeans_search.get(position).getOriginal_receiver_id());
+                                            intent.putExtra("Key_SenderId", SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID));
                                             startActivity(intent);
 
                                             break;
@@ -258,6 +257,5 @@ public class ChatListFragment extends BaseAbstractFragment implements View.OnCli
         View view = getLayoutInflater().inflate(R.layout.chat_list_activity, null);
         return view;
     }
-
 
 }

@@ -21,6 +21,7 @@ public class SharedPrefsUtils {
     public static final String KEY_PHONE = "phone";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PROFILE = "profile_pic";
+    public static final String KEY_LOCATION = "address";
 
     public static final String KEY_UNIVERSITY_ID = "university_id";
     public static final String KEY_STATUS = "status";
@@ -66,7 +67,20 @@ public class SharedPrefsUtils {
         editor.commit();
     }
 
+
+    public void store_image(String img) {
+        editor.putString(KEY_PROFILE, img);
+        editor.commit();
+    }
+
+
     public static void setString(String key, String value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    public static void setAddress(String key, String value) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(key, value);
         editor.commit();
@@ -82,9 +96,17 @@ public class SharedPrefsUtils {
         return preferences.getString(key, "");
     }
 
+    public static String getAddress(String key) {
+        return preferences.getString(key, "");
+    }
+
 
     public String getId() {
         return preferences.getString(KEY_ID, "");
+    }
+
+    public String getProfileImg() {
+        return preferences.getString(KEY_PROFILE, "");
     }
 
 

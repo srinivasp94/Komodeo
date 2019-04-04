@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.R;
@@ -31,9 +34,12 @@ public class MyEventsFragement extends BaseAbstractFragment implements RetrofitR
 
     private RecyclerView rv_events;
     LinearLayoutManager manager;
-    private ArrayList<EventsList> meventsLists = new ArrayList<>();
+    private ArrayList<EventsList> meventsLists;
     private EventsAdapter eventsAdapter;
     private Object obj;
+    private RadioGroup rg_eventType;
+    private String result_event_type = "";
+    private String str_result_event;
 
     @Override
     protected View getFragmentView() {
@@ -61,15 +67,83 @@ public class MyEventsFragement extends BaseAbstractFragment implements RetrofitR
     protected void initialiseViews() {
         super.initialiseViews();
         rv_events = view.findViewById(R.id.rv_events);
+        rg_eventType = view.findViewById(R.id.rg_eventType);
         manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_events.setLayoutManager(manager);
+
 
         EventsReq eventsReq = new EventsReq();
         eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
         eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
 
-        eventsReq.eventType = "tutor";
+        eventsReq.eventType = "study";
+
+
+        eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+        try {
+            obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
+
+        } catch (Exception e) {
+        }
+        new RetrofitRequester(this).callPostServices(obj, 1, "my_events", true);
+
+
+        rg_eventType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checkedRadioButton = (RadioButton) group.findViewById(checkedId);
+                boolean isChecked = checkedRadioButton.isChecked();
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    // tv.setText("Checked:" + checkedRadioButton.getText());
+                    result_event_type = checkedRadioButton.getText().toString();
+                    if (result_event_type.equalsIgnoreCase("Tutor Event")) {
+                        str_result_event = "tutor";
+
+
+                    } else {
+                        str_result_event = "study";
+                    }
+                    calleventsWS(str_result_event);
+
+
+                }
+
+            }
+        });
+
+//        if (result_event_type.equalsIgnoreCase("")) {
+//            Toast.makeText(getActivity(), "Please Select Event type", Toast.LENGTH_SHORT).show();
+//        } else {
+//            EventsReq eventsReq = new EventsReq();
+//            eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
+//            eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+//
+//            eventsReq.eventType = result_event_type;
+//
+//
+//            eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+//            try {
+//                obj = Class.forName(EventsReq.class.getName()).cast(eventsReq);
+//
+//            } catch (Exception e) {
+//            }
+//            new RetrofitRequester(this).callPostServices(obj, 1, "my_events", true);
+
+        //}
+    }
+
+    private void calleventsWS(String result_type) {
+
+
+        meventsLists = new ArrayList<>();
+        rv_events.setVisibility(View.GONE);
+        EventsReq eventsReq = new EventsReq();
+        eventsReq.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
+        eventsReq.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
+
+        eventsReq.eventType = result_type;
 
 
         eventsReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
@@ -97,6 +171,7 @@ public class MyEventsFragement extends BaseAbstractFragment implements RetrofitR
                             EventsRes res = Common.getSpecificDataObject(objectResponse, EventsRes.class);
                             meventsLists = (ArrayList<EventsList>) res.response;
                             if (meventsLists != null && meventsLists.size() > 0) {
+                                rv_events.setVisibility(View.VISIBLE);
                                 eventsAdapter = new EventsAdapter(getActivity(), meventsLists);
                                 rv_events.setAdapter(eventsAdapter);
 

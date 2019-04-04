@@ -54,7 +54,7 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
 
     private AppCompatSpinner spinnerClass;
     private ImageView iv_backbtn, image1, image2, image3;
-    private int GALLERY_DOC = 101, CAMERA_DOC = 102,CAMERA_INTENT=103;
+    private int GALLERY_DOC = 101, CAMERA_DOC = 102, CAMERA_INTENT = 103;
     private String base64profile1, base64profile2, base64profile3;
     private int imageViewId;
     private String result;
@@ -157,15 +157,15 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
         });
 
 
-        SimpleReq req = new SimpleReq();
-        req.userId = SharedPrefsUtils.getInstance(UploadCredentialsActivity.this).getId();
-        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
-        try {
-            obj = Class.forName(SimpleReq.class.getName()).cast(req);
-        } catch (Exception e) {
-
-        }
-        new RetrofitRequester(this).callPostServices(obj, 1, "user_classes", true);
+//        SimpleReq req = new SimpleReq();
+//        req.userId = SharedPrefsUtils.getInstance(UploadCredentialsActivity.this).getId();
+//        req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
+//        try {
+//            obj = Class.forName(SimpleReq.class.getName()).cast(req);
+//        } catch (Exception e) {
+//
+//        }
+//        new RetrofitRequester(this).callPostServices(obj, 1, "user_classes", true);
 
 
     }
@@ -184,8 +184,12 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
                 showPictureDialogArray("");
                 break;
             case R.id.image1:
-                imageViewId = image1.getId();
-                showPictureDialog("", image1);
+//                imageViewId = image1.getId();
+//                showPictureDialog("", image1);
+
+
+                //     permissionsRequest();
+                showPictureDialogArray("");
                 break;
             case R.id.image2:
                 imageViewId = image2.getId();
@@ -205,7 +209,7 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
                     req.userId = SharedPrefsUtils.getInstance(UploadCredentialsActivity.this).getId();
                     req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
                     req.classId = classid;
-                    req.images=imageIt;
+                    req.images = imageIt;
 //                    if (base64profile1 != null)
 //                        req.images.get(0).image = base64profile1;
 //                    if (base64profile2 != null)
@@ -340,9 +344,11 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
                 //     new Async_BitmapWorkerTask().execute();
                 // String path = saveImage(bitmap);
             }
-        } else if (requestCode == CAMERA_DOC) {
+        } else if (requestCode == CAMERA_INTENT) {
 
             profile = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            profile.compress(Bitmap.CompressFormat.PNG, 100, bytes);
             uploadimages.add(profile);
             new Async_BitmapWorkerTaskForProfile().execute();
 
@@ -434,6 +440,9 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
                     switch (requestId) {
                         case 1:
                             searchClassesPojo = gson.fromJson(jsonString, SearchClassesPojo.class);
+                            if (searchClassesPojo.getResponse().size() > 0) {
+                                rview_search_classes.setVisibility(View.VISIBLE);
+                            }
                             manager = new LinearLayoutManager(UploadCredentialsActivity.this);
                             manager.setOrientation(LinearLayoutManager.VERTICAL);
                             rview_search_classes.setLayoutManager(manager);
@@ -444,7 +453,7 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
                                 public void onItemClick(View view, int position) {
                                     classid = searchClassesPojo.getResponse().get(position).getId();
                                     et_search.setText(searchClassesPojo.getResponse().get(position).getTitle());
-                                    searchClassesPojo=null;
+                                    searchClassesPojo = null;
                                     adapter.notifyDataSetChanged();
                                 }
                             });
@@ -526,6 +535,11 @@ public class UploadCredentialsActivity extends BaseAbstractActivity implements V
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(UploadCredentialsActivity.this, UserProfileActivity.class));
+        finish();
+    }
     //  @Override
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //

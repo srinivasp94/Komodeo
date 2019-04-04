@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.AutomatchDialog;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.adapters.DiscussionsAdapter;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
@@ -194,10 +195,11 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                     ll_discussiontab.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 }
                 break;
-            case R.id.ll_currenttab:
+            case R.id.iv_discussion_back:
                 onBackPressed();
                 finish();
                 break;
+
             case R.id.iv_post_img:
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                 StrictMode.setVmPolicy(builder.build());
@@ -235,7 +237,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
 //                rl_profile_details.setVisibility(View.VISIBLE);
 
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                    ll_eventtab_community.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_tab_unselected));
+                ll_eventtab_community.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_tab_unselected));
 //                else
 //                    ll_eventtab_community.setBackgroundColor(getResources().getColor(R.color.orange_tab_unselected, null));
                 Intent intent = new Intent(CommunityDiscussionsActivity.this, CommunityActivity.class);
@@ -380,8 +382,8 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         }
         try {
             //   FileName = System.currentTimeMillis() + ".jpg";
-//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//
+            //     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
 //            contentValue = new ContentValues();
 //            contentValue.put(MediaStore.Images.Media.TITLE, "New Picture");
 //            contentValue.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
@@ -412,9 +414,14 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                         case 1:
 
                             discussionsPojo = gson.fromJson(jsonString, DiscussionsPojo.class);
+                            if (discussionsPojo.getResponse().size() == 10) {
+                                tv_load_more.setVisibility(View.VISIBLE);
+                            }
+
                             manager = new LinearLayoutManager(CommunityDiscussionsActivity.this);
                             manager.setOrientation(LinearLayoutManager.VERTICAL);
                             rview_dicussions.setLayoutManager(manager);
+
                             responseBeans.addAll(discussionsPojo.getResponse());
                             discussionsAdapter = new DiscussionsAdapter(CommunityDiscussionsActivity.this, responseBeans);
                             rview_dicussions.setAdapter(discussionsAdapter);
@@ -444,7 +451,7 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                                             intent.putExtra("Key_DiscussionId", responseBeans.get(position).getId());
                                             intent.putExtra("Key_post", responseBeans.get(position).getDescription());
                                             intent.putExtra("Key_classID", course_ID);
-                                            intent.putExtra("Key_image", responseBeans.get(position).getImage());
+                                            intent.putExtra("Key_image", responseBeans.get(position).getProfile_pic());
                                             intent.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
                                             startActivityForResult(intent, 101);
                                             break;
@@ -453,10 +460,11 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
                                             intent1.putExtra("Key_DiscussionId", responseBeans.get(position).getId());
                                             intent1.putExtra("Key_post", responseBeans.get(position).getDescription());
                                             intent1.putExtra("Key_classID", course_ID);
-                                            intent1.putExtra("Key_image", responseBeans.get(position).getImage());
+                                            intent1.putExtra("Key_image", responseBeans.get(position).getProfile_pic());
                                             intent1.putExtra("Key_name", responseBeans.get(position).getFirst_name() + " " + responseBeans.get(position).getLast_name());
 
                                             startActivityForResult(intent1, 101);
+
                                             break;
                                     }
                                 }
@@ -594,9 +602,16 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
             }
         } else if (requestCode == CAMERA_INTENT) {
 
+//            try {
+//                profile = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+
             profile = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            profile.compress(Bitmap.CompressFormat.JPEG, 90, stream);
+            profile.compress(Bitmap.CompressFormat.PNG, 50, stream);
             byte[] byte_arr = stream.toByteArray();
             base64profile = Base64.encodeToString(byte_arr, Base64.DEFAULT);
 //            Toast.makeText(CommunityDiscussionsActivity.this, "Image Selected Successfully", Toast.LENGTH_SHORT).show();
@@ -636,4 +651,9 @@ public class CommunityDiscussionsActivity extends BaseAbstractActivity implement
         return null;
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CommunityDiscussionsActivity.this, MainActivity.class));
+        finish();
+    }
 }

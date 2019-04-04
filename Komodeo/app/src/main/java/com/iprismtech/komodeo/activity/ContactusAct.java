@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.request.SubmitContactReq;
@@ -59,7 +60,9 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(ContactusAct.this, MainActivity.class));
         finish();
+
     }
 
 
@@ -111,7 +114,7 @@ public class ContactusAct extends BaseAbstractActivity implements View.OnClickLi
             case R.id.txtSendComment:
                 if (edtDescription.getText().toString().length() == 0) {
                     Common.showToast(ContactusAct.this, "Please enter Description");
-                } else if (base64profile1==null || base64profile2==null || base64profile3==null) {
+                } else if (base64profile1 == null || base64profile2 == null || base64profile3 == null) {
                     Common.showToast(ContactusAct.this, "Please Select Images");
                 } else {
                     SubmitContactReq req = new SubmitContactReq();

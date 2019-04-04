@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.adapters.CommunityMembersAdapter;
 import com.iprismtech.komodeo.adapters.SearchCommunityMembersAdapter;
@@ -187,7 +188,7 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
                             break;
                         case 3:
                             Toast.makeText(this, "Friend Request Sent Successfully", Toast.LENGTH_SHORT).show();
-
+                            recreate();
                             break;
                     }
                 } else {
@@ -301,5 +302,11 @@ public class CommunityActivity extends BaseAbstractActivity implements View.OnCl
             e.printStackTrace();
         }
         new RetrofitRequester(this).callPostServices(obj, 2, "search_community", false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CommunityActivity.this, MainActivity.class));
+        finish();
     }
 }

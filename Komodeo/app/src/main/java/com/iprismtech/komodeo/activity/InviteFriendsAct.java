@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -37,13 +38,14 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
     private Object obj;
     private InviteFriendsAdapter adapter;
     private ArrayList<FriendList> list = new ArrayList<>();
-    private ArrayList<FriendList> mInviteFriendsList= new ArrayList<>();
+    private ArrayList<FriendList> mInviteFriendsList = new ArrayList<>();
+    private TextView txt_no_frds;
+    private LinearLayout ll_invite_frds;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.invite_layout);
-
 
 
 //        iv_invite_back.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,7 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
     protected void setListenerToViews() {
         super.setListenerToViews();
         txtInviteContacts.setOnClickListener(this);
+        iv_invite_back.setOnClickListener(this);
     }
 
     @Override
@@ -79,6 +82,8 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
         iv_invite_back = findViewById(R.id.iv_invite_back);
         txtInviteContacts = findViewById(R.id.txtInviteContacts);
         rv_selectFreinds = findViewById(R.id.rv_selectFreinds);
+        txt_no_frds = findViewById(R.id.txt_no_frds);
+        ll_invite_frds = findViewById(R.id.ll_invite_frds);
 
         LinearLayoutManager manager = new LinearLayoutManager(InviteFriendsAct.this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -111,6 +116,7 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
                             list = (ArrayList<FriendList>) req.response;
 
                             if (list != null && list.size() > 0) {
+                                ll_invite_frds.setVisibility(View.VISIBLE);
                                 adapter = new InviteFriendsAdapter(InviteFriendsAct.this, list);
                                 rv_selectFreinds.setAdapter(adapter);
                             }
@@ -119,6 +125,8 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
                     }
                 } else {
                     Common.showToast(InviteFriendsAct.this, jsonObject.optString("message"));
+                    ll_invite_frds.setVisibility(View.GONE);
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -145,7 +153,16 @@ public class InviteFriendsAct extends BaseAbstractActivity implements RetrofitRe
                     }
                 }
                 break;
+            case R.id.iv_invite_back:
+                onBackPressed();
+
+                break;
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

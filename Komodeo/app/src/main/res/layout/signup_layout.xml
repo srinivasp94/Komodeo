@@ -65,7 +65,7 @@
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/search" />
+                    android:src="@drawable/search_icon" />
 
 
                 <com.iprismtech.komodeo.customtextview.CustomEditText
@@ -77,19 +77,21 @@
                     android:backgroundTint="@color/transparent"
                     android:gravity="center"
                     android:hint="College or University"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:textSize="20dp" />
-
 
 
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rview_search_universities"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rview_search_universities">
+                android:layout_height="wrap_content">
 
 
             </android.support.v7.widget.RecyclerView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

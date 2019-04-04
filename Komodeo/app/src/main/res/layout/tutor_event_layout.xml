@@ -13,15 +13,16 @@
 
         <ImageView
             android:id="@+id/iv_te_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:padding="@dimen/_3sdp"
-            android:src="@drawable/tutoreventback" />
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/left_arrow" />
 
 
         <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_title"
             style="@style/custom_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,8 +61,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_margin="@dimen/_5sdp"
+                android:orientation="horizontal"
                 android:padding="@dimen/_2sdp">
 
                 <android.support.v7.widget.AppCompatTextView
@@ -197,6 +198,7 @@
                     android:orientation="vertical">
 
                     <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txt_book"
                         style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -209,12 +211,13 @@
                         android:textStyle="bold" />
 
                     <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txt_going"
                         style="@style/custom_item_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Going"
-                        android:textColor="@color/light_gray"
+                        android:textColor="@color/green"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -326,13 +329,13 @@
                         style="@style/custom_item_textview"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
-                        android:textStyle="bold"
                         android:layout_below="@id/txt_address"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/map_bg"
                         android:gravity="center"
                         android:text="Click here to redirect to MAP"
-                        android:background="@drawable/map_bg"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_details"

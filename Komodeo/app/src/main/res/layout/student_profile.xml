@@ -18,7 +18,8 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/tutoreventback" />
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/left_arrow" />
 
 
         <android.support.v7.widget.AppCompatTextView

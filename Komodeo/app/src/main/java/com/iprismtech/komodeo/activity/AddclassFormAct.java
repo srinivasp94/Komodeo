@@ -1,6 +1,7 @@
 package com.iprismtech.komodeo.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.factories.controllers.ApplicationController;
@@ -89,6 +91,7 @@ public class AddclassFormAct extends BaseAbstractActivity implements View.OnClic
                     req.userId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_ID);
                     req.courseName = edtCourseName.getText().toString() + " " + edtCourse.getText().toString();
                     req.subjectName = edtSubName.getText().toString();
+                    req.universityId = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_UNIVERSITY_ID);
                     try {
                         obj = Class.forName(AddClassReq.class.getName()).cast(req);
                     } catch (Exception e) {
@@ -113,6 +116,8 @@ public class AddclassFormAct extends BaseAbstractActivity implements View.OnClic
                     switch (requestId) {
                         case 1:
                             Common.showToast(AddclassFormAct.this, jsonObject.optString("message"));
+                            startActivity(new Intent(AddclassFormAct.this, MainActivity.class));
+                            finish();
                             break;
                     }
                 } else {
@@ -123,6 +128,12 @@ public class AddclassFormAct extends BaseAbstractActivity implements View.OnClic
             }
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
 

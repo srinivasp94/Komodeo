@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.factories.controllers.ApplicationController;
@@ -261,9 +262,11 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
         switch (v.getId()) {
             case R.id.ll_Uploadcredentials:
                 startActivity(new Intent(UserProfileActivity.this, UploadCredentialsActivity.class));
+                finish();
                 break;
             case R.id.txt_profile_friends:
                 startActivity(new Intent(UserProfileActivity.this, FriendsAct.class));
+                finish();
                 break;
 
             case R.id.iv_editbio:
@@ -273,6 +276,7 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
             case R.id.iv_edit_profile:
                 Intent intent = new Intent(UserProfileActivity.this, SettingsAct.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.iv_pro_back:
                 onBackPressed();
@@ -280,16 +284,20 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
             case R.id.ll_MyEvents:
                 Intent eventsIntent = new Intent(UserProfileActivity.this, MyEventsActivity.class);
                 startActivity(eventsIntent);
+                finish();
                 break;
 
             case R.id.iv_viewratings:
                 startActivity(new Intent(UserProfileActivity.this, ViewRatingsAct.class));
+                finish();
 
         }
     }
 
     @Override
     public void onBackPressed() {
+
+        startActivity(new Intent(UserProfileActivity.this, MainActivity.class));
         finish();
     }
 

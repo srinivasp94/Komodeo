@@ -15,10 +15,11 @@
 
         <ImageView
             android:id="@+id/iv_backarrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
-            android:src="@drawable/blackback" />
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/left_arrow" />
 
         <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
             android:layout_width="wrap_content"

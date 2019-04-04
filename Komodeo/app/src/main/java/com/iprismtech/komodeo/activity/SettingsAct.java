@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.iprismtech.komodeo.MainActivity;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
 import com.iprismtech.komodeo.pojo.ProfileSettingsPojo;
@@ -95,6 +96,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
     private Object obj;
 
     private String post_Status, selected_lat, selected_lng, selected_address;
+    SharedPrefsUtils utils;
 
 
     @Override
@@ -150,45 +152,24 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         rlnotify = findViewById(R.id.rlnotify);
         rlpaymentpref = findViewById(R.id.rlpaymentpref);
         rl_paymentpreference = findViewById(R.id.rl_paymentpreference);
-
-
         tv_address = findViewById(R.id.tv_address);
-
-
         txt_password = findViewById(R.id.txt_password);
-
         txt_default_location = findViewById(R.id.txt_default_location);
-
         txt_update = findViewById(R.id.txt_update);
-
         iv_backarrow = findViewById(R.id.iv_backarrow);
-
         swch_comments = findViewById(R.id.swch_comments);
         swch_likes = findViewById(R.id.swch_likes);
-
         swch_event_notifications = findViewById(R.id.swch_event_notifications);
-
         swch_friend_request = findViewById(R.id.swch_friend_request);
-
         swch_event_cancellation = findViewById(R.id.swch_event_cancellation);
-
-
         edt_firstname = findViewById(R.id.edt_firstname);
-
         edt_lastname = findViewById(R.id.edt_lastname);
-
         edt_mobile = findViewById(R.id.edt_mobile);
-
         edt_email = findViewById(R.id.edt_emailid);
-
         edt_university = findViewById(R.id.edt_university);
-
         edt_major = findViewById(R.id.edt_major);
-
         UserProfileReq userProfileReq = new UserProfileReq();
-
         userProfileReq.userId = SharedPrefsUtils.getInstance(SettingsAct.this).getId();
-
         userProfileReq.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
 
         try {
@@ -204,8 +185,9 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
-
+        startActivity(new Intent(SettingsAct.this, MainActivity.class));
         finish();
+
 
     }
 
@@ -464,7 +446,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
                             UserProfilePojo userProfilePojo = res.response;
 
-
+                            tv_address.setText(res.response.defaultAddress);
                             Common.showToast(SettingsAct.this, jsonObject.optString("message"));
 
                             edt_firstname.setText(res.response.firstName);
@@ -546,6 +528,9 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
                         case 3:
 
+                            //jsonObject.optJSONObject("response").optString("profile_pic");
+                            // utils.store_image(jsonObject.optJSONObject("response").optString("profile_pic"));
+                            utils.setString(SharedPrefsUtils.KEY_PROFILE, jsonObject.optJSONObject("response").optString("profile_pic"));
                             settingsReq = Common.getSpecificDataObject(objectResponse, SettingsReq.class);
 
                             Common.showToast(SettingsAct.this, jsonObject.optString("message"));
@@ -676,6 +661,8 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
                 selected_lat = data.getStringExtra("user_lat");
                 selected_lng = data.getStringExtra("user_lang");
                 selected_address = data.getStringExtra("user_address");
+
+                //    SharedPrefsUtils.setString(SharedPrefsUtils.KEY_LOCATION,selected_address);
                 tv_address.setText(selected_address);
             }
 

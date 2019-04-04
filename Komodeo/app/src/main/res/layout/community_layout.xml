@@ -30,7 +30,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/edt_rounded_textdrawable_orange"
-            android:paddingLeft="@dimen/_20sdp"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_20sdp"
             android:text="subject"
             android:textColor="@color/white" />
 
@@ -89,7 +90,7 @@
                 android:gravity="center"
                 android:text="Discussion"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -131,7 +132,7 @@
                 android:gravity="center"
                 android:text="Community"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -4,6 +4,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+        android:id="@+id/tv_txt_eventtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="8sp"
+        android:layout_toRightOf="@id/iv_edit"
+        android:text="Event Type"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rg_eventType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/rb_tutor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tutor Event" />
+
+        <RadioButton
+            android:id="@+id/rb_study"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Study Event" />
+
+    </RadioGroup>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_events"
         android:layout_width="match_parent"

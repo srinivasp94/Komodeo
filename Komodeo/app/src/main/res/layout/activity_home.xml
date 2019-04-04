@@ -247,6 +247,28 @@
 
             </LinearLayout>
 
+            <!--<LinearLayout-->
+                <!--android:id="@+id/ll_events"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:src="@drawable/cal_gray" />-->
+
+                <!--<com.iprismtech.komodeo.customtextview.MyCustomFontTextView-->
+                    <!--android:id="@+id/txt_events"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="@dimen/_25sdp"-->
+                    <!--android:text="Events"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textStyle="bold" />-->
+
+            <!--</LinearLayout>-->
             <LinearLayout
                 android:id="@+id/ll_events"
                 android:layout_width="0dp"
@@ -258,6 +280,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:src="@drawable/cal_gray" />
 
                 <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
@@ -269,7 +292,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/ll_chat"
                 android:layout_width="0dp"
