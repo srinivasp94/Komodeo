@@ -71,12 +71,14 @@
                 android:padding="5dp" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <com.iprismtech.komodeo.customtextview.MyCustomFontTextView
+                android:id="@+id/txt_attachments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -86,12 +88,14 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerVertical="true"
                 android:layout_gravity="center"
+                android:layout_toRightOf="@id/txt_attachments"
                 android:src="@drawable/attach" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

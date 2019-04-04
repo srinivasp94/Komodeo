@@ -136,6 +136,7 @@ public class UserProfileActivity extends BaseAbstractActivity implements View.On
                             alert.dismiss();
 
                             EditBioReq editBioReq = Common.getSpecificDataObject(objectResponse, EditBioReq.class);
+
                             UserProfileReq userProfileReq = new UserProfileReq();
 
 

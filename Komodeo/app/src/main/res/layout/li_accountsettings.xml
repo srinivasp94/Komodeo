@@ -77,16 +77,18 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:id="@+id/iv_account_details"
                         android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:src="@drawable/up" />
 
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_account_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rlaccount"
-                    android:id="@+id/ll_account_details"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
                     android:orientation="vertical"
@@ -150,9 +152,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
+                        android:backgroundTint="@color/transparent"
                         android:clickable="false"
                         android:editable="false"
-                        android:backgroundTint="@color/transparent"
                         android:singleLine="true"
                         android:text="email id"
                         android:textColor="@color/black" />
@@ -164,7 +166,8 @@
                         android:layout_margin="3dp"
                         android:text="Password"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <EditText
                         android:id="@+id/txt_password"
@@ -174,7 +177,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_margin="3dp"
                         android:backgroundTint="@color/transparent"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -249,8 +253,8 @@
                     android:id="@+id/rlnotify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#959595"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:background="#959595"
                     android:padding="@dimen/_8sdp">
 
                     <TextView
@@ -264,16 +268,18 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:id="@+id/iv_notify"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/up" />
 
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_notifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rlnotify"
-                    android:id="@+id/ll_notifications"
                     android:orientation="vertical"
                     android:padding="5dp">
 
@@ -827,6 +833,7 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:id="@+id/iv_paymentpreference"
                             android:layout_alignParentRight="true"
                             android:src="@drawable/up" />
 
@@ -834,9 +841,9 @@
 
 
                     <RelativeLayout
+                        android:id="@+id/rl_paymentpreference"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rl_paymentpreference"
                         android:layout_below="@id/rlpaymentpref"
                         android:layout_marginBottom="10dp">
 

@@ -50,7 +50,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
 
 
     private LinearLayout ll_classes, ll_tutoring, ll_events, ll_chat;
-    private TextView txt_classes, txt_tutoring, txt_events, txt_chat,txtprofile;
+    private TextView txt_classes, txt_tutoring, txt_events, txt_chat, txtprofile;
     private TextView txt_profile, txt_friends, txt_settings, txt_faqs, txt_terms, txt_contactus;
     private ImageView menu_icon;
     private DrawerLayout drawer_layout;
@@ -155,7 +155,6 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         chatAct = new ChatListFragment();
 
 
-
         profileimage = findViewById(R.id.profileimage);
         ll_classes = findViewById(R.id.ll_classes);
         txt_classes = findViewById(R.id.txt_classes);
@@ -173,7 +172,7 @@ public class MainActivity extends BaseAbstractActivity implements View.OnClickLi
         SharedPrefsUtils prefsUtils = SharedPrefsUtils.getInstance(MainActivity.this);
         txtprofile.setText(SharedPrefsUtils.getString(SharedPrefsUtils.KEY_NAME));
 
-        Picasso.with(this).load(Constants.BASE_IMAGE_URL+ SharedPrefsUtils.getString(SharedPrefsUtils.KEY_PROFILE))
+        Picasso.with(this).load(Constants.BASE_IMAGE_URL + SharedPrefsUtils.getString(SharedPrefsUtils.KEY_PROFILE))
                 .error(R.drawable.boy).into(profileimage);
 
         txt_friends = findViewById(R.id.txt_friends);

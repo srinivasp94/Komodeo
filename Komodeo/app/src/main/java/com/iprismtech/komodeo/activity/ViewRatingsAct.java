@@ -72,7 +72,6 @@ public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClick
 
     @Override
     protected View getView() {
-
         View view = getLayoutInflater().inflate(R.layout.viewrating_layout, null);
         return view;
     }
@@ -86,7 +85,6 @@ public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_submit_rating:
-
                 GiveRatingReq giveRatingReq = new GiveRatingReq();
 
                 if (ratingValue[0] == null) {
@@ -116,18 +114,21 @@ public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClick
                         giveRatingReq.reviews = edt_reviews.getText().toString();
 
                         obj = Class.forName(GiveRatingReq.class.getName()).cast(giveRatingReq);
-                        new RetrofitRequester(this).callPostServices(obj, 3, "give_ratings", true);
 
+                        new RetrofitRequester(this).callPostServices(obj, 3, "give_ratings", true);
 
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
+
                 }
+
                 break;
 
             case R.id.txt_viewcredentials:
                 opeDialog();
                 break;
+
         }
 
     }
@@ -168,7 +169,7 @@ public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClick
                             txt_threeratings.setText(res.getResponse().getRating_details().get(0).getRate3());
                             txt_fourratings.setText(res.getResponse().getRating_details().get(0).getRate4());
                             txt_fiveratings.setText(res.getResponse().getRating_details().get(0).getRate5());
-                            txt_ratings.setText(res.getResponse().getRatings().toString());
+                            txt_ratings.setText(res.getResponse().getRatings());
                             break;
 
                         case 3:
@@ -176,12 +177,14 @@ public class ViewRatingsAct extends BaseAbstractActivity implements View.OnClick
                             GiveRatingPojo giveRatingPojo = Common.getSpecificDataObject(objectResponse, GiveRatingPojo.class);
                             Common.showToast(ViewRatingsAct.this, jsonObject.optString("message"));
                             edt_reviews.setText("");
-
                             break;
 
                     }
+
                 } else {
+
                     Common.showToast(ViewRatingsAct.this, jsonObject.optString("message"));
+
                 }
 
             } catch (Exception e) {

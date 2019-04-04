@@ -36,7 +36,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class TutorCreateSessionFragment extends BaseAbstractFragment implements RetrofitResponseListener, View.OnClickListener {
-
     private TutorAdapter tutorAdapter;
     private ClassHorizontalAdapter mHorizontalAdapter;
     private RecyclerView rcv_Classes, rv_tutors;
@@ -76,19 +75,15 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
         super.initialiseViews();
         rcv_Classes = view.findViewById(R.id.rcv_Classes);
         rv_tutors = view.findViewById(R.id.rv_tutors);
-
         ll_time = view.findViewById(R.id.ll_time);
         ll_rating = view.findViewById(R.id.ll_rating);
         ll_price = view.findViewById(R.id.ll_price);
-
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rcv_Classes.setLayoutManager(manager);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_tutors.setLayoutManager(layoutManager);
-
         SimpleReq req = new SimpleReq();
         req.userId = SharedPrefsUtils.getInstance(getActivity()).getId();
         req.token = SharedPrefsUtils.getString(SharedPrefsUtils.KEY_TOKEN);
@@ -192,11 +187,14 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_time:
+
                 ll_time.setBackgroundColor(Color.parseColor("#a3b5ff"));
                 ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_rating.setBackgroundColor(Color.parseColor("#ffffff"));
                 break;
+
             case R.id.ll_rating:
+
                 ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_price.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_rating.setBackgroundColor(Color.parseColor("#a3b5ff"));
@@ -213,7 +211,9 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 break;
+
             case R.id.ll_price:
                 ll_time.setBackgroundColor(Color.parseColor("#ffffff"));
                 ll_price.setBackgroundColor(Color.parseColor("#a3b5ff"));
@@ -225,11 +225,16 @@ public class TutorCreateSessionFragment extends BaseAbstractFragment implements 
                             return o1.totalPrice.compareTo(o2.totalPrice);
                         }
                     });
+
                     tutorAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
+
                     e.printStackTrace();
+
                 }
+
                 break;
+
         }
     }
 }

@@ -5,23 +5,16 @@ import android.content.SharedPreferences;
 
 public class SharedPrefsUtils {
     private Context context;
-
     private static SharedPreferences preferences;
-
-
     public static SharedPreferences.Editor editor;
-
     public static final String PREF_NAME = "myprefs";
-
     public static final String IS_USER_LOGIN = "IsUserLoggedIn";
-
     public static final String KEY_ID = "id";
     public static final String KEY_NAME = "name";
     public static final String KEY_LAST_NAME = "last_name";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PROFILE = "profile_pic";
-
     public static final String KEY_UNIVERSITY_ID = "university_id";
     public static final String KEY_STATUS = "status";
     public static final String KEY_TOKEN = "token";
@@ -66,6 +59,7 @@ public class SharedPrefsUtils {
         editor.commit();
     }
 
+
     public static void setString(String key, String value) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(key, value);
@@ -106,4 +100,5 @@ public class SharedPrefsUtils {
         editor.clear();
         editor.commit();
     }
+
 }

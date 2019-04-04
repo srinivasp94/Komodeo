@@ -46,9 +46,13 @@ import java.io.IOException;
 public class SettingsAct extends BaseAbstractActivity implements View.OnClickListener, RetrofitResponseListener {
 
     ImageView iv_backarrow;
+
     int position = 0;
+
     int accountposition = 0;
+
     String paymentpreference;
+
     Boolean accountstatus = false, notifystatus = false, paypref = false;
 
 
@@ -61,10 +65,9 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
     ProfileSettingsPojo settingsPojo;
 
-
     Switch swch_comments, swch_likes, swch_mentions, swch_event_notifications, swch_friend_request, swch_message, swch_event_cancellation, swch_friend_suggestion;
 
-    ImageView iv_profile_settings, iv_loc;
+    ImageView iv_profile_settings, iv_loc, iv_account_details, iv_notify, iv_paymentpreference;
 
     RetrofitResponseListener retrofitResponseListener;
 
@@ -87,6 +90,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
     private EditText txt_password, edt_firstname, edt_lastname, edt_mobile, edt_email, edt_university, edt_major;
 
     private SettingsReq settingsReq;
+
 
     LinearLayout ll_pament_venmo, ll_gpay, ll_Paypal, ll_cash,
             ll_account_details,
@@ -125,6 +129,13 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
         ll_pament_venmo = findViewById(R.id.ll_pament_venmo);
 
+        /*iv_paymentpreference
+iv_notify
+iv_account_details*/
+
+        iv_paymentpreference = findViewById(R.id.iv_paymentpreference);
+        iv_notify = findViewById(R.id.iv_notify);
+        iv_account_details = findViewById(R.id.iv_account_details);
 
         ll_gpay = findViewById(R.id.ll_gpay);
 
@@ -146,14 +157,15 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 
         /*rlaccount, rlnotify, rlpaymentpref, rl_paymentpreference*/
 
-        rlaccount = findViewById(R.id.rlaccount);
-        rlnotify = findViewById(R.id.rlnotify);
-        rlpaymentpref = findViewById(R.id.rlpaymentpref);
+        iv_account_details = findViewById(R.id.iv_account_details);
+
+        iv_notify = findViewById(R.id.iv_notify);
+
+        iv_paymentpreference = findViewById(R.id.iv_paymentpreference);
+
         rl_paymentpreference = findViewById(R.id.rl_paymentpreference);
 
-
         tv_address = findViewById(R.id.tv_address);
-
 
         txt_password = findViewById(R.id.txt_password);
 
@@ -164,6 +176,7 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         iv_backarrow = findViewById(R.id.iv_backarrow);
 
         swch_comments = findViewById(R.id.swch_comments);
+
         swch_likes = findViewById(R.id.swch_likes);
 
         swch_event_notifications = findViewById(R.id.swch_event_notifications);
@@ -171,7 +184,6 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         swch_friend_request = findViewById(R.id.swch_friend_request);
 
         swch_event_cancellation = findViewById(R.id.swch_event_cancellation);
-
 
         edt_firstname = findViewById(R.id.edt_firstname);
 
@@ -218,9 +230,9 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
         /* rlaccount = findViewById(R.id.rlaccount);
         rlnotify = findViewById(R.id.rlnotify);
         rlpaymentpref = findViewById(R.id.rlpaymentpref);*/
-        rlaccount.setOnClickListener(this);
-        rlnotify.setOnClickListener(this);
-        rlpaymentpref.setOnClickListener(this);
+        iv_account_details.setOnClickListener(this);
+        iv_notify.setOnClickListener(this);
+        iv_paymentpreference.setOnClickListener(this);
         ll_pament_venmo.setOnClickListener(this);
         ll_gpay.setOnClickListener(this);
         ll_Paypal.setOnClickListener(this);
@@ -244,39 +256,49 @@ public class SettingsAct extends BaseAbstractActivity implements View.OnClickLis
 /*        /* rlaccount = findViewById(R.id.rlaccount);
         rlnotify = findViewById(R.id.rlnotify);
         rlpaymentpref = findViewById(R.id.rlpaymentpref);*/
-            case R.id.rlaccount:
+            case R.id.iv_account_details:
 
 
                 if (accountstatus) {
                     ll_account_details.setVisibility(View.GONE);
                     accountstatus = false;
+                    iv_account_details.setImageResource(R.drawable.down);
                 } else {
                     ll_account_details.setVisibility(View.VISIBLE);
                     accountstatus = true;
+                    iv_account_details.setImageResource(R.drawable.up);
+
 
                 }
                 break;
 
-            case R.id.rlnotify:
+            case R.id.iv_notify:
 
                 if (notifystatus) {
                     ll_notifications.setVisibility(View.GONE);
                     notifystatus = false;
+                    iv_notify.setImageResource(R.drawable.down);
                 } else {
                     ll_notifications.setVisibility(View.VISIBLE);
                     notifystatus = true;
+                    iv_notify.setImageResource(R.drawable.up);
+
                 }
                 break;
 
 
-            case R.id.rlpaymentpref:
+            case R.id.iv_paymentpreference:
 
                 if (paypref) {
                     rl_paymentpreference.setVisibility(View.GONE);
                     paypref = false;
+                    iv_paymentpreference.setImageResource(R.drawable.down);
+
                 } else {
                     rl_paymentpreference.setVisibility(View.VISIBLE);
                     paypref = true;
+                    iv_paymentpreference.setImageResource(R.drawable.up);
+
                 }
 
                 break;

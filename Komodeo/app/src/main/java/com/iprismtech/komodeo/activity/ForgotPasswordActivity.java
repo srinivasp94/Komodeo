@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.iprismtech.komodeo.R;
 import com.iprismtech.komodeo.base.BaseAbstractActivity;
+import com.iprismtech.komodeo.pojo.ForgotPasswordPojo;
+import com.iprismtech.komodeo.pojo.UserProfilePojo;
 import com.iprismtech.komodeo.request.ForgotPasswordReq;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitRequester;
 import com.iprismtech.komodeo.retrofitnetwork.RetrofitResponseListener;
@@ -23,6 +25,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
 
     EditText edt_email;
     ForgotPasswordReq forgotPasswordReq;
+    ForgotPasswordPojo forgotPasswordPojo;
     private Object obj;
     TextView btn_resetpassword;
     private ImageView myaccountback;
@@ -30,24 +33,27 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+
             case R.id.btn_resetpassword:
+
                 ForgotPasswordReq req = new ForgotPasswordReq();
 
-                req.emailId = SharedPrefsUtils.getInstance(ForgotPasswordActivity.this).getEmial();
-
+                req.emailId = edt_email.getText().toString();
 
                 try {
-
                     obj = Class.forName(ForgotPasswordReq.class.getName()).cast(req);
-
                 } catch (ClassNotFoundException e) {
-
                     e.printStackTrace();
                 }
+
                 new RetrofitRequester(this).callPostServices(obj, 2, "forgot_password", true);
+
                 break;
+
             case R.id.myaccountback:
+
                 onBackPressed();
+
                 break;
 
         }
@@ -61,7 +67,9 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -85,6 +93,7 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
                 JSONObject jsonObject = new JSONObject(jsonString);
 
                 if (jsonObject.optBoolean("status")) {
+
                     switch (requestId) {
 
 
@@ -92,11 +101,16 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
 
                             forgotPasswordReq = Common.getSpecificDataObject(objectResponse, ForgotPasswordReq.class);
 
+                            ForgotPasswordPojo forgotPasswordPojo = forgotPasswordReq.response;
+
+                            String uid = forgotPasswordPojo.id;
                             Common.showToast(ForgotPasswordActivity.this, jsonObject.optString("message"));
 
-                            startActivity(new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class));
-                            finish();
+                            Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
+                            intent.putExtra("uid", uid);
+                            startActivity(intent);
 
+                            finish();
 
                     }
 
@@ -124,10 +138,11 @@ public class ForgotPasswordActivity extends BaseAbstractActivity implements View
 
     @Override
     protected void initializeViews() {
+
         super.initializeViews();
         edt_email = findViewById(R.id.edt_email);
+        myaccountback = findViewById(R.id.myaccountback);
         btn_resetpassword = findViewById(R.id.btn_resetpassword);
-
 
     }
 
